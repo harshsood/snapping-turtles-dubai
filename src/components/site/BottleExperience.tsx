@@ -1,8 +1,9 @@
-import { Bounds, Center, useGLTF } from "@react-three/drei";
+import { Environment, useGLTF, OrbitControls } from "@react-three/drei";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Rotate3D } from "lucide-react";
 import {
   Suspense,
+  useEffect,
   useMemo,
   useRef,
   useState,
@@ -11,13 +12,13 @@ import {
 import type { Group } from "three";
 import * as THREE from "three";
 
-import perfumeBottle from "@/assets/perfume_bottle.glb.asset.json";
-import waterBottle from "@/assets/water_bottle.glb.asset.json";
+import perfumeBottleUrl from "@/assets/perfume_bottle.glb?url";
+import waterBottleUrl from "@/assets/WaterBottle.glb?url";
 import { Button } from "@/components/ui/button";
 
 const MODELS = [
-  { label: "Perfume", url: perfumeBottle.url },
-  { label: "Bottle 02", url: waterBottle.url },
+  { label: "Perfume", url: perfumeBottleUrl },
+  { label: "Bottle 02", url: waterBottleUrl },
 ] as const;
 
 type DragState = {
@@ -28,63 +29,134 @@ type DragState = {
   targetZ: number;
 };
 
+function normalizeModel(scene: THREE.Object3D) {
+  const nextScene = scene.clone(true);
+
+  const box = new THREE.Box3().setFromObject(nextScene);
+  const size = new THREE.Vector3();
+  box.getSize(size);
+  const maxDimension = Math.max(size.x, size.y, size.z) || 1;
+  const desiredScale = 2.4 / maxDimension;
+
+  nextScene.scale.setScalar(desiredScale);
+  const center = box.getCenter(new THREE.Vector3());
+  nextScene.position.set(-center.x * desiredScale, -center.y * desiredScale, -center.z * desiredScale);
+
+  nextScene.traverse((obj) => {
+    if (!("isMesh" in obj) || !obj.isMesh) return;
+
+    const rawMaterial = obj.material;
+    if (Array.isArray(rawMaterial)) {
+      rawMaterial.forEach((material) => {
+        material.needsUpdate = true;
+        if ("envMapIntensity" in material) material.envMapIntensity = 1.35;
+        if ("color" in material && material.color) material.color.convertSRGBToLinear();
+      });
+      return;
+    }
+
+    if (!rawMaterial) return;
+    rawMaterial.needsUpdate = true;
+    if ("envMapIntensity" in rawMaterial) rawMaterial.envMapIntensity = 1.35;
+    if ("color" in rawMaterial && rawMaterial.color) rawMaterial.color.convertSRGBToLinear();
+  });
+
+  return nextScene;
+}
+
 function BottleModel({
   url,
   spinZ,
   drag,
+  scrollProgress,
+  containerRef,
 }: {
   url: string;
   spinZ: boolean;
   drag: React.MutableRefObject<DragState>;
+  scrollProgress: number;
+  containerRef: React.RefObject<HTMLDivElement>;
 }) {
-  const model = useGLTF(url);
-  const scene = useMemo(() => model.scene.clone(true), [model.scene]);
+  const { scene } = useGLTF(url);
+  const clonedScene = useMemo(() => normalizeModel(scene), [scene]);
   const group = useRef<Group>(null);
 
-  useFrame((_, delta) => {
+  useFrame((state, delta) => {
     const bottle = group.current;
-    if (!bottle) return;
+    if (!bottle || !containerRef.current) return;
+
+    const containerRect = containerRef.current.getBoundingClientRect();
+    const centerY = containerRect.top + containerRect.height / 2;
+    const viewportCenter = window.innerHeight / 2;
+    const containerProgress = (centerY - viewportCenter) / window.innerHeight;
+
+    const scrollCurveX = -1.6 + scrollProgress * 3.2;
+    const floatY = Math.sin(state.clock.elapsedTime * 1.3 + scrollProgress * Math.PI) * 0.18;
+    const floatZ = Math.cos(state.clock.elapsedTime * 0.8 + scrollProgress * Math.PI * 0.5) * 0.12;
+
+    bottle.position.x = THREE.MathUtils.damp(bottle.position.x, scrollCurveX + containerProgress * 0.7, 3.8, delta);
+    bottle.position.y = THREE.MathUtils.damp(bottle.position.y, floatY, 3.8, delta);
+    bottle.position.z = THREE.MathUtils.damp(bottle.position.z, floatZ - 0.2, 3.8, delta);
 
     bottle.rotation.y = THREE.MathUtils.damp(
       bottle.rotation.y,
-      drag.current.targetY,
-      5,
+      drag.current.targetY + scrollProgress * 1.8,
+      4.2,
       delta,
     );
+
     bottle.rotation.z = THREE.MathUtils.damp(
       bottle.rotation.z,
-      drag.current.targetZ,
-      5,
+      drag.current.targetZ + Math.sin(state.clock.elapsedTime * 0.5) * 0.15,
+      4.2,
       delta,
     );
 
     if (!drag.current.active) {
-      drag.current.targetY += delta * 0.22;
-      if (spinZ) drag.current.targetZ += delta * 0.42;
+      drag.current.targetY += delta * (0.24 + scrollProgress * 0.18);
+      if (spinZ) drag.current.targetZ += delta * 0.58;
     }
   });
 
   return (
-    <Bounds fit clip observe margin={1.22}>
-      <Center>
-        <group ref={group} rotation={[0.05, -0.45, 0]}>
-          <primitive object={scene} />
-        </group>
-      </Center>
-    </Bounds>
+    <group ref={group} rotation={[0.08, -0.48, 0]}>
+      <primitive object={clonedScene} />
+    </group>
   );
 }
 
 export function BottleExperience() {
-  const [modelUrl, setModelUrl] = useState(MODELS[0].url);
+  const [modelIndex, setModelIndex] = useState(0);
   const [spinZ, setSpinZ] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
   const drag = useRef<DragState>({
     active: false,
     lastX: 0,
     lastY: 0,
-    targetY: -0.45,
+    targetY: -0.5,
     targetZ: 0,
   });
+
+  useEffect(() => {
+    const update = () => {
+      // Calculate scroll progress based on page height
+      const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
+      const currentScroll = window.scrollY;
+      setScrollProgress(totalScroll > 0 ? Math.min(1, currentScroll / totalScroll) : 0);
+    };
+
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+
+    return () => {
+      window.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+    };
+  }, []);
+
+  const activeModel = MODELS[modelIndex];
 
   const startDrag = (event: ReactPointerEvent<HTMLDivElement>) => {
     event.currentTarget.setPointerCapture(event.pointerId);
@@ -98,8 +170,8 @@ export function BottleExperience() {
     if (!drag.current.active) return;
     const deltaX = event.clientX - drag.current.lastX;
     const deltaY = event.clientY - drag.current.lastY;
-    drag.current.targetY += deltaX * 0.012;
-    drag.current.targetZ += deltaY * 0.01;
+    drag.current.targetY += deltaX * 0.015;
+    drag.current.targetZ += deltaY * 0.013;
     drag.current.lastX = event.clientX;
     drag.current.lastY = event.clientY;
   };
@@ -110,10 +182,13 @@ export function BottleExperience() {
   };
 
   return (
-    <div className="absolute inset-y-24 right-0 z-20 w-full sm:w-[58%] lg:w-[52%]">
+    <div
+      ref={containerRef}
+      className="fixed inset-0 z-20 w-full pointer-events-none"
+    >
       <div
-        className="absolute inset-0 cursor-grab touch-none"
-        aria-label="Interactive 3D bottle. Drag horizontally to rotate and vertically to tilt."
+        className="absolute inset-0 cursor-grab touch-none pointer-events-auto"
+        aria-label="Interactive 3D bottle. Drag horizontally to rotate and vertically to tilt. Position updates as you scroll."
         onPointerDown={startDrag}
         onPointerMove={moveDrag}
         onPointerUp={stopDrag}
@@ -121,33 +196,38 @@ export function BottleExperience() {
       >
         <Canvas
           dpr={[1, 1.7]}
-          camera={{ position: [0, 0, 5], fov: 34 }}
+          camera={{ position: [0, 0.2, 5.2], fov: 32 }}
           gl={{ alpha: true, antialias: true }}
         >
-          <ambientLight intensity={1.8} />
-          <directionalLight position={[4, 6, 5]} intensity={4.5} />
-          <directionalLight position={[-5, 1, 3]} intensity={2.5} />
-          <pointLight position={[0, -3, 4]} intensity={2.8} />
+          <ambientLight intensity={1.6} />
+          <directionalLight position={[5.5, 7, 6.5]} intensity={4.6} />
+          <directionalLight position={[-6.5, 1.5, 3.5]} intensity={2.6} />
+          <pointLight position={[0, -3.5, 5.5]} intensity={3.0} />
+          <spotLight position={[0, 6, 5.5]} angle={0.48} penumbra={0.9} intensity={2.9} />
+          <Environment preset="studio" intensity={0.9} />
           <Suspense fallback={null}>
             <BottleModel
-              key={modelUrl}
-              url={modelUrl}
+              key={activeModel.url}
+              url={activeModel.url}
               spinZ={spinZ}
               drag={drag}
+              scrollProgress={scrollProgress}
+              containerRef={containerRef}
             />
           </Suspense>
+          <OrbitControls enableZoom={false} enablePan={false} autoRotate={false} />
         </Canvas>
       </div>
 
-      <div className="glass-panel absolute right-4 bottom-1 z-30 flex items-center gap-1 rounded-md p-1 sm:right-8 sm:bottom-4">
-        {MODELS.map((model) => (
+      <div className="glass-panel absolute left-4 bottom-4 z-30 flex items-center gap-1 rounded-md p-1 sm:left-8 sm:bottom-8 pointer-events-auto">
+        {MODELS.map((model, index) => (
           <Button
             key={model.label}
             type="button"
             size="sm"
-            variant={modelUrl === model.url ? "default" : "ghost"}
-            onClick={() => setModelUrl(model.url)}
-            aria-pressed={modelUrl === model.url}
+            variant={modelIndex === index ? "default" : "ghost"}
+            onClick={() => setModelIndex(index)}
+            aria-pressed={modelIndex === index}
           >
             {model.label}
           </Button>
@@ -168,5 +248,6 @@ export function BottleExperience() {
   );
 }
 
-useGLTF.preload(perfumeBottle.url);
-useGLTF.preload(waterBottle.url);
+// Preload models for instant switching
+useGLTF.preload(perfumeBottleUrl);
+useGLTF.preload(waterBottleUrl);

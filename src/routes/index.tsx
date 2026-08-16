@@ -39,10 +39,10 @@ export const Route = createFileRoute("/")({
           "Strategy, performance media, film and engineering under one roof. 241+ projects delivered across four studios.",
       },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "https://glb-fragrance-magic.lovable.app/" },
+      { property: "og:url", content: "https://snappingturtles.com/" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "https://glb-fragrance-magic.lovable.app/" }],
+    links: [{ rel: "canonical", href: "https://snappingturtles.com/" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -50,7 +50,7 @@ export const Route = createFileRoute("/")({
           "@context": "https://schema.org",
           "@type": "Organization",
           name: "Snapping Turtles",
-          url: "https://glb-fragrance-magic.lovable.app/",
+          url: "https://snappingturtles.com/",
           description:
             "Global digital marketing agency delivering strategy, performance media, creative production and web engineering.",
         }),
@@ -110,11 +110,7 @@ function Home() {
         />
         <div className="pointer-events-none absolute bottom-[-15%] left-[-10%] size-[30rem] rounded-full bg-accent/12 blur-[110px] float-slow" />
 
-        <ClientOnly
-          fallback={
-            <div className="pointer-events-none absolute inset-y-24 right-0 w-full sm:w-[58%] lg:w-[52%]" />
-          }
-        >
+        <ClientOnly>
           <Suspense fallback={null}>
             <BottleExperience />
           </Suspense>
