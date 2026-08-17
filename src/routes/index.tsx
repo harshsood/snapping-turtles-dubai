@@ -168,6 +168,83 @@ function Home() {
         <StatGrid />
       </section>
 
+      {/* CREATIVE FEATURE STRIP */}
+      <section className="relative px-4 py-8 sm:px-8">
+        <div className="mx-auto grid max-w-7xl gap-6 lg:grid-cols-[1.05fr_1.2fr] lg:items-center">
+          <div data-reveal className="reveal glass-panel rounded-[2rem] p-8 sm:p-10">
+            <p className="eyebrow">Built for ambitious brands</p>
+            <h2 className="mt-5 font-display text-4xl leading-tight sm:text-5xl">
+              Strategy, media and production that <span className="signal-text">move together</span>.
+            </h2>
+            <p className="mt-5 max-w-lg text-base text-muted-foreground">
+              We turn fragmented marketing into a single operating system — so creative,
+              media and product all compound instead of fighting for attention.
+            </p>
+            <div className="mt-8 grid gap-4 sm:grid-cols-3">
+              {[
+                { value: "4 cities", label: "Global delivery" },
+                { value: "241+", label: "Projects" },
+                { value: "12 mo", label: "Average runway" },
+              ].map((item) => (
+                <div key={item.label} className="rounded-2xl border border-border bg-background/40 p-4">
+                  <p className="font-display text-2xl text-primary">{item.value}</p>
+                  <p className="mt-2 font-mono text-[0.58rem] tracking-[0.18em] uppercase text-muted-foreground">
+                    {item.label}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2">
+            {[
+              {
+                title: "Growth systems",
+                caption: "Creative + media + analytics in one loop",
+                image:
+                  "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80",
+              },
+              {
+                title: "Brand films",
+                caption: "In-house artistry at production speed",
+                image:
+                  "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80",
+              },
+              {
+                title: "Web experiences",
+                caption: "High-converting experiences built to ship",
+                image:
+                  "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=80",
+              },
+              {
+                title: "Performance culture",
+                caption: "Testing, learning and scaling every week",
+                image:
+                  "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
+              },
+            ].map((item) => (
+              <div
+                key={item.title}
+                data-reveal
+                className="reveal group relative overflow-hidden rounded-[1.8rem] border border-border bg-background/40 p-3"
+                style={{ transitionDelay: "0.08s" }}
+              >
+                <div
+                  className="relative h-64 overflow-hidden rounded-[1.3rem] bg-cover bg-center transition-transform duration-500 group-hover:scale-[1.04]"
+                  style={{
+                    backgroundImage: `linear-gradient(180deg, rgba(10,16,22,0.18), rgba(10,16,22,0.72)), url("${item.image}")`,
+                  }}
+                />
+                <div className="relative z-10 mt-4 px-2 pb-2">
+                  <p className="font-display text-2xl">{item.title}</p>
+                  <p className="mt-2 text-sm text-muted-foreground">{item.caption}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* SERVICES */}
       <section className="relative px-4 py-16 sm:px-8">
         <div className="mx-auto max-w-7xl">

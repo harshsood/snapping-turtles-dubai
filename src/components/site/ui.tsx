@@ -107,32 +107,49 @@ export function StatGrid() {
 
 export function ProjectCard({ project, index }: { project: Project; index: number }) {
   const ref = useTilt<HTMLDivElement>(6);
+  const imageStyles = [
+    "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80",
+    "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&q=80",
+    "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80",
+    "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80",
+    "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=80",
+    "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
+  ];
+
   return (
     <div
       ref={ref}
       data-reveal
-      className="reveal sweep-card glass-panel rounded-2xl p-7"
+      className="reveal sweep-card glass-panel rounded-2xl p-4"
       style={{ transitionDelay: `${(index % 3) * 0.1}s` }}
     >
-      <div className="relative z-10 flex items-start justify-between gap-6">
-        <div>
-          <p className="font-mono text-[0.6rem] tracking-[0.24em] uppercase text-primary">
-            {project.category}
-          </p>
-          <h3 className="mt-3 font-display text-3xl">{project.client}</h3>
+      <div
+        className="relative h-44 overflow-hidden rounded-[1.2rem] bg-cover bg-center"
+        style={{
+          backgroundImage: `linear-gradient(180deg, rgba(12,18,23,0.18), rgba(12,18,23,0.72)), url("${imageStyles[index % imageStyles.length]}")`,
+        }}
+      />
+      <div className="relative z-10 p-3">
+        <div className="flex items-start justify-between gap-6">
+          <div>
+            <p className="font-mono text-[0.6rem] tracking-[0.24em] uppercase text-primary">
+              {project.category}
+            </p>
+            <h3 className="mt-3 font-display text-3xl">{project.client}</h3>
+          </div>
+          <span className="font-mono text-[0.6rem] tracking-[0.2em] text-muted-foreground">
+            {project.year}
+          </span>
         </div>
-        <span className="font-mono text-[0.6rem] tracking-[0.2em] text-muted-foreground">
-          {project.year}
-        </span>
-      </div>
-      <p className="relative z-10 mt-4 text-sm text-muted-foreground">
-        {project.summary}
-      </p>
-      <div className="relative z-10 mt-7 flex items-center justify-between border-t border-border pt-5">
-        <span className="font-mono text-xs text-primary">{project.result}</span>
-        <span className="font-mono text-[0.6rem] tracking-[0.2em] uppercase text-muted-foreground">
-          {project.region}
-        </span>
+        <p className="relative z-10 mt-4 text-sm text-muted-foreground">
+          {project.summary}
+        </p>
+        <div className="relative z-10 mt-7 flex items-center justify-between border-t border-border pt-5">
+          <span className="font-mono text-xs text-primary">{project.result}</span>
+          <span className="font-mono text-[0.6rem] tracking-[0.2em] uppercase text-muted-foreground">
+            {project.region}
+          </span>
+        </div>
       </div>
     </div>
   );
