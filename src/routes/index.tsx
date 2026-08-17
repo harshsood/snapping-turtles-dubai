@@ -71,26 +71,48 @@ function ServiceRow({
   title: string;
   short: string;
 }) {
+  const accentImages = [
+    "linear-gradient(135deg, rgba(132,255,203,0.32), rgba(17,24,39,0.72))",
+    "linear-gradient(135deg, rgba(245,158,11,0.32), rgba(17,24,39,0.72))",
+    "linear-gradient(135deg, rgba(168,85,247,0.28), rgba(17,24,39,0.72))",
+    "linear-gradient(135deg, rgba(59,130,246,0.28), rgba(17,24,39,0.72))",
+  ];
+
   return (
     <Link
       to="/services/$slug"
       params={{ slug }}
       data-reveal
-      className="reveal group relative grid items-center gap-4 border-t border-border py-8 sm:grid-cols-[6rem_1fr_auto]"
+      className="reveal sweep-card glass-panel group flex h-full flex-col rounded-[1.8rem] p-6"
       style={{ transitionDelay: `${(index % 4) * 0.06}s` }}
     >
-      <span className="font-mono text-xs text-primary">
-        {String(index + 1).padStart(2, "0")}
-      </span>
-      <div>
-        <h3 className="font-display text-3xl transition-transform duration-500 group-hover:translate-x-3 sm:text-4xl">
+      <div
+        className="relative overflow-hidden rounded-[1.3rem] border border-border/80"
+        style={{
+          background: accentImages[index % accentImages.length],
+          minHeight: "152px",
+        }}
+      >
+        <div className="grid-lines pointer-events-none absolute inset-0 opacity-30" />
+        <div className="relative flex h-full items-end justify-between p-5">
+          <span className="font-mono text-[0.6rem] tracking-[0.22em] uppercase text-white/80">
+            {String(index + 1).padStart(2, "0")}
+          </span>
+          <span className="rounded-full border border-white/20 bg-white/5 px-3 py-1 font-mono text-[0.55rem] tracking-[0.18em] uppercase text-white/80">
+            Strategy
+          </span>
+        </div>
+      </div>
+
+      <div className="mt-6 flex flex-1 flex-col">
+        <h3 className="font-display text-3xl transition-transform duration-500 group-hover:-translate-y-1 sm:text-[2rem]">
           {title}
         </h3>
-        <p className="mt-2 max-w-xl text-sm text-muted-foreground">{short}</p>
+        <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">{short}</p>
+        <p className="mt-6 border-t border-border pt-5 font-mono text-[0.58rem] tracking-[0.22em] uppercase text-muted-foreground transition-colors group-hover:text-primary">
+          Explore →
+        </p>
       </div>
-      <span className="font-mono text-[0.6rem] tracking-[0.24em] uppercase text-muted-foreground transition-colors group-hover:text-primary">
-        Explore →
-      </span>
     </Link>
   );
 }

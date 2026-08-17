@@ -44,29 +44,55 @@ function ServicesIndex() {
 
       <section className="px-4 py-10 sm:px-8">
         <div className="mx-auto grid max-w-7xl gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {SERVICES.map((service, i) => (
-            <Link
-              key={service.slug}
-              to="/services/$slug"
-              params={{ slug: service.slug }}
-              data-reveal
-              className="reveal sweep-card glass-panel group flex flex-col rounded-2xl p-7"
-              style={{ transitionDelay: `${(i % 3) * 0.08}s` }}
-            >
-              <span className="relative z-10 font-mono text-xs text-primary">
-                {String(i + 1).padStart(2, "0")}
-              </span>
-              <h2 className="relative z-10 mt-5 font-display text-3xl">
-                {service.title}
-              </h2>
-              <p className="relative z-10 mt-3 flex-1 text-sm text-muted-foreground">
-                {service.short}
-              </p>
-              <p className="relative z-10 mt-6 border-t border-border pt-5 font-mono text-[0.6rem] tracking-[0.2em] uppercase text-muted-foreground transition-colors group-hover:text-primary">
-                {service.metric}
-              </p>
-            </Link>
-          ))}
+          {SERVICES.map((service, i) => {
+            const coverStyles = [
+              "linear-gradient(135deg, rgba(132,255,203,0.28), rgba(17,24,39,0.72))",
+              "linear-gradient(135deg, rgba(245,158,11,0.26), rgba(17,24,39,0.72))",
+              "linear-gradient(135deg, rgba(168,85,247,0.26), rgba(17,24,39,0.72))",
+            ];
+
+            return (
+              <Link
+                key={service.slug}
+                to="/services/$slug"
+                params={{ slug: service.slug }}
+                data-reveal
+                className="reveal sweep-card glass-panel group flex flex-col overflow-hidden rounded-[1.8rem] p-4"
+                style={{ transitionDelay: `${(i % 3) * 0.08}s` }}
+              >
+                <div
+                  className="relative overflow-hidden rounded-[1.3rem] border border-border/80"
+                  style={{
+                    background: coverStyles[i % coverStyles.length],
+                    minHeight: "170px",
+                  }}
+                >
+                  <div className="grid-lines pointer-events-none absolute inset-0 opacity-30" />
+                  <div className="relative flex h-full items-end justify-between p-5">
+                    <span className="font-mono text-[0.58rem] tracking-[0.2em] uppercase text-white/80">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span className="rounded-full border border-white/20 bg-white/5 px-3 py-1 font-mono text-[0.52rem] tracking-[0.18em] uppercase text-white/80">
+                      Growth
+                    </span>
+                  </div>
+                </div>
+
+                <div className="relative z-10 flex flex-1 flex-col px-2 pb-2 pt-6">
+                  <span className="font-mono text-xs text-primary">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <h2 className="mt-4 font-display text-3xl">{service.title}</h2>
+                  <p className="mt-3 flex-1 text-sm text-muted-foreground">
+                    {service.short}
+                  </p>
+                  <p className="mt-6 border-t border-border pt-5 font-mono text-[0.6rem] tracking-[0.2em] uppercase text-muted-foreground transition-colors group-hover:text-primary">
+                    {service.metric}
+                  </p>
+                </div>
+              </Link>
+            );
+          })}
         </div>
       </section>
 

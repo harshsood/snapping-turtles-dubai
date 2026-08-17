@@ -117,6 +117,23 @@ function Contact() {
           </form>
 
           <aside className="space-y-6">
+            <div data-reveal className="reveal overflow-hidden rounded-[2rem] border border-border bg-background/40">
+              <div
+                className="h-52 bg-cover bg-center"
+                style={{
+                  backgroundImage:
+                    'linear-gradient(180deg, rgba(9,13,19,0.14), rgba(9,13,19,0.7)), url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80")',
+                }}
+              />
+              <div className="p-6">
+                <p className="eyebrow">Start with a brief</p>
+                <p className="mt-3 text-sm text-muted-foreground">
+                  Share your market, goals and timeline. We usually reply with a clear
+                  next step within one working day.
+                </p>
+              </div>
+            </div>
+
             <div data-reveal className="reveal glass-panel rounded-2xl p-7">
               <p className="eyebrow">Direct</p>
               <a

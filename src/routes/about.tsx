@@ -73,20 +73,44 @@ function About() {
             </div>
           </div>
 
-          <div className="grid gap-5 sm:grid-cols-2">
-            {VALUES.map((value, i) => (
+          <div className="space-y-5">
+            <div
+              data-reveal
+              className="reveal overflow-hidden rounded-[2rem] border border-border bg-background/40"
+            >
               <div
-                key={value.title}
-                data-reveal
-                className="reveal sweep-card glass-panel rounded-2xl p-6"
-                style={{ transitionDelay: `${i * 0.08}s` }}
-              >
-                <h3 className="relative z-10 font-display text-2xl">{value.title}</h3>
-                <p className="relative z-10 mt-3 text-sm text-muted-foreground">
-                  {value.copy}
+                className="h-72 bg-cover bg-center"
+                style={{
+                  backgroundImage:
+                    'linear-gradient(180deg, rgba(9,13,19,0.15), rgba(9,13,19,0.68)), url("https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1400&q=80")',
+                }}
+              />
+              <div className="p-6">
+                <p className="font-mono text-[0.6rem] tracking-[0.22em] uppercase text-primary">
+                  Global studio model
+                </p>
+                <p className="mt-3 text-sm text-muted-foreground">
+                  Strategy, media and production align under one roof so the campaign
+                  stays coherent at every stage of the funnel.
                 </p>
               </div>
-            ))}
+            </div>
+
+            <div className="grid gap-5 sm:grid-cols-2">
+              {VALUES.map((value, i) => (
+                <div
+                  key={value.title}
+                  data-reveal
+                  className="reveal sweep-card glass-panel rounded-2xl p-6"
+                  style={{ transitionDelay: `${i * 0.08}s` }}
+                >
+                  <h3 className="relative z-10 font-display text-2xl">{value.title}</h3>
+                  <p className="relative z-10 mt-3 text-sm text-muted-foreground">
+                    {value.copy}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>

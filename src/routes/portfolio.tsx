@@ -101,6 +101,16 @@ function Portfolio() {
       />
 
       <section className="px-4 py-10 sm:px-8">
+        <div className="mx-auto mb-10 overflow-hidden rounded-[2rem] border border-border bg-background/40">
+          <div
+            className="h-[28rem] bg-cover bg-center"
+            style={{
+              backgroundImage:
+                'linear-gradient(180deg, rgba(9,13,19,0.12), rgba(9,13,19,0.7)), url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=80")',
+            }}
+          />
+        </div>
+
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-6 lg:grid-cols-12">
           {PROJECTS.slice(0, 9).map((project, i) => (
             <Tile

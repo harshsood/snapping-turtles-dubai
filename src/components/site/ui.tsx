@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowUpRight } from "lucide-react";
-import type { ReactNode } from "react";
+import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
+import { useRef, useState, type ReactNode } from "react";
 import { useCountUp, useMagnetic, useTilt } from "@/hooks/use-anim";
 import { STATS, TESTIMONIALS, type Project } from "@/lib/content";
 import { cn } from "@/lib/utils";
@@ -156,27 +156,79 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
 }
 
 export function Testimonials() {
+  const sliderRef = useRef<HTMLDivElement | null>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const scrollToCard = (direction: 1 | -1) => {
+    const node = sliderRef.current;
+    if (!node) return;
+
+    const cards = node.querySelectorAll<HTMLElement>("[data-testimonial-card]");
+    if (!cards.length) return;
+
+    const currentCard = cards[Math.min(Math.max(activeIndex, 0), cards.length - 1)];
+    const nextIndex = Math.min(Math.max(activeIndex + direction, 0), cards.length - 1);
+    const targetCard = cards[nextIndex];
+
+    if (targetCard) {
+      targetCard.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+      setActiveIndex(nextIndex);
+      return;
+    }
+
+    if (currentCard) {
+      const offset = currentCard.offsetWidth + 24;
+      node.scrollBy({ left: direction * offset, behavior: "smooth" });
+      setActiveIndex((prev) => Math.min(Math.max(prev + direction, 0), cards.length - 1));
+    }
+  };
+
   return (
-    <div className="no-scrollbar flex snap-x snap-mandatory gap-6 overflow-x-auto px-4 pb-4 sm:px-8">
-      {TESTIMONIALS.map((item, i) => (
-        <figure
-          key={item.name}
-          data-reveal
-          className="reveal glass-panel w-[82vw] shrink-0 snap-center rounded-2xl p-8 sm:w-[420px]"
-          style={{ transitionDelay: `${(i % 3) * 0.1}s` }}
+    <div className="mx-auto max-w-7xl px-4 sm:px-8">
+      <div className="mb-6 flex items-center justify-end gap-3">
+        <button
+          type="button"
+          aria-label="Previous testimonial"
+          onClick={() => scrollToCard(-1)}
+          className="flex size-11 items-center justify-center rounded-full border border-border bg-background/40 text-foreground transition-colors hover:border-primary hover:text-primary"
         >
-          <span className="font-display text-5xl leading-none text-primary">“</span>
-          <blockquote className="mt-3 font-display text-xl leading-snug">
-            {item.quote}
-          </blockquote>
-          <figcaption className="mt-6 border-t border-border pt-4">
-            <p className="text-sm">{item.name}</p>
-            <p className="font-mono text-[0.6rem] tracking-[0.2em] uppercase text-muted-foreground">
-              {item.role}
-            </p>
-          </figcaption>
-        </figure>
-      ))}
+          <ArrowLeft className="size-4" />
+        </button>
+        <button
+          type="button"
+          aria-label="Next testimonial"
+          onClick={() => scrollToCard(1)}
+          className="flex size-11 items-center justify-center rounded-full border border-border bg-background/40 text-foreground transition-colors hover:border-primary hover:text-primary"
+        >
+          <ArrowRight className="size-4" />
+        </button>
+      </div>
+
+      <div
+        ref={sliderRef}
+        className="no-scrollbar flex snap-x snap-mandatory gap-6 overflow-x-auto pb-4"
+      >
+        {TESTIMONIALS.map((item, i) => (
+          <figure
+            key={item.name}
+            data-testimonial-card
+            data-reveal
+            className="reveal glass-panel w-[82vw] shrink-0 snap-center rounded-2xl p-8 sm:w-[420px]"
+            style={{ transitionDelay: `${(i % 3) * 0.1}s` }}
+          >
+            <span className="font-display text-5xl leading-none text-primary">“</span>
+            <blockquote className="mt-3 font-display text-xl leading-snug">
+              {item.quote}
+            </blockquote>
+            <figcaption className="mt-6 border-t border-border pt-4">
+              <p className="text-sm">{item.name}</p>
+              <p className="font-mono text-[0.6rem] tracking-[0.2em] uppercase text-muted-foreground">
+                {item.role}
+              </p>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
     </div>
   );
 }
