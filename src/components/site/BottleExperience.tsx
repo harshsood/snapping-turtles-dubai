@@ -36,7 +36,7 @@ function normalizeModel(scene: THREE.Object3D) {
   const size = new THREE.Vector3();
   box.getSize(size);
   const maxDimension = Math.max(size.x, size.y, size.z) || 1;
-  const desiredScale = 2.4 / maxDimension;
+  const desiredScale = 1.8 / maxDimension;
 
   nextScene.scale.setScalar(desiredScale);
   const center = box.getCenter(new THREE.Vector3());
@@ -90,7 +90,7 @@ function BottleModel({
     const viewportCenter = window.innerHeight / 2;
     const containerProgress = (centerY - viewportCenter) / window.innerHeight;
 
-    const scrollCurveX = -1.6 + scrollProgress * 3.2;
+    const scrollCurveX = 1.6 - scrollProgress * 3.2;
     const floatY = Math.sin(state.clock.elapsedTime * 1.3 + scrollProgress * Math.PI) * 0.18;
     const floatZ = Math.cos(state.clock.elapsedTime * 0.8 + scrollProgress * Math.PI * 0.5) * 0.12;
 
