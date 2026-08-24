@@ -13,12 +13,10 @@ import type { Group } from "three";
 import * as THREE from "three";
 
 import perfumeBottleUrl from "@/assets/perfume_bottle.glb?url";
-import waterBottleUrl from "@/assets/WaterBottle.glb?url";
 import { Button } from "@/components/ui/button";
 
 const MODELS = [
   { label: "Perfume", url: perfumeBottleUrl },
-  { label: "Bottle 02", url: waterBottleUrl },
 ] as const;
 
 type DragState = {
@@ -250,4 +248,3 @@ export function BottleExperience() {
 
 // Preload models for instant switching
 useGLTF.preload(perfumeBottleUrl);
-useGLTF.preload(waterBottleUrl);

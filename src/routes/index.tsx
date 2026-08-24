@@ -11,7 +11,7 @@ import {
   StatGrid,
   Testimonials,
 } from "@/components/site/ui";
-import { useParallax, useTilt } from "@/hooks/use-anim";
+import { useParallax } from "@/hooks/use-anim";
 import { CLIENTS, PROCESS, PROJECTS, SERVICES } from "@/lib/content";
 
 const BottleExperience = lazy(() =>
@@ -119,7 +119,6 @@ function ServiceRow({
 
 function Home() {
   const orbRef = useParallax<HTMLDivElement>(120);
-  const showreelRef = useTilt<HTMLDivElement>(5);
 
   return (
     <div className="relative">
@@ -281,33 +280,6 @@ function Home() {
               <ServiceRow key={service.slug} index={i} {...service} />
             ))}
             <div className="border-t border-border" />
-          </div>
-        </div>
-      </section>
-
-      {/* SHOWREEL */}
-      <section className="relative px-4 py-24 sm:px-8">
-        <div className="mx-auto max-w-7xl">
-          <div
-            ref={showreelRef}
-            data-reveal
-            className="clip-reveal glass-panel relative overflow-hidden rounded-3xl"
-          >
-            <div className="grid-lines pointer-events-none absolute inset-0 opacity-30" />
-            <div className="relative aspect-[16/8] w-full">
-              <div className="absolute inset-0 bg-[radial-gradient(60%_60%_at_50%_50%,oklch(0.84_0.19_145/18%),transparent_70%)]" />
-              <div className="absolute inset-0 flex flex-col items-center justify-center gap-6 text-center">
-                <p className="eyebrow">Showreel 2026</p>
-                <p className="font-display text-4xl leading-tight sm:text-6xl">
-                  70+ films.
-                  <br />
-                  <span className="outline-text">Made in-house.</span>
-                </p>
-                <MagneticLink to="/portfolio" variant="ghost">
-                  Watch the reel
-                </MagneticLink>
-              </div>
-            </div>
           </div>
         </div>
       </section>
