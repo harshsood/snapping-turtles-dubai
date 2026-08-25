@@ -185,7 +185,7 @@ export function BottleExperience() {
       className="fixed inset-0 z-20 w-full pointer-events-none"
     >
       <div
-        className="absolute inset-0 cursor-grab touch-pan-y pointer-events-auto md:touch-none"
+        className="absolute inset-0 pointer-events-none md:cursor-grab md:touch-none md:pointer-events-auto"
         aria-label="Interactive 3D bottle. Drag horizontally to rotate and vertically to tilt. Position updates as you scroll."
         onPointerDown={startDrag}
         onPointerMove={moveDrag}
