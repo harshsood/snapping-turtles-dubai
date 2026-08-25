@@ -3,8 +3,8 @@
 export const AGENCY = {
   name: "Snapping Turtles",
   tagline: "A global digital marketing and brand growth studio",
-  email: "hello@snappingturtles.com",
-  phone: "+1 (415) 555-0142",
+  email: "himanshu@snappingturtles.in",
+  phone: "7045861090",
   studios: ["New York", "London", "Dubai", "Noida"],
   socials: [
     { label: "Instagram", href: "https://instagram.com" },
