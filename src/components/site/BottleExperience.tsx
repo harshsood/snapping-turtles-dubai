@@ -14,6 +14,7 @@ import * as THREE from "three";
 
 import perfumeBottleUrl from "@/assets/perfume_bottle.glb?url";
 import { Button } from "@/components/ui/button";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const MODELS = [
   { label: "Perfume", url: perfumeBottleUrl },
@@ -124,6 +125,7 @@ function BottleModel({
 }
 
 export function BottleExperience() {
+  const isMobile = useIsMobile();
   const [modelIndex, setModelIndex] = useState(0);
   const [spinZ, setSpinZ] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -185,7 +187,7 @@ export function BottleExperience() {
       className="fixed inset-0 z-20 w-full pointer-events-none"
     >
       <div
-        className="absolute inset-0 pointer-events-none md:cursor-grab md:touch-none md:pointer-events-auto"
+        className="absolute inset-0 pointer-events-none touch-pan-y md:cursor-grab md:touch-none md:pointer-events-auto"
         aria-label="Interactive 3D bottle. Drag horizontally to rotate and vertically to tilt. Position updates as you scroll."
         onPointerDown={startDrag}
         onPointerMove={moveDrag}
@@ -213,7 +215,7 @@ export function BottleExperience() {
               containerRef={containerRef}
             />
           </Suspense>
-          <OrbitControls enableZoom={false} enablePan={false} autoRotate={false} />
+          {!isMobile && <OrbitControls enableZoom={false} enablePan={false} autoRotate={false} />}
         </Canvas>
       </div>
 
