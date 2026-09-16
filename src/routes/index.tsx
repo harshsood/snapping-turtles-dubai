@@ -13,6 +13,11 @@ import {
 } from "@/components/site/ui";
 import { useParallax } from "@/hooks/use-anim";
 import { CLIENTS, PROCESS, PROJECTS, SERVICES } from "@/lib/content";
+// Add these imports at the top of your file with the other imports
+import growthImg from "@/assets/growth-system.png"; // Replace with your actual asset filename
+import filmImg from "@/assets/brand-films.png";       // Replace with your actual asset filename
+import webImg from "@/assets/web-expriences.png";         // Replace with your actual asset filename
+import cultureImg from "@/assets/performance-culture.png"; // Replace with your actual asset filename
 
 const BottleExperience = lazy(() =>
   import("@/components/site/BottleExperience").then((module) => ({
@@ -222,26 +227,22 @@ function Home() {
               {
                 title: "Growth systems",
                 caption: "Creative + media + analytics in one loop",
-                image:
-                  "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80",
+                image: growthImg,
               },
               {
                 title: "Brand films",
                 caption: "In-house artistry at production speed",
-                image:
-                  "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80",
+                image: filmImg,
               },
               {
                 title: "Web experiences",
                 caption: "High-converting experiences built to ship",
-                image:
-                  "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=80",
+                image: webImg,
               },
               {
                 title: "Performance culture",
                 caption: "Testing, learning and scaling every week",
-                image:
-                  "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
+                image: cultureImg,
               },
             ].map((item) => (
               <div
