@@ -358,3 +358,49 @@
     animation: none;
   }
 }
+
+/* new style for service cards */
+@utility service-card {
+  width: min(86vw, 60rem);
+  border-radius: 2.5rem;
+  opacity: 0.52;
+  transform: scale(0.96);
+  transition: opacity 500ms ease, transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+  &.is-active {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@utility service-card-border {
+  position: absolute;
+  inset: -65%;
+  z-index: 0;
+  opacity: 0;
+  pointer-events: none;
+  background: conic-gradient(from 0deg, transparent 0deg 250deg, var(--primary) 290deg, transparent 335deg);
+  animation: service-border-spin 3.2s linear infinite;
+  .is-active & {
+    opacity: 1;
+  }
+}
+
+@utility service-visual {
+  border-radius: calc(2.5rem - 2px) calc(2.5rem - 2px) 0 0;
+}
+
+@keyframes service-border-spin {
+  to { transform: rotate(1turn); }
+}
+
+@media (min-width: 768px) {
+  .service-slider { --service-card-half: min(38vw, 30rem); }
+  .service-card { width: min(76vw, 60rem); }
+  .service-visual { border-radius: calc(2.5rem - 2px) 0 0 calc(2.5rem - 2px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .service-track.is-animated,
+  .service-card { transition-duration: 1ms; }
+  .service-card-border { animation: none; }
+}
