@@ -13,11 +13,23 @@ import {
 } from "@/components/site/ui";
 import { useParallax } from "@/hooks/use-anim";
 import { CLIENTS, PROCESS, PROJECTS, SERVICES } from "@/lib/content";
-// Add these imports at the top of your file with the other imports
-import growthImg from "@/assets/growth-system.png"; // Replace with your actual asset filename
-import filmImg from "@/assets/brand-films.png";       // Replace with your actual asset filename
-import webImg from "@/assets/web-expriences.png";         // Replace with your actual asset filename
-import cultureImg from "@/assets/performance-culture.png"; // Replace with your actual asset filename
+
+// Creative feature strip image imports
+import growthImg from "@/assets/growth-system.png";
+import filmImg from "@/assets/brand-films.png";
+import webImg from "@/assets/web-expriences.png";
+import cultureImg from "@/assets/performance-culture.png";
+
+// Service row image imports (Replace these filenames with your actual assets)
+import serviceImg1 from "@/assets/digital-marketing.png";
+import serviceImg2 from "@/assets/seo-and-content.png";
+import serviceImg3 from "@/assets/service-3.png";
+import serviceImg4 from "@/assets/service-4.png";
+import serviceImg5 from "@/assets/service-5.png";
+import serviceImg6 from "@/assets/service-6.png";
+import serviceImg7 from "@/assets/service-7.png";
+import serviceImg8 from "@/assets/service-8.png";
+import serviceImg9 from "@/assets/service-9.png";
 
 const BottleExperience = lazy(() =>
   import("@/components/site/BottleExperience").then((module) => ({
@@ -70,19 +82,14 @@ function ServiceRow({
   slug,
   title,
   short,
+  image,
 }: {
   index: number;
   slug: string;
   title: string;
   short: string;
+  image: string;
 }) {
-  const accentImages = [
-    "linear-gradient(135deg, rgba(132,255,203,0.32), rgba(17,24,39,0.72))",
-    "linear-gradient(135deg, rgba(245,158,11,0.32), rgba(17,24,39,0.72))",
-    "linear-gradient(135deg, rgba(168,85,247,0.28), rgba(17,24,39,0.72))",
-    "linear-gradient(135deg, rgba(59,130,246,0.28), rgba(17,24,39,0.72))",
-  ];
-
   return (
     <Link
       to="/services/$slug"
@@ -92,9 +99,9 @@ function ServiceRow({
       style={{ transitionDelay: `${(index % 4) * 0.06}s` }}
     >
       <div
-        className="relative overflow-hidden rounded-[1.3rem] border border-border/80"
+        className="relative overflow-hidden rounded-[1.3rem] border border-border/80 bg-cover bg-center"
         style={{
-          background: accentImages[index % accentImages.length],
+          backgroundImage: `linear-gradient(180deg, rgba(10,16,22,0.18), rgba(10,16,22,0.72)), url("${image}")`,
           minHeight: "152px",
         }}
       >
@@ -276,11 +283,29 @@ function Home() {
             accent="one accountable team"
             copy="No handoffs between agencies. Strategy, creative, media and engineering sit in the same room and share the same KPI."
           />
-          <div className="mt-16">
-            {SERVICES.map((service, i) => (
-              <ServiceRow key={service.slug} index={i} {...service} />
-            ))}
-            <div className="border-t border-border" />
+          <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {SERVICES.map((service, i) => {
+              const serviceImages = [
+                serviceImg1,
+                serviceImg2,
+                serviceImg3,
+                serviceImg4,
+                serviceImg5,
+                serviceImg6,
+                serviceImg7,
+                serviceImg8,
+                serviceImg9,
+              ];
+
+              return (
+                <ServiceRow
+                  key={service.slug}
+                  index={i}
+                  {...service}
+                  image={serviceImages[i % serviceImages.length]}
+                />
+              );
+            })}
           </div>
         </div>
       </section>
