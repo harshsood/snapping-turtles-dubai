@@ -20,16 +20,11 @@ import filmImg from "@/assets/brand-films.png";
 import webImg from "@/assets/web-expriences.png";
 import cultureImg from "@/assets/performance-culture.png";
 
-// Service row image imports (Replace these filenames with your actual assets)
+// Service row image imports
 import serviceImg1 from "@/assets/digital-marketing.png";
 import serviceImg2 from "@/assets/seo-and-content.png";
-//import serviceImg3 from "@/assets/service-3.png";
-//import serviceImg4 from "@/assets/service-4.png";
 import serviceImg5 from "@/assets/video-production.jpeg";
 import serviceImg6 from "@/assets/web-development.jpeg";
-//import serviceImg7 from "@/assets/service-7.png";
-//import serviceImg8 from "@/assets/service-8.png";
-//import serviceImg9 from "@/assets/service-9.png";
 
 const BottleExperience = lazy(() =>
   import("@/components/site/BottleExperience").then((module) => ({
@@ -77,6 +72,7 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
+// Layout A Component
 function ServiceRow({
   index,
   slug,
@@ -129,37 +125,36 @@ function ServiceRow({
   );
 }
 
+// Layout B Component (Stacked Full-Width Rows)
 function ServiceRow1({
   index,
   slug,
   title,
   short,
-  image, // 1. Accept the image prop here
+  image,
 }: {
   index: number;
   slug: string;
   title: string;
   short: string;
-  image: string; // Type definition for the image
+  image: string;
 }) {
   return (
     <Link
       to="/services/$slug"
       params={{ slug }}
       data-reveal
-      className="reveal sweep-card glass-panel group flex h-full flex-col rounded-[1.8rem] p-6"
+      className="reveal sweep-card glass-panel group flex flex-col rounded-[1.8rem] p-6"
       style={{ transitionDelay: `${(index % 4) * 0.06}s` }}
     >
       <div
-        className="relative overflow-hidden rounded-[1.3rem] border border-border/80 bg-cover bg-center"
+        className="relative overflow-hidden rounded-[1.3rem] border border-border/80 bg-cover bg-center w-full min-h-[200px] sm:min-h-[260px]"
         style={{
-          // 2. Combine the gradient overlay with your imported image variable
           backgroundImage: `linear-gradient(180deg, rgba(10,16,22,0.18), rgba(10,16,22,0.72)), url("${image}")`,
-          minHeight: "152px",
         }}
       >
         <div className="grid-lines pointer-events-none absolute inset-0 opacity-30" />
-        <div className="relative flex h-full items-end justify-between p-5">
+        <div className="relative flex h-full min-h-[200px] sm:min-h-[260px] items-end justify-between p-6">
           <span className="font-mono text-[0.6rem] tracking-[0.22em] uppercase text-white/80">
             {String(index + 1).padStart(2, "0")}
           </span>
@@ -169,14 +164,70 @@ function ServiceRow1({
         </div>
       </div>
 
-      <div className="mt-6 flex flex-1 flex-col">
+      <div className="mt-6 flex flex-col">
         <h3 className="font-display text-3xl transition-transform duration-500 group-hover:-translate-y-1 sm:text-[2rem]">
           {title}
         </h3>
-        <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">{short}</p>
-        <p className="mt-6 border-t border-border pt-5 font-mono text-[0.58rem] tracking-[0.22em] uppercase text-muted-foreground transition-colors group-hover:text-primary">
+        <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{short}</p>
+        <p className="mt-6 border-t border-border pt-4 font-mono text-[0.58rem] tracking-[0.22em] uppercase text-muted-foreground transition-colors group-hover:text-primary">
           Explore →
         </p>
+      </div>
+    </Link>
+  );
+}
+
+// Layout C Component (KodeSolution Style Reference)
+function ServiceCardKode({
+  index,
+  slug,
+  title,
+  short,
+  image,
+}: {
+  index: number;
+  slug: string;
+  title: string;
+  short: string;
+  image: string;
+}) {
+  return (
+    <Link
+      to="/services/$slug"
+      params={{ slug }}
+      data-reveal
+      className="reveal group relative flex flex-col justify-between overflow-hidden rounded-[1.6rem] border border-border/80 bg-card/60 p-6 backdrop-blur-md transition-all duration-300 hover:border-primary/50 hover:shadow-xl"
+      style={{ transitionDelay: `${(index % 3) * 0.08}s` }}
+    >
+      {/* Background Image / Thumb Overlay styling */}
+      <div>
+        <div className="relative h-48 w-full overflow-hidden rounded-xl bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
+          style={{
+            backgroundImage: `linear-gradient(180deg, rgba(10,16,22,0.1), rgba(10,16,22,0.65)), url("${image}")`,
+          }}
+        >
+          <div className="absolute top-4 left-4 flex h-10 w-10 items-center justify-center rounded-lg bg-primary font-mono text-xs font-bold text-primary-foreground shadow-md">
+            {String(index + 1).padStart(2, "0")}
+          </div>
+        </div>
+
+        <div className="mt-6">
+          <h3 className="font-display text-2xl tracking-wide transition-colors group-hover:text-primary sm:text-[1.6rem]">
+            {title}
+          </h3>
+          <p className="mt-3 text-sm leading-relaxed text-muted-foreground line-clamp-3">
+            {short}
+          </p>
+        </div>
+      </div>
+
+      <div className="mt-6 flex items-center justify-between border-t border-border/60 pt-4">
+        <span className="font-mono text-[0.6rem] tracking-[0.2em] uppercase text-muted-foreground">
+          Service Item
+        </span>
+        <span className="inline-flex items-center gap-1 font-mono text-xs font-semibold text-primary transition-transform duration-300 group-hover:translate-x-1">
+          Read More →
+        </span>
       </div>
     </Link>
   );
@@ -336,20 +387,11 @@ function Home() {
             accent="one accountable team"
             copy="No handoffs between agencies. Strategy, creative, media and engineering sit in the same room and share the same KPI."
           />
+          
+          {/* Layout Option A: 3-Column Grid */}
           <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {SERVICES.map((service, i) => {
-              const serviceImages = [
-                serviceImg1,
-                serviceImg2,
-                //serviceImg3,
-                //serviceImg4,
-                serviceImg5,
-                serviceImg6,
-                //serviceImg7,
-                //serviceImg8,
-                //serviceImg9,
-              ];
-
+              const serviceImages = [serviceImg1, serviceImg2, serviceImg5, serviceImg6];
               return (
                 <ServiceRow
                   key={service.slug}
@@ -361,31 +403,46 @@ function Home() {
             })}
           </div>
 
-          //second layout
-          <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {SERVICES.map((service, i) => {
-              const serviceImages = [
-                serviceImg1,
-                serviceImg2,
-                //serviceImg3,
-                //serviceImg4,
-                serviceImg5,
-                serviceImg6,
-                //serviceImg7,
-                //serviceImg8,
-                //serviceImg9,
-              ];
-
-              return (
-                <ServiceRow
-                  key={service.slug}
-                  index={i}
-                  {...service}
-                  image={serviceImages[i % serviceImages.length]}
-                />
-              );
-            })}
+          {/* Layout Option B: 9 Stacked Full-Width Rows */}
+          <div className="mt-28">
+            <div className="mb-8 border-t border-border pt-8">
+              <p className="font-mono text-xs uppercase tracking-widest text-primary">Layout Option B (9 Stacked Full-Width Rows)</p>
+            </div>
+            <div className="flex flex-col gap-6">
+              {SERVICES.map((service, i) => {
+                const serviceImages = [serviceImg1, serviceImg2, serviceImg5, serviceImg6];
+                return (
+                  <ServiceRow1
+                    key={`row-${service.slug}`}
+                    index={i}
+                    {...service}
+                    image={serviceImages[i % serviceImages.length]}
+                  />
+                );
+              })}
+            </div>
           </div>
+
+          {/* Layout Option C: KodeSolution Style Reference Layout */}
+          <div className="mt-28">
+            <div className="mb-8 border-t border-border pt-8">
+              <p className="font-mono text-xs uppercase tracking-widest text-primary">Layout Option C (KodeSolution Style Reference)</p>
+            </div>
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {SERVICES.map((service, i) => {
+                const serviceImages = [serviceImg1, serviceImg2, serviceImg5, serviceImg6];
+                return (
+                  <ServiceCardKode
+                    key={`kode-${service.slug}`}
+                    index={i}
+                    {...service}
+                    image={serviceImages[i % serviceImages.length]}
+                  />
+                );
+              })}
+            </div>
+          </div>
+
         </div>
       </section>
 
