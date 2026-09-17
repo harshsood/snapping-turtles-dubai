@@ -23,13 +23,13 @@ import cultureImg from "@/assets/performance-culture.png";
 // Service row image imports (Replace these filenames with your actual assets)
 import serviceImg1 from "@/assets/digital-marketing.png";
 import serviceImg2 from "@/assets/seo-and-content.png";
-import serviceImg3 from "@/assets/service-3.png";
-import serviceImg4 from "@/assets/service-4.png";
-import serviceImg5 from "@/assets/service-5.png";
-import serviceImg6 from "@/assets/service-6.png";
-import serviceImg7 from "@/assets/service-7.png";
-import serviceImg8 from "@/assets/service-8.png";
-import serviceImg9 from "@/assets/service-9.png";
+//import serviceImg3 from "@/assets/service-3.png";
+//import serviceImg4 from "@/assets/service-4.png";
+//import serviceImg5 from "@/assets/service-5.png";
+//import serviceImg6 from "@/assets/service-6.png";
+//import serviceImg7 from "@/assets/service-7.png";
+//import serviceImg8 from "@/assets/service-8.png";
+//import serviceImg9 from "@/assets/service-9.png";
 
 const BottleExperience = lazy(() =>
   import("@/components/site/BottleExperience").then((module) => ({
@@ -288,13 +288,13 @@ function Home() {
               const serviceImages = [
                 serviceImg1,
                 serviceImg2,
-                serviceImg3,
-                serviceImg4,
-                serviceImg5,
-                serviceImg6,
-                serviceImg7,
-                serviceImg8,
-                serviceImg9,
+                //serviceImg3,
+                //serviceImg4,
+                //serviceImg5,
+                //serviceImg6,
+                //serviceImg7,
+                //serviceImg8,
+                //serviceImg9,
               ];
 
               return (
