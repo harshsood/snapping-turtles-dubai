@@ -3,6 +3,17 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { CTABand, PageHero, SectionHeading } from "@/components/site/ui";
 import { FAQS, SERVICES } from "@/lib/content";
 
+// Service row image imports (same as homepage)
+import serviceImg1 from "@/assets/digital-marketing.png";
+import serviceImg2 from "@/assets/seo-and-content.png";
+//import serviceImg3 from "@/assets/service-3.png";
+//import serviceImg4 from "@/assets/service-4.png";
+//import serviceImg5 from "@/assets/service-5.png";
+//import serviceImg6 from "@/assets/service-6.png";
+//import serviceImg7 from "@/assets/service-7.png";
+//import serviceImg8 from "@/assets/service-8.png";
+//import serviceImg9 from "@/assets/service-9.png";
+
 export const Route = createFileRoute("/services/")({
   head: () => ({
     meta: [
@@ -45,11 +56,19 @@ function ServicesIndex() {
       <section className="px-4 py-10 sm:px-8">
         <div className="mx-auto grid max-w-7xl gap-6 md:grid-cols-2 lg:grid-cols-3">
           {SERVICES.map((service, i) => {
-            const coverStyles = [
-              "linear-gradient(135deg, rgba(132,255,203,0.28), rgba(17,24,39,0.72))",
-              "linear-gradient(135deg, rgba(245,158,11,0.26), rgba(17,24,39,0.72))",
-              "linear-gradient(135deg, rgba(168,85,247,0.26), rgba(17,24,39,0.72))",
+            const serviceImages = [
+              serviceImg1,
+              serviceImg2,
+              //serviceImg3,
+              //serviceImg4,
+              //serviceImg5,
+              //serviceImg6,
+              //serviceImg7,
+              //serviceImg8,
+              //serviceImg9,
             ];
+
+            const currentImage = serviceImages[i % serviceImages.length];
 
             return (
               <Link
@@ -61,9 +80,9 @@ function ServicesIndex() {
                 style={{ transitionDelay: `${(i % 3) * 0.08}s` }}
               >
                 <div
-                  className="relative overflow-hidden rounded-[1.3rem] border border-border/80"
+                  className="relative overflow-hidden rounded-[1.3rem] border border-border/80 bg-cover bg-center"
                   style={{
-                    background: coverStyles[i % coverStyles.length],
+                    backgroundImage: `linear-gradient(180deg, rgba(10,16,22,0.18), rgba(10,16,22,0.72)), url("${currentImage}")`,
                     minHeight: "170px",
                   }}
                 >
