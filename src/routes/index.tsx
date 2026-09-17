@@ -25,8 +25,8 @@ import serviceImg1 from "@/assets/digital-marketing.png";
 import serviceImg2 from "@/assets/seo-and-content.png";
 //import serviceImg3 from "@/assets/service-3.png";
 //import serviceImg4 from "@/assets/service-4.png";
-//import serviceImg5 from "@/assets/service-5.png";
-//import serviceImg6 from "@/assets/service-6.png";
+import serviceImg5 from "@/assets/video-production.jpeg";
+import serviceImg6 from "@/assets/web-development.jpeg";
 //import serviceImg7 from "@/assets/service-7.png";
 //import serviceImg8 from "@/assets/service-8.png";
 //import serviceImg9 from "@/assets/service-9.png";
@@ -101,6 +101,59 @@ function ServiceRow({
       <div
         className="relative overflow-hidden rounded-[1.3rem] border border-border/80 bg-cover bg-center"
         style={{
+          backgroundImage: `linear-gradient(180deg, rgba(10,16,22,0.18), rgba(10,16,22,0.72)), url("${image}")`,
+          minHeight: "152px",
+        }}
+      >
+        <div className="grid-lines pointer-events-none absolute inset-0 opacity-30" />
+        <div className="relative flex h-full items-end justify-between p-5">
+          <span className="font-mono text-[0.6rem] tracking-[0.22em] uppercase text-white/80">
+            {String(index + 1).padStart(2, "0")}
+          </span>
+          <span className="rounded-full border border-white/20 bg-white/5 px-3 py-1 font-mono text-[0.55rem] tracking-[0.18em] uppercase text-white/80">
+            Strategy
+          </span>
+        </div>
+      </div>
+
+      <div className="mt-6 flex flex-1 flex-col">
+        <h3 className="font-display text-3xl transition-transform duration-500 group-hover:-translate-y-1 sm:text-[2rem]">
+          {title}
+        </h3>
+        <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">{short}</p>
+        <p className="mt-6 border-t border-border pt-5 font-mono text-[0.58rem] tracking-[0.22em] uppercase text-muted-foreground transition-colors group-hover:text-primary">
+          Explore →
+        </p>
+      </div>
+    </Link>
+  );
+}
+
+function ServiceRow1({
+  index,
+  slug,
+  title,
+  short,
+  image, // 1. Accept the image prop here
+}: {
+  index: number;
+  slug: string;
+  title: string;
+  short: string;
+  image: string; // Type definition for the image
+}) {
+  return (
+    <Link
+      to="/services/$slug"
+      params={{ slug }}
+      data-reveal
+      className="reveal sweep-card glass-panel group flex h-full flex-col rounded-[1.8rem] p-6"
+      style={{ transitionDelay: `${(index % 4) * 0.06}s` }}
+    >
+      <div
+        className="relative overflow-hidden rounded-[1.3rem] border border-border/80 bg-cover bg-center"
+        style={{
+          // 2. Combine the gradient overlay with your imported image variable
           backgroundImage: `linear-gradient(180deg, rgba(10,16,22,0.18), rgba(10,16,22,0.72)), url("${image}")`,
           minHeight: "152px",
         }}
@@ -290,8 +343,34 @@ function Home() {
                 serviceImg2,
                 //serviceImg3,
                 //serviceImg4,
-                //serviceImg5,
-                //serviceImg6,
+                serviceImg5,
+                serviceImg6,
+                //serviceImg7,
+                //serviceImg8,
+                //serviceImg9,
+              ];
+
+              return (
+                <ServiceRow
+                  key={service.slug}
+                  index={i}
+                  {...service}
+                  image={serviceImages[i % serviceImages.length]}
+                />
+              );
+            })}
+          </div>
+
+          //second layout
+          <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {SERVICES.map((service, i) => {
+              const serviceImages = [
+                serviceImg1,
+                serviceImg2,
+                //serviceImg3,
+                //serviceImg4,
+                serviceImg5,
+                serviceImg6,
                 //serviceImg7,
                 //serviceImg8,
                 //serviceImg9,
