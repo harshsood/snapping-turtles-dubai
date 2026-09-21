@@ -216,20 +216,28 @@ function ServiceCardKode({
               backgroundImage: `linear-gradient(180deg, rgba(10,16,22,0.1), rgba(10,16,22,0.82)), url("${image}")`,
             }}
           />
+          <div className="relative z-10 flex h-full flex-col justify-between p-6">
+            <span className="flex size-10 items-center justify-center rounded-lg bg-primary font-mono text-xs font-bold text-primary-foreground shadow-md">
+              {String(index + 1).padStart(2, "0")}
+            </span>
+            <span className="self-start rounded-full border border-white/20 bg-black/20 px-3 py-1 font-mono text-[0.55rem] tracking-[0.18em] uppercase text-white/80">
+              Strategy
+            </span>
+          </div>
         </button>
 
         <div className="service-card-copy flex min-w-0 flex-[1.35] flex-col justify-center p-7 sm:p-9">
           <p className="font-mono text-[0.6rem] tracking-[0.2em] uppercase text-primary">
-            Service item
+            Strategy
           </p>
           <h3 className="mt-4 font-display text-3xl leading-tight sm:text-[2.15rem]">{title}</h3>
           <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">{short}</p>
           <Link
             to="/services/$slug"
             params={{ slug }}
-            className="mt-8 inline-flex items-center gap-2 border-t border-border/60 pt-4 font-mono text-[0.6rem] tracking-[0.2em] uppercase text-primary transition-transform duration-300 hover:translate-x-1"
+            className="mt-8 inline-flex items-center gap-2 border-t border-border/60 pt-4 font-mono text-[0.58rem] tracking-[0.22em] uppercase text-muted-foreground transition-colors hover:text-primary"
           >
-            Read more <span aria-hidden="true">→</span>
+            Explore <span aria-hidden="true">→</span>
           </Link>
         </div>
       </div>
