@@ -1,5 +1,5 @@
 import { ClientOnly, createFileRoute, Link } from "@tanstack/react-router";
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 
 import { Marquee } from "@/components/site/Marquee";
 import { SplitText } from "@/components/site/SplitText";
@@ -184,57 +184,82 @@ function ServiceCardKode({
   title,
   short,
   image,
+  isActive,
+  onSelect,
 }: {
   index: number;
   slug: string;
   title: string;
   short: string;
   image: string;
+  isActive: boolean;
+  onSelect: () => void;
 }) {
   return (
-    <Link
-      to="/services/$slug"
-      params={{ slug }}
-      data-reveal
-      className="reveal group relative flex flex-col justify-between overflow-hidden rounded-[1.6rem] border border-border/80 bg-card/60 p-6 backdrop-blur-md transition-all duration-300 hover:border-primary/50 hover:shadow-xl"
+    <article
+      data-service-card={isActive ? "active" : "inactive"}
+      className={`service-card group relative overflow-hidden ${isActive ? "is-active" : ""}`}
       style={{ transitionDelay: `${(index % 3) * 0.08}s` }}
     >
-      {/* Background Image / Thumb Overlay styling */}
-      <div>
-        <div className="relative h-48 w-full overflow-hidden rounded-xl bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
-          style={{
-            backgroundImage: `linear-gradient(180deg, rgba(10,16,22,0.1), rgba(10,16,22,0.65)), url("${image}")`,
-          }}
+      <div className="service-card-border" />
+      <div className="service-card-panel relative z-10 flex h-full min-w-0 overflow-hidden rounded-[calc(2.5rem-2px)] bg-card/95 backdrop-blur-md">
+        <button
+          type="button"
+          aria-expanded={isActive}
+          aria-label={`${isActive ? "Collapse" : "Expand"} ${title}`}
+          onClick={onSelect}
+          className="service-card-toggle relative h-full min-w-0 flex-1 cursor-pointer text-left"
         >
-          <div className="absolute top-4 left-4 flex h-10 w-10 items-center justify-center rounded-lg bg-primary font-mono text-xs font-bold text-primary-foreground shadow-md">
-            {String(index + 1).padStart(2, "0")}
-          </div>
-        </div>
+          <div
+            className="service-card-image absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+            style={{
+              backgroundImage: `linear-gradient(180deg, rgba(10,16,22,0.1), rgba(10,16,22,0.82)), url("${image}")`,
+            }}
+          />
+        </button>
 
-        <div className="mt-6">
-          <h3 className="font-display text-2xl tracking-wide transition-colors group-hover:text-primary sm:text-[1.6rem]">
-            {title}
-          </h3>
-          <p className="mt-3 text-sm leading-relaxed text-muted-foreground line-clamp-3">
-            {short}
+        <div className="service-card-copy flex min-w-0 flex-[1.35] flex-col justify-center p-7 sm:p-9">
+          <p className="font-mono text-[0.6rem] tracking-[0.2em] uppercase text-primary">
+            Service item
           </p>
+          <h3 className="mt-4 font-display text-3xl leading-tight sm:text-[2.15rem]">{title}</h3>
+          <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">{short}</p>
+          <Link
+            to="/services/$slug"
+            params={{ slug }}
+            className="mt-8 inline-flex items-center gap-2 border-t border-border/60 pt-4 font-mono text-[0.6rem] tracking-[0.2em] uppercase text-primary transition-transform duration-300 hover:translate-x-1"
+          >
+            Read more <span aria-hidden="true">→</span>
+          </Link>
         </div>
       </div>
-
-      <div className="mt-6 flex items-center justify-between border-t border-border/60 pt-4">
-        <span className="font-mono text-[0.6rem] tracking-[0.2em] uppercase text-muted-foreground">
-          Service Item
-        </span>
-        <span className="inline-flex items-center gap-1 font-mono text-xs font-semibold text-primary transition-transform duration-300 group-hover:translate-x-1">
-          Read More →
-        </span>
-      </div>
-    </Link>
+    </article>
   );
 }
 
 function Home() {
   const orbRef = useParallax<HTMLDivElement>(120);
+  const [activeService, setActiveService] = useState(0);
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const timer = window.setInterval(() => {
+      setActiveService((current) => (current + 1) % SERVICES.length);
+    }, 4500);
+
+    return () => window.clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    const frame = window.requestAnimationFrame(() => {
+      document
+        .querySelector<HTMLElement>('[data-service-card="active"]')
+        ?.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+    });
+
+    return () => window.cancelAnimationFrame(frame);
+  }, [activeService]);
 
   return (
     <div className="relative">
@@ -425,21 +450,22 @@ function Home() {
 
           {/* Layout Option C: KodeSolution Style Reference Layout */}
           <div className="mt-28">
-            <div className="mb-8 border-t border-border pt-8">
-              <p className="font-mono text-xs uppercase tracking-widest text-primary">Layout Option C (KodeSolution Style Reference)</p>
-            </div>
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {SERVICES.map((service, i) => {
-                const serviceImages = [serviceImg1, serviceImg2, serviceImg5, serviceImg6];
-                return (
-                  <ServiceCardKode
-                    key={`kode-${service.slug}`}
-                    index={i}
-                    {...service}
-                    image={serviceImages[i % serviceImages.length]}
-                  />
-                );
-              })}
+            <div className="service-slider no-scrollbar overflow-hidden">
+              <div className="service-track flex items-stretch gap-3 sm:gap-4">
+                {SERVICES.map((service, i) => {
+                  const serviceImages = [serviceImg1, serviceImg2, serviceImg5, serviceImg6];
+                  return (
+                    <ServiceCardKode
+                      key={`kode-${service.slug}`}
+                      index={i}
+                      {...service}
+                      image={serviceImages[i % serviceImages.length]}
+                      isActive={activeService === i}
+                      onSelect={() => setActiveService(i)}
+                    />
+                  );
+                })}
+              </div>
             </div>
           </div>
 
