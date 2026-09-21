@@ -72,111 +72,6 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
-// Layout A Component
-function ServiceRow({
-  index,
-  slug,
-  title,
-  short,
-  image,
-}: {
-  index: number;
-  slug: string;
-  title: string;
-  short: string;
-  image: string;
-}) {
-  return (
-    <Link
-      to="/services/$slug"
-      params={{ slug }}
-      data-reveal
-      className="reveal sweep-card glass-panel group flex h-full flex-col rounded-[1.8rem] p-6"
-      style={{ transitionDelay: `${(index % 4) * 0.06}s` }}
-    >
-      <div
-        className="relative overflow-hidden rounded-[1.3rem] border border-border/80 bg-cover bg-center"
-        style={{
-          backgroundImage: `linear-gradient(180deg, rgba(10,16,22,0.18), rgba(10,16,22,0.72)), url("${image}")`,
-          minHeight: "152px",
-        }}
-      >
-        <div className="grid-lines pointer-events-none absolute inset-0 opacity-30" />
-        <div className="relative flex h-full items-end justify-between p-5">
-          <span className="font-mono text-[0.6rem] tracking-[0.22em] uppercase text-white/80">
-            {String(index + 1).padStart(2, "0")}
-          </span>
-          <span className="rounded-full border border-white/20 bg-white/5 px-3 py-1 font-mono text-[0.55rem] tracking-[0.18em] uppercase text-white/80">
-            Strategy
-          </span>
-        </div>
-      </div>
-
-      <div className="mt-6 flex flex-1 flex-col">
-        <h3 className="font-display text-3xl transition-transform duration-500 group-hover:-translate-y-1 sm:text-[2rem]">
-          {title}
-        </h3>
-        <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">{short}</p>
-        <p className="mt-6 border-t border-border pt-5 font-mono text-[0.58rem] tracking-[0.22em] uppercase text-muted-foreground transition-colors group-hover:text-primary">
-          Explore →
-        </p>
-      </div>
-    </Link>
-  );
-}
-
-// Layout B Component (Stacked Full-Width Rows)
-function ServiceRow1({
-  index,
-  slug,
-  title,
-  short,
-  image,
-}: {
-  index: number;
-  slug: string;
-  title: string;
-  short: string;
-  image: string;
-}) {
-  return (
-    <Link
-      to="/services/$slug"
-      params={{ slug }}
-      data-reveal
-      className="reveal sweep-card glass-panel group flex flex-col rounded-[1.8rem] p-6"
-      style={{ transitionDelay: `${(index % 4) * 0.06}s` }}
-    >
-      <div
-        className="relative overflow-hidden rounded-[1.3rem] border border-border/80 bg-cover bg-center w-full min-h-[200px] sm:min-h-[260px]"
-        style={{
-          backgroundImage: `linear-gradient(180deg, rgba(10,16,22,0.18), rgba(10,16,22,0.72)), url("${image}")`,
-        }}
-      >
-        <div className="grid-lines pointer-events-none absolute inset-0 opacity-30" />
-        <div className="relative flex h-full min-h-[200px] sm:min-h-[260px] items-end justify-between p-6">
-          <span className="font-mono text-[0.6rem] tracking-[0.22em] uppercase text-white/80">
-            {String(index + 1).padStart(2, "0")}
-          </span>
-          <span className="rounded-full border border-white/20 bg-white/5 px-3 py-1 font-mono text-[0.55rem] tracking-[0.18em] uppercase text-white/80">
-            Strategy
-          </span>
-        </div>
-      </div>
-
-      <div className="mt-6 flex flex-col">
-        <h3 className="font-display text-3xl transition-transform duration-500 group-hover:-translate-y-1 sm:text-[2rem]">
-          {title}
-        </h3>
-        <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{short}</p>
-        <p className="mt-6 border-t border-border pt-4 font-mono text-[0.58rem] tracking-[0.22em] uppercase text-muted-foreground transition-colors group-hover:text-primary">
-          Explore →
-        </p>
-      </div>
-    </Link>
-  );
-}
-
 // Layout C Component (KodeSolution Style Reference)
 function ServiceCardKode({
   index,
@@ -420,44 +315,8 @@ function Home() {
             accent="one accountable team"
             copy="No handoffs between agencies. Strategy, creative, media and engineering sit in the same room and share the same KPI."
           />
-          
-          {/* Layout Option A: 3-Column Grid */}
-          <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {SERVICES.map((service, i) => {
-              const serviceImages = [serviceImg1, serviceImg2, serviceImg5, serviceImg6];
-              return (
-                <ServiceRow
-                  key={service.slug}
-                  index={i}
-                  {...service}
-                  image={serviceImages[i % serviceImages.length]}
-                />
-              );
-            })}
-          </div>
-
-          {/* Layout Option B: 9 Stacked Full-Width Rows */}
-          <div className="mt-28">
-            <div className="mb-8 border-t border-border pt-8">
-              <p className="font-mono text-xs uppercase tracking-widest text-primary">Layout Option B (9 Stacked Full-Width Rows)</p>
-            </div>
-            <div className="flex flex-col gap-6">
-              {SERVICES.map((service, i) => {
-                const serviceImages = [serviceImg1, serviceImg2, serviceImg5, serviceImg6];
-                return (
-                  <ServiceRow1
-                    key={`row-${service.slug}`}
-                    index={i}
-                    {...service}
-                    image={serviceImages[i % serviceImages.length]}
-                  />
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Layout Option C: KodeSolution Style Reference Layout */}
-          <div className="mt-28">
+          {/* Accordion slider */}
+          <div className="mt-16">
             <div className="service-slider no-scrollbar overflow-hidden">
               <div className="service-track flex items-stretch gap-3 sm:gap-4">
                 {SERVICES.map((service, i) => {
