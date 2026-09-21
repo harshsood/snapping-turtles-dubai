@@ -1,5 +1,5 @@
 import { ClientOnly, createFileRoute, Link } from "@tanstack/react-router";
-import { lazy, Suspense, useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useRef, useState } from "react";
 
 import { Marquee } from "@/components/site/Marquee";
 import { SplitText } from "@/components/site/SplitText";
@@ -142,6 +142,7 @@ function ServiceCardKode({
 
 function Home() {
   const orbRef = useParallax<HTMLDivElement>(120);
+  const hasMountedServiceSlider = useRef(false);
   const [activeService, setActiveService] = useState(0);
 
   useEffect(() => {
@@ -155,6 +156,11 @@ function Home() {
   }, []);
 
   useEffect(() => {
+    if (!hasMountedServiceSlider.current) {
+      hasMountedServiceSlider.current = true;
+      return;
+    }
+
     const frame = window.requestAnimationFrame(() => {
       document
         .querySelector<HTMLElement>('[data-service-card="active"]')
