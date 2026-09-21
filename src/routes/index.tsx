@@ -21,7 +21,7 @@ import webImg from "@/assets/web-expriences.png";
 import cultureImg from "@/assets/performance-culture.png";
 
 // Service row image imports
-import serviceImg1 from "@/assets/digital-marketing.png";
+import serviceImg1 from "@/assets/digital-marketing.jpeg";
 import serviceImg2 from "@/assets/seo-and-content.png";
 import serviceImg5 from "@/assets/video-production.jpeg";
 import serviceImg6 from "@/assets/web-development.jpeg";
@@ -143,6 +143,7 @@ function ServiceCardKode({
 function Home() {
   const orbRef = useParallax<HTMLDivElement>(120);
   const hasMountedServiceSlider = useRef(false);
+  const serviceSliderRef = useRef<HTMLDivElement>(null);
   const [activeService, setActiveService] = useState(0);
 
   useEffect(() => {
@@ -162,9 +163,20 @@ function Home() {
     }
 
     const frame = window.requestAnimationFrame(() => {
-      document
-        .querySelector<HTMLElement>('[data-service-card="active"]')
-        ?.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+      const slider = serviceSliderRef.current;
+      const activeCard = slider?.querySelector<HTMLElement>('[data-service-card="active"]');
+
+      if (!slider || !activeCard) return;
+
+      const sliderRect = slider.getBoundingClientRect();
+      const cardRect = activeCard.getBoundingClientRect();
+      const targetScrollLeft =
+        slider.scrollLeft +
+        cardRect.left -
+        sliderRect.left -
+        (sliderRect.width - cardRect.width) / 2;
+
+      slider.scrollTo({ left: targetScrollLeft, behavior: "smooth" });
     });
 
     return () => window.cancelAnimationFrame(frame);
@@ -323,7 +335,7 @@ function Home() {
           />
           {/* Accordion slider */}
           <div className="mt-16">
-            <div className="service-slider no-scrollbar overflow-hidden">
+            <div ref={serviceSliderRef} className="service-slider no-scrollbar overflow-hidden">
               <div className="service-track flex items-stretch gap-3 sm:gap-4">
                 {SERVICES.map((service, i) => {
                   const serviceImages = [serviceImg1, serviceImg2, serviceImg5, serviceImg6];
