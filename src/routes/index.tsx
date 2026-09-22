@@ -21,10 +21,15 @@ import webImg from "@/assets/web-expriences.png";
 import cultureImg from "@/assets/performance-culture.png";
 
 // Service row image imports
-import serviceImg1 from "@/assets/digital-marketing.jpeg";
+import serviceImg1 from "@/assets/digital-marketing-01.jpeg";
 import serviceImg2 from "@/assets/seo-and-content.png";
-import serviceImg5 from "@/assets/video-production.jpeg";
-import serviceImg6 from "@/assets/web-development.jpeg";
+import serviceImg3 from "@/assets/social-media.jpeg";
+import serviceImg4 from "@/assets/seo-and-content.png";
+import serviceImg5 from "@/assets/video-production-01.jpeg";
+import serviceImg6 from "@/assets/seo-and-content.png";
+import serviceImg7 from "@/assets/ecommerce.jpeg";
+import serviceImg8 from "@/assets/video-production-01.jpeg";
+import serviceImg9 from "@/assets/web-development.jpeg";
 
 const BottleExperience = lazy(() =>
   import("@/components/site/BottleExperience").then((module) => ({
@@ -338,7 +343,7 @@ function Home() {
             <div ref={serviceSliderRef} className="service-slider no-scrollbar overflow-hidden">
               <div className="service-track flex items-stretch gap-3 sm:gap-4">
                 {SERVICES.map((service, i) => {
-                  const serviceImages = [serviceImg1, serviceImg2, serviceImg5, serviceImg6];
+                  const serviceImages = [serviceImg1, serviceImg2, serviceImg3, serviceImg4, serviceImg5, serviceImg6, serviceImg7, serviceImg8, serviceImg9];
                   return (
                     <ServiceCardKode
                       key={`kode-${service.slug}`}
