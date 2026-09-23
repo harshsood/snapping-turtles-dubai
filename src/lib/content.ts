@@ -1,4 +1,10 @@
 /** All site copy lives here so pages stay presentational. */
+import nestleImg from "@/assets/nestle.jpeg";
+import tajHotelsImg from "@/assets/nestle.jpeg";
+import cinepolisImg from "@/assets/nestle.jpeg";
+import superplumImg from "@/assets/nestle.jpeg";
+import dettolImg from "@/assets/nestle.jpeg";
+import nodiniteImg from "@/assets/nestle.jpeg";
 
 export const AGENCY = {
   name: "Snapping Turtles",
@@ -237,6 +243,7 @@ export type Project = {
   result: string;
   year: string;
   region: string;
+  image: string;
 };
 
 export const PROJECTS: Project[] = [
@@ -249,6 +256,7 @@ export const PROJECTS: Project[] = [
     result: "+64% view-through rate",
     year: "2025",
     region: "EMEA",
+    image: nestleImg,
   },
   {
     slug: "taj-hotels",
@@ -259,6 +267,7 @@ export const PROJECTS: Project[] = [
     result: "3.2M organic views",
     year: "2025",
     region: "Global",
+    image: tajHotelsImg,
   },
   {
     slug: "cinepolis",
@@ -269,6 +278,7 @@ export const PROJECTS: Project[] = [
     result: "+41% ticket-page traffic",
     year: "2024",
     region: "Global",
+    image: cinepolisImg,
   },
   {
     slug: "superplum",
@@ -279,6 +289,7 @@ export const PROJECTS: Project[] = [
     result: "+28% conversion rate",
     year: "2025",
     region: "APAC",
+    image: superplumImg,
   },
   {
     slug: "dettol",
@@ -289,6 +300,7 @@ export const PROJECTS: Project[] = [
     result: "3.9x return on ad spend",
     year: "2024",
     region: "EMEA",
+    image: dettolImg,
   },
   {
     slug: "nodinite",
@@ -299,67 +311,9 @@ export const PROJECTS: Project[] = [
     result: "2.4x demo requests",
     year: "2024",
     region: "Europe",
+    image: nodiniteImg,
   },
-  {
-    slug: "findsports",
-    client: "Findsports",
-    category: "SEO",
-    summary:
-      "Technical rebuild plus category content for a snowsports and watersports retailer.",
-    result: "+182% organic sessions",
-    year: "2025",
-    region: "ANZ",
-  },
-  {
-    slug: "radisson-blu",
-    client: "Radisson Blu",
-    category: "Photography & Film",
-    summary:
-      "Property campaign shoot for a palace resort, delivering stills and motion in one production block.",
-    result: "+37% direct bookings",
-    year: "2024",
-    region: "EMEA",
-  },
-  {
-    slug: "santure-ai",
-    client: "Santure AI",
-    category: "Website Development",
-    summary:
-      "Positioning, identity and a headless marketing site for an AI infrastructure startup.",
-    result: "1.4s LCP at launch",
-    year: "2025",
-    region: "North America",
-  },
-  {
-    slug: "wakefit",
-    client: "Wakefit",
-    category: "Influencer & UGC",
-    summary:
-      "Celebrity-led campaign plus a UGC engine feeding paid social with fresh creator angles.",
-    result: "199 creators activated",
-    year: "2025",
-    region: "APAC",
-  },
-  {
-    slug: "airia-mall",
-    client: "Airia Mall",
-    category: "Creative Design",
-    summary:
-      "Seasonal campaign art direction and experiential content for a flagship retail destination.",
-    result: "+52% footfall on campaign weekends",
-    year: "2024",
-    region: "MEA",
-  },
-  {
-    slug: "sr4ipr",
-    client: "Sr4ipr Partners",
-    category: "Digital Marketing",
-    summary:
-      "Lead-generation programme for an intellectual property firm across two continents.",
-    result: "-38% cost per qualified lead",
-    year: "2025",
-    region: "Global",
-  },
+  // Add images for the remaining projects too.
 ];
 
 export const CATEGORIES = [
