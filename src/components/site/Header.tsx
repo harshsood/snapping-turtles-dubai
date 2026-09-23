@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { AGENCY } from "@/lib/content";
 import { cn } from "@/lib/utils";
-import logo from "@/assets/snapping-turtle-logo.png";
+import logo from "@/assets/snapping-turtle-logo-1.png";
 
 const NAV = [
   { label: "Home", to: "/" },
