@@ -1,14 +1,22 @@
 import { Link } from "@tanstack/react-router";
 import { AGENCY, SERVICES } from "@/lib/content";
+import logo from "@/assets/snapping-turtle-logo-1.png";
 
 export function Footer() {
   return (
     <footer className="relative mt-24 border-t border-border px-4 pt-20 pb-10 sm:px-8">
       <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-4">
         <div className="lg:col-span-2">
-          <p className="font-display text-3xl">
-            Snapping<span className="signal-text">Turtles</span>
-          </p>
+          <Link
+            to="/"
+            className="inline-flex items-center"
+          >
+            <img
+              src={logo}
+              alt="Snapping Turtles"
+              className="h-12 w-auto object-contain"
+            />
+          </Link>
           <p className="mt-4 max-w-sm text-sm text-muted-foreground">
             {AGENCY.tagline}. Strategy, creative and engineering under one roof —
             operating across {AGENCY.studios.length} studios.
