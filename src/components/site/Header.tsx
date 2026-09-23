@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { AGENCY } from "@/lib/content";
 import { cn } from "@/lib/utils";
+import logo from "@/assets/snapping-turtle-logo.png";
 
 const NAV = [
   { label: "Home", to: "/" },
@@ -38,7 +39,7 @@ export function Header() {
           onClick={() => setOpen(false)}
         >
           <img
-            src="/assets/snapping-turtle-logo.png"
+            src={logo}
             alt="Snapping Turtles"
             className="h-10 w-auto object-contain"
           />
