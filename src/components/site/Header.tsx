@@ -34,10 +34,14 @@ export function Header() {
       >
         <Link
           to="/"
-          className="font-display text-base font-medium tracking-[0.22em] uppercase"
+          className="flex items-center"
           onClick={() => setOpen(false)}
         >
-          Snapping<span className="signal-text">Turtles</span>
+          <img
+            src="/assets/snapping-turtle-logo.png"
+            alt="Snapping Turtles"
+            className="h-10 w-auto object-contain"
+          />
         </Link>
 
         <ul className="hidden items-center gap-7 lg:flex">
