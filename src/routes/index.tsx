@@ -22,13 +22,13 @@ import cultureImg from "@/assets/performance-culture.png";
 
 // Service row image imports
 import serviceImg1 from "@/assets/digital-marketing-01.jpeg";
-import serviceImg2 from "@/assets/seo-and-content.png";
+import serviceImg2 from "@/assets/seo-and-content.jpeg";
 import serviceImg3 from "@/assets/social-media.jpeg";
-import serviceImg4 from "@/assets/seo-and-content.png";
+import serviceImg4 from "@/assets/influence-and-ugc.jpeg";
 import serviceImg5 from "@/assets/video-production-01.jpeg";
-import serviceImg6 from "@/assets/seo-and-content.png";
+import serviceImg6 from "@/assets/web-development-01.jpeg";
 import serviceImg7 from "@/assets/ecommerce.jpeg";
-import serviceImg8 from "@/assets/video-production-01.jpeg";
+import serviceImg8 from "@/assets/graphic-designing.jpeg";
 import serviceImg9 from "@/assets/web-development.jpeg";
 
 const BottleExperience = lazy(() =>
