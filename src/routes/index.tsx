@@ -29,7 +29,7 @@ import serviceImg5 from "@/assets/video-production-01.jpeg";
 import serviceImg6 from "@/assets/web-development-01.jpeg";
 import serviceImg7 from "@/assets/ecommerce.jpeg";
 import serviceImg8 from "@/assets/graphic-designing.jpeg";
-import serviceImg9 from "@/assets/web-development.jpeg";
+import serviceImg9 from "@/assets/whatsapp-marketing.jpeg";
 
 const BottleExperience = lazy(() =>
   import("@/components/site/BottleExperience").then((module) => ({
