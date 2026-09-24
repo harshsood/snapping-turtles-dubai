@@ -9,6 +9,7 @@ import {
   Testimonials,
 } from "@/components/site/ui";
 import { AGENCY, PROCESS, TEAM, VALUES } from "@/lib/content";
+import aboutStudioImage from "@/assets/global-studio-model.jpeg";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -78,13 +79,16 @@ function About() {
               data-reveal
               className="reveal overflow-hidden rounded-[2rem] border border-border bg-background/40"
             >
-              <div
-                className="h-72 bg-cover bg-center"
-                style={{
-                  backgroundImage:
-                    'linear-gradient(180deg, rgba(9,13,19,0.15), rgba(9,13,19,0.68)), url("https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1400&q=80")',
-                }}
-              />
+              <div className="relative h-72 overflow-hidden">
+                <img
+                  src={aboutStudioImage}
+                  alt="Snapping Turtles team working together"
+                  className="h-full w-full object-cover"
+                />
+                {/* Image overlay */}
+                <div className="absolute inset-0 bg-gradient-to-b from-[#090d13]/15 to-[#090d13]/70" />
+              </div>
+
               <div className="p-6">
                 <p className="font-mono text-[0.6rem] tracking-[0.22em] uppercase text-primary">
                   Global studio model
