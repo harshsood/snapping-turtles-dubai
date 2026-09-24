@@ -1,10 +1,10 @@
 /** All site copy lives here so pages stay presentational. */
 import nestleImg from "@/assets/nestle.jpeg";
-import tajHotelsImg from "@/assets/nestle.jpeg";
-import cinepolisImg from "@/assets/nestle.jpeg";
-import superplumImg from "@/assets/nestle.jpeg";
-import dettolImg from "@/assets/nestle.jpeg";
-import nodiniteImg from "@/assets/nestle.jpeg";
+import tajHotelsImg from "@/assets/taj.jpeg";
+import cinepolisImg from "@/assets/cinepolis.jpeg";
+import superplumImg from "@/assets/superplum.jpeg";
+import dettolImg from "@/assets/dettol.jpeg";
+import nodiniteImg from "@/assets/nodinite.jpeg";
 
 export const AGENCY = {
   name: "Snapping Turtles",
