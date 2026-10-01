@@ -67,14 +67,10 @@ function BottleModel({
   url,
   spinZ,
   drag,
-  scrollProgress,
-  containerRef,
 }: {
   url: string;
   spinZ: boolean;
   drag: React.MutableRefObject<DragState>;
-  scrollProgress: number;
-  containerRef: React.RefObject<HTMLDivElement>;
 }) {
   const { scene } = useGLTF(url);
   const clonedScene = useMemo(() => normalizeModel(scene), [scene]);
@@ -82,24 +78,18 @@ function BottleModel({
 
   useFrame((state, delta) => {
     const bottle = group.current;
-    if (!bottle || !containerRef.current) return;
+    if (!bottle) return;
 
-    const containerRect = containerRef.current.getBoundingClientRect();
-    const centerY = containerRect.top + containerRect.height / 2;
-    const viewportCenter = window.innerHeight / 2;
-    const containerProgress = (centerY - viewportCenter) / window.innerHeight;
+    const floatY = Math.sin(state.clock.elapsedTime * 1.3) * 0.18;
+    const floatZ = Math.cos(state.clock.elapsedTime * 0.8) * 0.12;
 
-    const scrollCurveX = 1.6 - scrollProgress * 3.2;
-    const floatY = Math.sin(state.clock.elapsedTime * 1.3 + scrollProgress * Math.PI) * 0.18;
-    const floatZ = Math.cos(state.clock.elapsedTime * 0.8 + scrollProgress * Math.PI * 0.5) * 0.12;
-
-    bottle.position.x = THREE.MathUtils.damp(bottle.position.x, scrollCurveX + containerProgress * 0.7, 3.8, delta);
+    bottle.position.x = THREE.MathUtils.damp(bottle.position.x, 1.6, 3.8, delta);
     bottle.position.y = THREE.MathUtils.damp(bottle.position.y, floatY, 3.8, delta);
     bottle.position.z = THREE.MathUtils.damp(bottle.position.z, floatZ - 0.2, 3.8, delta);
 
     bottle.rotation.y = THREE.MathUtils.damp(
       bottle.rotation.y,
-      drag.current.targetY + scrollProgress * 1.8,
+      drag.current.targetY,
       4.2,
       delta,
     );
@@ -112,7 +102,7 @@ function BottleModel({
     );
 
     if (!drag.current.active) {
-      drag.current.targetY += delta * (0.24 + scrollProgress * 0.18);
+      drag.current.targetY += delta * 0.24;
       if (spinZ) drag.current.targetZ += delta * 0.58;
     }
   });
@@ -128,8 +118,8 @@ export function BottleExperience() {
   const isMobile = useIsMobile();
   const [modelIndex, setModelIndex] = useState(0);
   const [spinZ, setSpinZ] = useState(false);
-  const [scrollProgress, setScrollProgress] = useState(0);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const [isHeroVisible, setIsHeroVisible] = useState(true);
+  const sceneRef = useRef<HTMLDivElement>(null);
   const drag = useRef<DragState>({
     active: false,
     lastX: 0,
@@ -138,25 +128,19 @@ export function BottleExperience() {
     targetZ: 0,
   });
 
-  useEffect(() => {
-    const update = () => {
-      // Calculate scroll progress based on page height
-      const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
-      const currentScroll = window.scrollY;
-      setScrollProgress(totalScroll > 0 ? Math.min(1, currentScroll / totalScroll) : 0);
-    };
-
-    update();
-    window.addEventListener("scroll", update, { passive: true });
-    window.addEventListener("resize", update);
-
-    return () => {
-      window.removeEventListener("scroll", update);
-      window.removeEventListener("resize", update);
-    };
-  }, []);
-
   const activeModel = MODELS[modelIndex];
+
+  useEffect(() => {
+    const scene = sceneRef.current;
+    if (!scene) return;
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry) setIsHeroVisible(entry.isIntersecting);
+    });
+    observer.observe(scene);
+
+    return () => observer.disconnect();
+  }, []);
 
   const startDrag = (event: ReactPointerEvent<HTMLDivElement>) => {
     event.currentTarget.setPointerCapture(event.pointerId);
@@ -183,12 +167,12 @@ export function BottleExperience() {
 
   return (
     <div
-      ref={containerRef}
-      className="fixed inset-0 z-20 w-full pointer-events-none"
+      ref={sceneRef}
+      className="absolute inset-0 z-0 w-full pointer-events-none"
     >
       <div
         className="absolute inset-0 pointer-events-none touch-pan-y md:cursor-grab md:touch-none md:pointer-events-auto"
-        aria-label="Interactive 3D bottle. Drag horizontally to rotate and vertically to tilt. Position updates as you scroll."
+        aria-label="Interactive 3D bottle. Drag horizontally to rotate and vertically to tilt."
         onPointerDown={startDrag}
         onPointerMove={moveDrag}
         onPointerUp={stopDrag}
@@ -211,39 +195,39 @@ export function BottleExperience() {
               url={activeModel.url}
               spinZ={spinZ}
               drag={drag}
-              scrollProgress={scrollProgress}
-              containerRef={containerRef}
             />
           </Suspense>
           {!isMobile && <OrbitControls enableZoom={false} enablePan={false} autoRotate={false} />}
         </Canvas>
       </div>
 
-      <div className="glass-panel absolute left-4 bottom-4 z-30 flex items-center gap-1 rounded-md p-1 sm:left-8 sm:bottom-8 pointer-events-auto">
-        {MODELS.map((model, index) => (
+      {isHeroVisible && (
+        <div className="glass-panel absolute left-4 bottom-4 z-30 flex items-center gap-1 rounded-md p-1 sm:left-8 sm:bottom-8 pointer-events-auto">
+          {MODELS.map((model, index) => (
+            <Button
+              key={model.label}
+              type="button"
+              size="sm"
+              variant={modelIndex === index ? "default" : "ghost"}
+              onClick={() => setModelIndex(index)}
+              aria-pressed={modelIndex === index}
+            >
+              {model.label}
+            </Button>
+          ))}
           <Button
-            key={model.label}
             type="button"
             size="sm"
-            variant={modelIndex === index ? "default" : "ghost"}
-            onClick={() => setModelIndex(index)}
-            aria-pressed={modelIndex === index}
+            variant={spinZ ? "secondary" : "ghost"}
+            onClick={() => setSpinZ((active) => !active)}
+            aria-pressed={spinZ}
+            title="Toggle Z-axis rotation"
           >
-            {model.label}
+            <Rotate3D />
+            Z spin
           </Button>
-        ))}
-        <Button
-          type="button"
-          size="sm"
-          variant={spinZ ? "secondary" : "ghost"}
-          onClick={() => setSpinZ((active) => !active)}
-          aria-pressed={spinZ}
-          title="Toggle Z-axis rotation"
-        >
-          <Rotate3D />
-          Z spin
-        </Button>
-      </div>
+        </div>
+      )}
     </div>
   );
 }

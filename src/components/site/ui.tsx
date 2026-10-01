@@ -250,14 +250,16 @@ export function PageHero({
   title,
   accent,
   copy,
+  className,
 }: {
   eyebrow: string;
   title: string;
   accent?: string;
   copy: string;
+  className?: string;
 }) {
   return (
-    <section className="relative overflow-hidden px-4 pt-40 pb-20 sm:px-8">
+    <section className={cn("relative overflow-hidden px-4 pt-40 pb-20 sm:px-8", className)}>
       <div className="grid-lines pointer-events-none absolute inset-0 opacity-40" />
       <div className="relative mx-auto max-w-7xl">
         <p className="eyebrow" data-reveal>
