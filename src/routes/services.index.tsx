@@ -4,7 +4,7 @@ import { CTABand, PageHero, SectionHeading } from "@/components/site/ui";
 import { FAQS, SERVICES } from "@/lib/content";
 
 // Service row image imports (same as homepage)
-import serviceImg1 from "@/assets/digital-marketing.png";
+import serviceImg1 from "@/assets/video-production-card-3.jpeg";
 import serviceImg2 from "@/assets/seo-and-content.png";
 //import serviceImg3 from "@/assets/service-3.png";
 //import serviceImg4 from "@/assets/service-4.png";
