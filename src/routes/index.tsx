@@ -150,6 +150,16 @@ function Home() {
   const hasMountedServiceSlider = useRef(false);
   const serviceSliderRef = useRef<HTMLDivElement>(null);
   const [activeService, setActiveService] = useState(0);
+  const [showBottleExperience, setShowBottleExperience] = useState(false);
+
+  useEffect(() => {
+    const desktopViewport = window.matchMedia("(min-width: 1025px)");
+    const updateBottleExperience = () => setShowBottleExperience(desktopViewport.matches);
+
+    updateBottleExperience();
+    desktopViewport.addEventListener("change", updateBottleExperience);
+    return () => desktopViewport.removeEventListener("change", updateBottleExperience);
+  }, []);
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -198,11 +208,13 @@ function Home() {
         />
         <div className="pointer-events-none absolute bottom-[-15%] left-[-10%] size-[30rem] rounded-full bg-accent/12 blur-[110px] float-slow" />
 
-        <ClientOnly>
-          <Suspense fallback={null}>
-            <BottleExperience />
-          </Suspense>
-        </ClientOnly>
+        {showBottleExperience && (
+          <ClientOnly>
+            <Suspense fallback={null}>
+              <BottleExperience />
+            </Suspense>
+          </ClientOnly>
+        )}
 
         <div className="pointer-events-none relative z-10 mx-auto w-full max-w-7xl">
           <p className="eyebrow flex items-center gap-3">
