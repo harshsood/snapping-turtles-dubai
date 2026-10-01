@@ -37,6 +37,23 @@ const BottleExperience = lazy(() =>
   })),
 );
 
+const PORTFOLIO_VIDEO_SOURCES = import.meta.glob<string>("/src/assets/*.mp4", {
+  eager: true,
+  import: "default",
+  query: "?url",
+});
+const PORTFOLIO_VIDEO = PORTFOLIO_VIDEO_SOURCES["/src/assets/FoogAugustFinal.mp4"];
+
+const PORTFOLIO_REELS = [
+  { title: "Growth systems", category: "Campaign film", poster: growthImg },
+  { title: "Brand films", category: "Brand story", poster: filmImg },
+  { title: "Web experiences", category: "Digital launch", poster: webImg },
+  { title: "Performance culture", category: "Studio reel", poster: cultureImg },
+].map((reel) => ({
+  ...reel,
+  video: PORTFOLIO_VIDEO,
+}));
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -370,7 +387,59 @@ function Home() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
 
+      {/* OUR PORTFOLIO */}
+      <section className="relative overflow-hidden px-4 py-20 sm:px-8">
+        <div className="mx-auto max-w-7xl">
+          <div className="flex flex-wrap items-end justify-between gap-8">
+            <SectionHeading
+              eyebrow="Selected films"
+              title="Our"
+              accent="Portfolio"
+              copy="A moving collection of campaigns, stories and digital worlds made to stay with you."
+            />
+            <div data-reveal className="reveal">
+              <MagneticLink to="/portfolio" variant="ghost">
+                Explore portfolio
+              </MagneticLink>
+            </div>
+          </div>
+
+          <div className="mt-12 grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4">
+            {PORTFOLIO_REELS.map((reel, index) => (
+              <article
+                key={reel.title}
+                data-reveal
+                className="reveal group relative isolate aspect-[4/5] overflow-hidden rounded-2xl border border-border bg-card"
+                style={{ transitionDelay: `${index * 0.08}s` }}
+              >
+                <div className="absolute inset-0 overflow-hidden">
+                  {reel.video ? (
+                    <video
+                      autoPlay
+                      loop
+                      muted
+                      controls
+                      playsInline
+                      poster={reel.poster}
+                      src={reel.video}
+                      className="size-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                  ) : (
+                    <img
+                      src={reel.poster}
+                      alt=""
+                      className="size-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                  )}
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-black/20" />
+                </div>
+
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
