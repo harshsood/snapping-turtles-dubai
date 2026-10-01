@@ -42,17 +42,32 @@ const PORTFOLIO_VIDEO_SOURCES = import.meta.glob<string>("/src/assets/*.mp4", {
   import: "default",
   query: "?url",
 });
-const PORTFOLIO_VIDEO = PORTFOLIO_VIDEO_SOURCES["/src/assets/FoogAugustFinal.mp4"];
-
 const PORTFOLIO_REELS = [
-  { title: "Growth systems", category: "Campaign film", poster: growthImg },
-  { title: "Brand films", category: "Brand story", poster: filmImg },
-  { title: "Web experiences", category: "Digital launch", poster: webImg },
-  { title: "Performance culture", category: "Studio reel", poster: cultureImg },
-].map((reel) => ({
-  ...reel,
-  video: PORTFOLIO_VIDEO,
-}));
+  {
+    title: "Growth systems",
+    category: "Campaign film",
+    poster: growthImg,
+    video: PORTFOLIO_VIDEO_SOURCES["/src/assets/FoogAugustFinal.mp4"],
+  },
+  {
+    title: "Brand films",
+    category: "Brand story",
+    poster: filmImg,
+    video: PORTFOLIO_VIDEO_SOURCES["/src/assets/video1.mp4"],
+  },
+  {
+    title: "Web experiences",
+    category: "Digital launch",
+    poster: webImg,
+    video: PORTFOLIO_VIDEO_SOURCES["/src/assets/video2.mp4"],
+  },
+  {
+    title: "Performance culture",
+    category: "Studio reel",
+    poster: cultureImg,
+    video: PORTFOLIO_VIDEO_SOURCES["/src/assets/FoogAugustFinal.mp4"],
+  },
+];
 
 export const Route = createFileRoute("/")({
   head: () => ({

@@ -4,6 +4,30 @@ import { Marquee } from "@/components/site/Marquee";
 import { CTABand, MagneticLink, PageHero, SectionHeading } from "@/components/site/ui";
 import { useTilt } from "@/hooks/use-anim";
 import { CLIENTS, PROJECTS } from "@/lib/content";
+import growthImg from "@/assets/growth-system.png";
+import filmImg from "@/assets/brand-films.png";
+import webImg from "@/assets/web-expriences.png";
+
+const PORTFOLIO_VIDEO_SOURCES = import.meta.glob<string>("/src/assets/*.mp4", {
+  eager: true,
+  import: "default",
+  query: "?url",
+});
+const PORTFOLIO_VIDEO = PORTFOLIO_VIDEO_SOURCES["/src/assets/FoogAugustFinal.mp4"];
+const PORTFOLIO_REELS = [
+  {
+    poster: growthImg,
+    video: PORTFOLIO_VIDEO,
+  },
+  {
+    poster: filmImg,
+    video: PORTFOLIO_VIDEO_SOURCES["/src/assets/video1.mp4"],
+  },
+  {
+    poster: webImg,
+    video: PORTFOLIO_VIDEO_SOURCES["/src/assets/video2.mp4"],
+  },
+];
 
 export const Route = createFileRoute("/portfolio")({
   head: () => ({
@@ -99,6 +123,32 @@ function Portfolio() {
         accent="worth scrolling"
         copy="Films, campaign systems, brand identities and product sites — all produced in-house by the same team that plans the media behind them."
       />
+
+      <section className="relative overflow-hidden px-4 py-16 sm:px-8">
+        <div className="mx-auto max-w-7xl">
+          <div className="mt-12 grid grid-cols-1 gap-5 lg:grid-cols-3">
+            {PORTFOLIO_REELS.map((reel, index) => (
+              <article
+                key={reel.poster}
+                data-reveal
+                className="reveal group relative isolate aspect-[4/5] overflow-hidden rounded-2xl border border-border bg-card"
+                style={{ transitionDelay: `${index * 0.08}s` }}
+              >
+                <video
+                  autoPlay
+                  loop
+                  muted
+                  controls
+                  playsInline
+                  poster={reel.poster}
+                  src={reel.video}
+                  className="size-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <section className="px-4 py-10 sm:px-8">
         <div className="mx-auto mb-10 overflow-hidden rounded-[2rem] border border-border bg-background/40">
