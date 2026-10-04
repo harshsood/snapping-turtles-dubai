@@ -7,7 +7,7 @@ import { FAQS, SERVICES } from "@/lib/content";
 import serviceImg1 from "@/assets/digital-marketing-001.png";
 import serviceImg2 from "@/assets/seo-and-content-001.png";
 import serviceImg3 from "@/assets/social-media-001.png";
-import serviceImg4 from "@/assets/influencer-and-ugc.jpeg";
+import serviceImg4 from "@/assets/influencer-and-ugc.png";
 import serviceImg5 from "@/assets/video-production.png";
 import serviceImg6 from "@/assets/web-development-01.jpeg";
 import serviceImg7 from "@/assets/ecommerce.png";
