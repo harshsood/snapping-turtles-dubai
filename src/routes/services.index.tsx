@@ -4,20 +4,20 @@ import { CTABand, PageHero, SectionHeading } from "@/components/site/ui";
 import { FAQS, SERVICES } from "@/lib/content";
 
 // Service row image imports (same as homepage)
-import serviceImg1 from "@/assets/digital-marketing-01.jpeg";
-import serviceImg2 from "@/assets/seo-and-content.jpeg";
-import serviceImg3 from "@/assets/social-media.jpeg";
-import serviceImg4 from "@/assets/influence-and-ugc.jpeg";
-import serviceImg5 from "@/assets/video-production-01.jpeg";
+import serviceImg1 from "@/assets/digital-marketing-001.png";
+import serviceImg2 from "@/assets/seo-and-content-001.png";
+import serviceImg3 from "@/assets/social-media-001.png";
+import serviceImg4 from "@/assets/influence-and-ugc.png";
+import serviceImg5 from "@/assets/video-production.png";
 import serviceImg6 from "@/assets/web-development-01.jpeg";
-import serviceImg7 from "@/assets/ecommerce.jpeg";
-import serviceImg8 from "@/assets/graphic-designing.jpeg";
-import serviceImg9 from "@/assets/whatsapp-marketing.jpeg";
-import serviceImgAiVideo from "@/assets/video-production-01.jpeg";
-import serviceImgBeauty from "@/assets/video-production-card-2.jpeg";
-import serviceImgEvent from "@/assets/global-studio-model.jpeg";
-import serviceImgLaunch from "@/assets/growth-system.png";
-import serviceImgLuxury from "@/assets/taj.jpeg";
+import serviceImg7 from "@/assets/ecommerce.png";
+import serviceImg8 from "@/assets/graphic-designing.png";
+import serviceImg9 from "@/assets/whatsapp-marketing-001.png";
+import serviceImgAiVideo from "@/assets/ai-video-generation-001.png";
+import serviceImgBeauty from "@/assets/beauty-and-fragrance-brand-marketing.png";
+import serviceImgEvent from "@/assets/event-brnding-and-experience-design.png";
+import serviceImgLaunch from "@/assets/strategic-product-launch.png";
+import serviceImgLuxury from "@/assets/luxury-brand-marketing.png";
 
 export const Route = createFileRoute("/services/")({
   head: () => ({
