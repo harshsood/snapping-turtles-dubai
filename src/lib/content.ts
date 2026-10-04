@@ -1,10 +1,10 @@
 /** All site copy lives here so pages stay presentational. */
-import nestleImg from "@/assets/fogg-logo.jpeg";
-import tajHotelsImg from "@/assets/al-basheer-logo.jpeg";
+import foggImg from "@/assets/fogg-logo.jpeg";
+import alBasheerImg from "@/assets/al-basheer-logo.jpeg";
 import cinepolisImg from "@/assets/cinepolis.jpeg";
-import superplumImg from "@/assets/radisson-logo.jpeg";
+import radissonImg from "@/assets/radisson-logo.jpeg";
 import dettolImg from "@/assets/dettol.jpeg";
-import nodiniteImg from "@/assets/nodinite.jpeg";
+import tajImg from "@/assets/taj.jpeg";
 
 export const AGENCY = {
   name: "Snapping Turtles",
@@ -355,7 +355,7 @@ export const PROJECTS: Project[] = [
     result: "Brand storytelling",
     year: "—",
     region: "—",
-    image: nestleImg,
+    image: foggImg,
   },
   {
     slug: "al-basheer",
@@ -365,7 +365,7 @@ export const PROJECTS: Project[] = [
     result: "Integrated campaigns",
     year: "—",
     region: "—",
-    image: superplumImg,
+    image: alBasheerImg,
   },
   {
     slug: "cinepolis",
@@ -386,7 +386,7 @@ export const PROJECTS: Project[] = [
     result: "Hospitality storytelling",
     year: "—",
     region: "—",
-    image: nodiniteImg,
+    image: radissonImg,
   },
   {
     slug: "dettol",
@@ -408,7 +408,7 @@ export const PROJECTS: Project[] = [
     result: "3.2M organic views",
     year: "2025",
     region: "Global",
-    image: tajHotelsImg,
+    image: tajImg,
   },
   // Add images for the remaining projects too.
 ];
