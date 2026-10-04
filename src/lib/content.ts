@@ -1,8 +1,8 @@
 /** All site copy lives here so pages stay presentational. */
-import nestleImg from "@/assets/nestle.jpeg";
-import tajHotelsImg from "@/assets/taj.jpeg";
+import nestleImg from "@/assets/fogg-logo.jpeg";
+import tajHotelsImg from "@/assets/al-basheer-logo.jpeg";
 import cinepolisImg from "@/assets/cinepolis.jpeg";
-import superplumImg from "@/assets/superplum.jpeg";
+import superplumImg from "@/assets/radisson-logo.jpeg";
 import dettolImg from "@/assets/dettol.jpeg";
 import nodiniteImg from "@/assets/nodinite.jpeg";
 
@@ -348,26 +348,24 @@ export type Project = {
 
 export const PROJECTS: Project[] = [
   {
-    slug: "nestle",
-    client: "Nestlé",
-    category: "Video Production",
-    summary:
-      "Product films and social-first edits for a multi-market FMCG portfolio, localised across three languages.",
-    result: "+64% view-through rate",
-    year: "2025",
-    region: "EMEA",
+    slug: "fogg",
+    client: "Fogg",
+    category: "Brand Marketing",
+    summary: "Selected brand and campaign work for Fogg.",
+    result: "Brand storytelling",
+    year: "—",
+    region: "—",
     image: nestleImg,
   },
   {
-    slug: "taj-hotels",
-    client: "Taj Hotels",
-    category: "Brand Film",
-    summary:
-      "A hospitality brand film capturing the arrival ritual, cut for cinema, TV and vertical placements.",
-    result: "3.2M organic views",
-    year: "2025",
-    region: "Global",
-    image: tajHotelsImg,
+    slug: "al-basheer",
+    client: "Al Basheer",
+    category: "Brand Marketing",
+    summary: "Selected brand and digital work for Al Basheer.",
+    result: "Integrated campaigns",
+    year: "—",
+    region: "—",
+    image: superplumImg,
   },
   {
     slug: "cinepolis",
@@ -381,15 +379,14 @@ export const PROJECTS: Project[] = [
     image: cinepolisImg,
   },
   {
-    slug: "superplum",
-    client: "Superplum",
-    category: "E-commerce Growth",
-    summary:
-      "Fresh-produce D2C storefront rebuild with subscription bundles and retention flows.",
-    result: "+28% conversion rate",
-    year: "2025",
-    region: "APAC",
-    image: superplumImg,
+    slug: "radisson",
+    client: "Radisson",
+    category: "Hospitality Marketing",
+    summary: "Selected brand and campaign work for Radisson.",
+    result: "Hospitality storytelling",
+    year: "—",
+    region: "—",
+    image: nodiniteImg,
   },
   {
     slug: "dettol",
@@ -403,15 +400,15 @@ export const PROJECTS: Project[] = [
     image: dettolImg,
   },
   {
-    slug: "nodinite",
-    client: "Nodinite",
-    category: "2D Animation",
+    slug: "taj-hotels",
+    client: "Taj",
+    category: "Brand Film",
     summary:
-      "Explainer animation system that turned an abstract integration platform into a clear story.",
-    result: "2.4x demo requests",
-    year: "2024",
-    region: "Europe",
-    image: nodiniteImg,
+      "A hospitality brand film capturing the arrival ritual, cut for cinema, TV and vertical placements.",
+    result: "3.2M organic views",
+    year: "2025",
+    region: "Global",
+    image: tajHotelsImg,
   },
   // Add images for the remaining projects too.
 ];
