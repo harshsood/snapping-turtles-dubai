@@ -93,9 +93,11 @@ function ServicesIndex() {
                 style={{ transitionDelay: `${(i % 3) * 0.08}s` }}
               >
                 <div
-                  className="relative overflow-hidden rounded-[1.3rem] border border-border/80 bg-cover bg-center"
+                  className="relative overflow-hidden rounded-[1.3rem] border border-border/80 bg-card bg-center"
                   style={{
                     backgroundImage: `linear-gradient(180deg, rgba(10,16,22,0.18), rgba(10,16,22,0.72)), url("${currentImage}")`,
+                    backgroundSize: "100% 100%, contain",
+                    backgroundRepeat: "no-repeat",
                     minHeight: "170px",
                   }}
                 >
