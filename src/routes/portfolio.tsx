@@ -14,7 +14,7 @@ const PORTFOLIO_VIDEO_SOURCES = import.meta.glob<string>("/src/assets/*.mp4", {
   query: "?url",
 });
 const PORTFOLIO_VIDEO = PORTFOLIO_VIDEO_SOURCES["/src/assets/FoogAugustFinal.mp4"];
-const PORTFOLIO_REELS = [
+const PORTFOLIO_REELS: { poster?: string; video: string | undefined }[] = [
   {
     poster: growthImg,
     video: PORTFOLIO_VIDEO,
@@ -26,6 +26,12 @@ const PORTFOLIO_REELS = [
   {
     poster: webImg,
     video: PORTFOLIO_VIDEO_SOURCES["/src/assets/video2.mp4"],
+  },
+  {
+    video: PORTFOLIO_VIDEO_SOURCES["/src/assets/Mashaaer.mp4"],
+  },
+  {
+    video: PORTFOLIO_VIDEO_SOURCES["/src/assets/Intense Amber.mp4"],
   },
 ];
 
@@ -130,7 +136,7 @@ function Portfolio() {
           <div className="grid grid-cols-1 gap-5 lg:grid-cols-3">
             {PORTFOLIO_REELS.map((reel, index) => (
               <article
-                key={reel.poster}
+                key={reel.video}
                 data-reveal
                 className="reveal group relative isolate aspect-[4/5] overflow-hidden rounded-2xl border border-border bg-card"
                 style={{ transitionDelay: `${index * 0.08}s` }}

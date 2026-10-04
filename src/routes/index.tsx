@@ -65,7 +65,7 @@ const PORTFOLIO_REELS = [
     title: "Performance culture",
     category: "Studio reel",
     poster: cultureImg,
-    video: PORTFOLIO_VIDEO_SOURCES["/src/assets/FoogAugustFinal.mp4"],
+    video: PORTFOLIO_VIDEO_SOURCES["/src/assets/Mashaaer.mp4"],
   },
 ];
 
@@ -427,7 +427,7 @@ function Home() {
               <article
                 key={reel.title}
                 data-reveal
-                className="reveal group relative isolate aspect-[4/5] overflow-hidden rounded-2xl border border-border bg-card"
+                className="reveal group relative isolate aspect-[9/16] overflow-hidden rounded-2xl border border-border bg-card"
                 style={{ transitionDelay: `${index * 0.08}s` }}
               >
                 <div className="absolute inset-0 overflow-hidden">
