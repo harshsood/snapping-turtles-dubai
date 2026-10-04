@@ -4,30 +4,38 @@ import { CTABand, PageHero, SectionHeading } from "@/components/site/ui";
 import { FAQS, SERVICES } from "@/lib/content";
 
 // Service row image imports (same as homepage)
-import serviceImg1 from "@/assets/video-production-card-3.jpeg";
-import serviceImg2 from "@/assets/seo-and-content.png";
-//import serviceImg3 from "@/assets/service-3.png";
-//import serviceImg4 from "@/assets/service-4.png";
-//import serviceImg5 from "@/assets/service-5.png";
-//import serviceImg6 from "@/assets/service-6.png";
-//import serviceImg7 from "@/assets/service-7.png";
-//import serviceImg8 from "@/assets/service-8.png";
-//import serviceImg9 from "@/assets/service-9.png";
+import serviceImg1 from "@/assets/digital-marketing-01.jpeg";
+import serviceImg2 from "@/assets/seo-and-content.jpeg";
+import serviceImg3 from "@/assets/social-media.jpeg";
+import serviceImg4 from "@/assets/influence-and-ugc.jpeg";
+import serviceImg5 from "@/assets/video-production-01.jpeg";
+import serviceImg6 from "@/assets/web-development-01.jpeg";
+import serviceImg7 from "@/assets/ecommerce.jpeg";
+import serviceImg8 from "@/assets/graphic-designing.jpeg";
+import serviceImg9 from "@/assets/whatsapp-marketing.jpeg";
+import serviceImgAiVideo from "@/assets/video-production-01.jpeg";
+import serviceImgBeauty from "@/assets/video-production-card-2.jpeg";
+import serviceImgEvent from "@/assets/global-studio-model.jpeg";
+import serviceImgLaunch from "@/assets/growth-system.png";
+import serviceImgLuxury from "@/assets/taj.jpeg";
 
 export const Route = createFileRoute("/services/")({
   head: () => ({
     meta: [
-      { title: "Services — Digital Marketing, SEO, Film & Web" },
+      { title: "Services — AI, Brand, Event, Launch & Digital Marketing" },
       {
         name: "description",
         content:
-          "Digital marketing, SEO, social, influencer, video production, web development, e-commerce, brand design and CRM — delivered by one senior team.",
+          "Fourteen capabilities across AI video, beauty and luxury marketing, event experiences, product launches, digital growth and more — delivered by one senior team.",
       },
-      { property: "og:title", content: "Services — Digital Marketing, SEO, Film & Web" },
+      {
+        property: "og:title",
+        content: "Services — AI, Brand, Event, Launch & Digital Marketing",
+      },
       {
         property: "og:description",
         content:
-          "Nine capabilities under one roof: strategy, performance media, production and engineering.",
+          "Fourteen capabilities under one roof, from generative production and luxury marketing to launch strategy, performance media and engineering.",
       },
       { property: "og:type", content: "website" },
       {
@@ -57,15 +65,20 @@ function ServicesIndex() {
         <div className="mx-auto grid max-w-7xl gap-6 md:grid-cols-2 lg:grid-cols-3">
           {SERVICES.map((service, i) => {
             const serviceImages = [
+              serviceImgAiVideo,
+              serviceImgBeauty,
+              serviceImgEvent,
+              serviceImgLaunch,
+              serviceImgLuxury,
               serviceImg1,
               serviceImg2,
-              //serviceImg3,
-              //serviceImg4,
-              //serviceImg5,
-              //serviceImg6,
-              //serviceImg7,
-              //serviceImg8,
-              //serviceImg9,
+              serviceImg3,
+              serviceImg4,
+              serviceImg5,
+              serviceImg6,
+              serviceImg7,
+              serviceImg8,
+              serviceImg9,
             ];
 
             const currentImage = serviceImages[i % serviceImages.length];

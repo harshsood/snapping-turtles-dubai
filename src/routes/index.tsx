@@ -30,6 +30,11 @@ import serviceImg6 from "@/assets/web-development-01.jpeg";
 import serviceImg7 from "@/assets/ecommerce.jpeg";
 import serviceImg8 from "@/assets/graphic-designing.jpeg";
 import serviceImg9 from "@/assets/whatsapp-marketing.jpeg";
+import serviceImgAiVideo from "@/assets/ai-video-generation.png";
+import serviceImgBeauty from "@/assets/beauty-and-fragrance.png";
+import serviceImgEvent from "@/assets/event-branding.png";
+import serviceImgLaunch from "@/assets/strategic-product-launch-01.png";
+import serviceImgLuxury from "@/assets/luxury-brand-marketing-01.png";
 
 const BottleExperience = lazy(() =>
   import("@/components/site/BottleExperience").then((module) => ({
@@ -378,7 +383,7 @@ function Home() {
         <div className="mx-auto max-w-7xl">
           <SectionHeading
             eyebrow="What we do"
-            title="Nine capabilities,"
+            title="Fourteen capabilities,"
             accent="one accountable team"
             copy="No handoffs between agencies. Strategy, creative, media and engineering sit in the same room and share the same KPI."
           />
@@ -387,7 +392,7 @@ function Home() {
             <div ref={serviceSliderRef} className="service-slider no-scrollbar overflow-hidden">
               <div className="service-track flex items-stretch gap-3 sm:gap-4">
                 {SERVICES.map((service, i) => {
-                  const serviceImages = [serviceImg1, serviceImg2, serviceImg3, serviceImg4, serviceImg5, serviceImg6, serviceImg7, serviceImg8, serviceImg9];
+                  const serviceImages = [serviceImgAiVideo, serviceImgBeauty, serviceImgEvent, serviceImgLaunch, serviceImgLuxury, serviceImg1, serviceImg2, serviceImg3, serviceImg4, serviceImg5, serviceImg6, serviceImg7, serviceImg8, serviceImg9];
                   return (
                     <ServiceCardKode
                       key={`kode-${service.slug}`}

@@ -54,6 +54,106 @@ export type Service = {
 
 export const SERVICES: Service[] = [
   {
+    slug: "ai-video-production-generative-content",
+    title: "AI Video Production and Generative Content",
+    short: "AI-assisted film and generative creative, shaped by human direction.",
+    intro:
+      "We combine generative tools with experienced creative direction to produce distinctive video and campaign content at the pace modern channels demand.",
+    body: [
+      "Every project starts with the idea, audience and brand rules. We use AI where it adds creative range or production efficiency, with human-led art direction keeping the work coherent and on-brand.",
+      "From early concepts and visual development through generation, editing and finishing, our team builds a clear workflow around the brief rather than relying on one-click outputs.",
+      "We adapt approved creative for the placements and formats that matter, with review points for visual consistency, factual accuracy and usage rights.",
+    ],
+    deliverables: [
+      "Creative concept and visual direction",
+      "AI-assisted video and generative assets",
+      "Editing, motion design and finishing",
+      "Channel-ready cutdowns and variations",
+      "Brand, accuracy and usage-rights review",
+    ],
+    metric: "Human-directed creative, made for modern content demands",
+  },
+  {
+    slug: "beauty-fragrance-brand-marketing",
+    title: "Beauty and Fragrance Brand Marketing",
+    short: "Build desire through distinctive product stories and sensory campaigns.",
+    intro:
+      "We help beauty and fragrance brands translate their product, point of view and rituals into campaigns that feel memorable across discovery, consideration and purchase.",
+    body: [
+      "We clarify what makes a formula, fragrance or routine worth choosing, then turn those details into a sharp positioning and visual language that can travel across channels.",
+      "Campaigns connect editorial storytelling, creator voices and product education without losing the atmosphere and craft that make beauty brands distinctive.",
+      "From launch moments to always-on growth, we align content, media and commerce around the customer journey, learning from each drop and seasonal moment.",
+    ],
+    deliverables: [
+      "Category, audience and brand positioning",
+      "Beauty and fragrance campaign concepts",
+      "Product films, photography and social content",
+      "Creator, sampling and advocacy programmes",
+      "Paid media and commerce optimisation",
+    ],
+    metric: "Distinctive stories from first impression to repeat purchase",
+  },
+  {
+    slug: "event-branding-experience-design",
+    title: "Event Branding and Experience Design",
+    short: "Turn live moments into cohesive, shareable brand experiences.",
+    intro:
+      "We shape event identities and guest journeys so every detail, from the first invitation to the final interaction, feels unmistakably connected to the brand.",
+    body: [
+      "We begin with the purpose of the gathering and the people in the room. That strategy informs the event identity, spatial cues and the moments guests should remember.",
+      "Our team connects physical and digital touchpoints, creating a consistent experience across invitations, wayfinding, stage environments, content capture and follow-up.",
+      "Whether the event is a launch, activation or leadership gathering, we plan for the live experience and its afterlife in social, press and customer communications.",
+    ],
+    deliverables: [
+      "Event concept and creative direction",
+      "Visual identity and environmental graphics",
+      "Guest journey and touchpoint design",
+      "Stage, signage and on-site content direction",
+      "Social amplification and post-event assets",
+    ],
+    metric: "One connected identity across every guest touchpoint",
+  },
+  {
+    slug: "strategic-product-launch-campaigns",
+    title: "Strategic Product Launch Campaigns",
+    short: "Build demand before launch day and sustain momentum after.",
+    intro:
+      "We turn a product release into a coordinated campaign, connecting audience insight, a clear value proposition and timed creative across the full launch journey.",
+    body: [
+      "We define the audience, competitive context and reason to believe before setting the launch narrative. This gives every channel a consistent story to tell.",
+      "A phased plan builds anticipation, focuses attention at release and carries the strongest messages into the weeks that follow, with creative tailored to each moment.",
+      "We connect brand, performance and commerce teams around shared milestones, then use live results to improve the campaign while it is in market.",
+    ],
+    deliverables: [
+      "Launch strategy and audience insight",
+      "Positioning, messaging and campaign platform",
+      "Teaser, launch and sustain creative phases",
+      "Channel, media and creator activation plan",
+      "Launch measurement and optimisation",
+    ],
+    metric: "A coordinated journey from anticipation to adoption",
+  },
+  {
+    slug: "luxury-brand-marketing",
+    title: "Luxury Brand Marketing",
+    short: "Protect brand distinction while reaching the right audiences.",
+    intro:
+      "We help luxury brands express their values with consistency and restraint, building desire through considered storytelling, selective channels and exceptional detail.",
+    body: [
+      "We translate heritage, craft and point of view into a contemporary brand narrative, identifying where consistency matters and where a market needs a more nuanced expression.",
+      "Creative and media are planned around relevance, not volume. Editorial storytelling, cultural partnerships and carefully chosen creators help the brand earn attention on its own terms.",
+      "Across launches and ongoing programmes, we align every touchpoint with the experience customers expect, from discovery and consideration through clienteling and loyalty.",
+    ],
+    deliverables: [
+      "Luxury positioning and audience strategy",
+      "Editorial campaign concepts and art direction",
+      "Premium film, photography and digital content",
+      "Selective creator and cultural partnerships",
+      "Market, channel and clienteling strategy",
+    ],
+    metric: "Brand distinction carried through every interaction",
+  },
+  {
     slug: "digital-marketing",
     title: "Digital Marketing",
     short: "Full-funnel strategy that turns attention into revenue.",
