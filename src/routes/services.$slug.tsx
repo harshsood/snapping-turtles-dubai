@@ -1,7 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 
 import { CTABand, MagneticLink, SectionHeading } from "@/components/site/ui";
-import { SplitText } from "@/components/site/SplitText";
 import { PROCESS, SERVICES } from "@/lib/content";
 
 export const Route = createFileRoute("/services/$slug")({
@@ -57,7 +56,7 @@ function ServiceDetail() {
         <div className="relative mx-auto max-w-7xl">
           <p className="eyebrow">Service</p>
           <h1 className="mt-6 font-display text-[12vw] leading-[0.88] uppercase sm:text-[7vw]">
-            <SplitText text={service.title} className="signal-text block" />
+            <span className="signal-text">{service.title}</span>
           </h1>
           <p data-reveal className="reveal mt-8 max-w-2xl text-lg text-muted-foreground">
             {service.intro}
