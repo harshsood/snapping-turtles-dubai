@@ -12,12 +12,7 @@ export const AGENCY = {
   email: "himanshu@snappingturtles.in",
   phone: "7045861090",
   studios: ["New York", "London", "Dubai", "Noida"],
-  socials: [
-    { label: "Instagram", href: "https://instagram.com" },
-    { label: "LinkedIn", href: "https://linkedin.com" },
-    { label: "YouTube", href: "https://youtube.com" },
-    { label: "Behance", href: "https://behance.net" },
-  ],
+  socials: [{ label: "Instagram", href: "https://www.instagram.com/snappingturtlesdubai/" }],
 };
 
 export const STATS = [
