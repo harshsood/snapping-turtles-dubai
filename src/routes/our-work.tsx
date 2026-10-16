@@ -1,13 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 
-import {
-  CTABand,
-  PageHero,
-  ProjectCard,
-  SectionHeading,
-  StatGrid,
-} from "@/components/site/ui";
+import { CTABand, PageHero, ProjectCard, SectionHeading, StatGrid } from "@/components/site/ui";
+import { PortfolioShowcase } from "@/components/site/PortfolioShowcase";
 import { CATEGORIES, PROJECTS } from "@/lib/content";
 
 export const Route = createFileRoute("/our-work")({
@@ -32,20 +27,19 @@ export const Route = createFileRoute("/our-work")({
       },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [
-      { rel: "canonical", href: "https://glb-fragrance-magic.lovable.app/our-work" },
-    ],
+    links: [{ rel: "canonical", href: "https://glb-fragrance-magic.lovable.app/our-work" }],
   }),
   component: OurWork,
 });
 
 function OurWork() {
   const [active, setActive] = useState("All");
-  const shown =
-    active === "All" ? PROJECTS : PROJECTS.filter((p) => p.category === active);
+  const shown = active === "All" ? PROJECTS : PROJECTS.filter((p) => p.category === active);
 
   return (
     <div>
+      <PortfolioShowcase />
+
       <PageHero
         eyebrow="Case studies"
         title="The work, and"
