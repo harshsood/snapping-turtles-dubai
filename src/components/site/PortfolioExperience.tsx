@@ -31,7 +31,7 @@ import sandalLegacy from "@/assets/Sandal-Legacy-in-Black-Silk.png";
 import videoOne from "@/assets/video1.mp4";
 import videoTwo from "@/assets/video2.mp4";
 
-import { MagneticLink, PageHero, SectionHeading } from "@/components/site/ui";
+import { MagneticLink, SectionHeading } from "@/components/site/ui";
 
 const FEATURE_STORIES = [
   {
@@ -599,22 +599,50 @@ export function PortfolioExperience() {
 
   return (
     <>
-      <PageHero
-        eyebrow="Snapping Turtles / Creative production 2026"
-        title="Our"
-        accent="Portfolio."
-        copy="AI product films, perfume branding, e-commerce visuals and launch experiences — made to bring a fragrance's character to life."
-        className="pb-12"
-      />
+      <section className="relative isolate flex min-h-[72svh] items-end overflow-hidden px-4 pb-16 pt-40 sm:px-8 sm:pb-24 lg:min-h-[78svh]">
+        <video
+          src={honeybeesVideo}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 size-full object-cover"
+        />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background via-background/65 to-background/30" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-background/75 via-background/35 to-transparent" />
+        <div className="relative mx-auto w-full max-w-7xl">
+          <p className="eyebrow" data-reveal>
+            Snapping Turtles / Creative production 2026
+          </p>
+          <h1 className="mt-6 max-w-4xl font-display text-5xl leading-[0.95] sm:text-7xl lg:text-8xl">
+            <span className="reveal block" data-reveal>
+              Our
+            </span>
+            <span
+              className="reveal signal-text block"
+              data-reveal
+              style={{ transitionDelay: "0.12s" }}
+            >
+              Portfolio.
+            </span>
+          </h1>
+          <div className="hairline mt-10 w-full max-w-md" />
+          <p
+            data-reveal
+            className="reveal mt-6 max-w-xl text-muted-foreground"
+            style={{ transitionDelay: "0.18s" }}
+          >
+            AI product films, perfume branding, e-commerce visuals and launch experiences — made to
+            bring a fragrance&apos;s character to life.
+          </p>
+        </div>
+      </section>
 
       <section id="portfolio-categories" className="scroll-mt-24 px-4 py-12 sm:px-8 sm:py-20">
         <div className="mx-auto max-w-7xl">
-          <SectionHeading
-            eyebrow="Our portfolio / The work behind the wow"
-            title="What we"
-            accent="create."
-            copy="A showcase of creativity, innovation and brand experiences — spanning AI-generated commercials, fragrance marketing concepts, identities, digital storefronts and experiential design."
-          />
+          
           <div
             role="tablist"
             aria-label="Portfolio categories"
