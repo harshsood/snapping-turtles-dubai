@@ -599,7 +599,7 @@ export function PortfolioExperience() {
 
   return (
     <>
-      <section className="relative isolate flex min-h-[72svh] items-end overflow-hidden px-4 pb-16 pt-40 sm:px-8 sm:pb-24 lg:min-h-[78svh]">
+      <section className="relative isolate flex min-h-[52svh] items-end overflow-hidden px-4 pb-8 pt-32 sm:px-8 sm:pb-10 lg:min-h-[58svh]">
         <video
           src={honeybeesVideo}
           autoPlay
@@ -613,25 +613,22 @@ export function PortfolioExperience() {
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background via-background/65 to-background/30" />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-background/75 via-background/35 to-transparent" />
         <div className="relative mx-auto w-full max-w-7xl">
-          <p className="eyebrow" data-reveal>
-            Snapping Turtles / Creative production 2026
-          </p>
-          <h1 className="mt-6 max-w-4xl font-display text-5xl leading-[0.95] sm:text-7xl lg:text-8xl">
-            <span className="reveal block" data-reveal>
-              Our
+          <h1 className="whitespace-nowrap font-display text-[clamp(2.5rem,9vw,7rem)] leading-[0.95]">
+            <span className="reveal inline" data-reveal>
+              Our{" "}
             </span>
             <span
-              className="reveal signal-text block"
+              className="reveal signal-text inline"
               data-reveal
               style={{ transitionDelay: "0.12s" }}
             >
               Portfolio.
             </span>
           </h1>
-          <div className="hairline mt-10 w-full max-w-md" />
+          <div className="hairline mt-7 w-full max-w-md" />
           <p
             data-reveal
-            className="reveal mt-6 max-w-xl text-muted-foreground"
+            className="reveal mt-5 max-w-xl text-muted-foreground lg:max-w-none lg:whitespace-nowrap"
             style={{ transitionDelay: "0.18s" }}
           >
             AI product films, perfume branding, e-commerce visuals and launch experiences — made to
@@ -640,13 +637,15 @@ export function PortfolioExperience() {
         </div>
       </section>
 
-      <section id="portfolio-categories" className="scroll-mt-24 px-4 py-12 sm:px-8 sm:py-20">
+      <section
+        id="portfolio-categories"
+        className="scroll-mt-24 px-4 pb-12 pt-4 sm:px-8 sm:pb-16 sm:pt-6"
+      >
         <div className="mx-auto max-w-7xl">
-          
           <div
             role="tablist"
             aria-label="Portfolio categories"
-            className="no-scrollbar mt-10 grid w-full grid-flow-col auto-cols-[minmax(10.5rem,1fr)] snap-x gap-2 overflow-x-auto pb-3 lg:grid-flow-row lg:grid-cols-6 lg:auto-cols-auto lg:overflow-visible lg:pb-0"
+            className="no-scrollbar mt-0 grid w-full grid-flow-col auto-cols-[minmax(10.5rem,1fr)] snap-x gap-2 overflow-x-auto pb-3 lg:grid-flow-row lg:grid-cols-6 lg:auto-cols-auto lg:overflow-visible lg:pb-0"
           >
             {PORTFOLIO_CATEGORIES.map((category, index) => {
               const isActive = activeCategoryIndex === index;
