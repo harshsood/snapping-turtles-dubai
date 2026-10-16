@@ -23,6 +23,7 @@ import enchantedMiel from "@/assets/Enchanted-Miel-Obscura-Perfume-Terrarium.png
 import foogAugustFinal from "@/assets/FoogAugustFinal.mp4";
 import honeybeesVideo from "@/assets/Honeybees_landing_on_perfume_bottle_20261015150624.mp4";
 import intenseAmber from "@/assets/Intense Amber.mp4";
+import mielGoldenHive from "@/assets/Miel-Obscura-Golden-Hive-in-the-Rain.png";
 import mashaaer from "@/assets/Mashaaer.mp4";
 import musamam from "@/assets/MUSAMAM-Black-Intense-at-Sunset.png";
 import orienticaMonarch from "@/assets/Orientica-Royal-Collection-Monarch.jpeg";
@@ -85,8 +86,8 @@ const FEATURE_STORIES = [
     description:
       "An atmospheric product world for Enchanted Miel Obscura. Botanical surroundings, warm honeyed colour and intricate details make the fragrance feel immersive and distinctive.",
     notes: ["Botanical world", "Warm amber tones", "Immersive storytelling"],
-    image: enchantedMiel,
-    imageAlt: "Enchanted Miel Obscura perfume in a botanical terrarium",
+    image: mielGoldenHive,
+    imageAlt: "Miel Obscura Golden Hive in the Rain",
     tone: "from-emerald-500/20 via-amber-950/25 to-background",
     reverse: true,
   },
@@ -580,13 +581,6 @@ function FeatureStory({ story }: { story: (typeof FEATURE_STORIES)[number] }) {
               ))}
             </div>
           </div>
-          <a
-            href="#portfolio-categories"
-            className="link-underline mt-8 inline-flex items-center gap-3 font-mono text-[0.62rem] tracking-[0.2em] uppercase text-primary"
-          >
-            Explore our work
-            <ArrowUpRight aria-hidden="true" className="size-4" />
-          </a>
         </div>
       </div>
     </section>
