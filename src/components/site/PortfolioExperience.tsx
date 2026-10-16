@@ -1,12 +1,20 @@
 import { ArrowDownRight, ArrowUpRight, ImagePlus } from "lucide-react";
 import { useState, type KeyboardEvent } from "react";
 
+import eventArtboard1 from "@/assets/Artboard-1.png";
+import eventArtboard2 from "@/assets/Artboard-2.png";
+import eventArtboard3 from "@/assets/Artboard-3.png";
+import eventArtboard4 from "@/assets/Artboard-4.png";
+import eventArtboard5 from "@/assets/Artboard-5.png";
+import eventArtboard6 from "@/assets/Artboard-6.png";
 import artboardOne from "@/assets/Artboard-One.png";
 import artboardTwo from "@/assets/Artboard-two.png";
 import artboardThree from "@/assets/Artboard-three.png";
 import artboardFour from "@/assets/Artboard-four.png";
 import artboardFive from "@/assets/Artboard-five.png";
 import artboardSix from "@/assets/Artboard-six.png";
+import boothDesign01 from "@/assets/BOOTHDESIGN01.jpg";
+import boothDesign02 from "@/assets/BOOTH-DESIGNING-02.jpg";
 import blackSnake from "@/assets/Black-Snake -Perfume-in-Golden-Sand.png";
 import blackSnake01 from "@/assets/Black-Snake -Perfume-in-Golden-Sand-01.png";
 import blackSnake02Video from "@/assets/Black-Snake -Perfume-in-Golden-Sand-02.mp4";
@@ -16,6 +24,7 @@ import honeybeesVideo from "@/assets/Honeybees_landing_on_perfume_bottle_2026101
 import intenseAmber from "@/assets/Intense Amber.mp4";
 import mashaaer from "@/assets/Mashaaer.mp4";
 import musamam from "@/assets/MUSAMAM-Black-Intense-at-Sunset.png";
+import opacityAnimation from "@/assets/Opacity-Animation-001.mp4";
 import videoOne from "@/assets/video1.mp4";
 import videoTwo from "@/assets/video2.mp4";
 
@@ -336,10 +345,60 @@ const PORTFOLIO_CATEGORIES: PortfolioCategory[] = [
     description: "Booth concepts, 3D visualizations and premium brand displays.",
     tone: "from-violet-500/20 via-indigo-950/20 to-background",
     media: [
-      { kind: "image", aspect: "aspect-[4/5]", alt: "Event booth design concept" },
-      { kind: "video", aspect: "aspect-[16/9]", alt: "Event experience film" },
-      { kind: "image", aspect: "aspect-[16/10]", alt: "Exhibition design visualization" },
-      { kind: "video", aspect: "aspect-[9/16]", alt: "Event showcase video" },
+      {
+        kind: "image",
+        aspect: "aspect-[4/5]",
+        alt: "Event design Artboard 1",
+        src: eventArtboard1,
+      },
+      {
+        kind: "image",
+        aspect: "aspect-[4/5]",
+        alt: "Event design Artboard 2",
+        src: eventArtboard2,
+      },
+      {
+        kind: "image",
+        aspect: "aspect-[4/5]",
+        alt: "Event design Artboard 3",
+        src: eventArtboard3,
+      },
+      {
+        kind: "image",
+        aspect: "aspect-[4/5]",
+        alt: "Event design Artboard 4",
+        src: eventArtboard4,
+      },
+      {
+        kind: "image",
+        aspect: "aspect-[4/5]",
+        alt: "Event design Artboard 5",
+        src: eventArtboard5,
+      },
+      {
+        kind: "image",
+        aspect: "aspect-[4/5]",
+        alt: "Event design Artboard 6",
+        src: eventArtboard6,
+      },
+      {
+        kind: "image",
+        aspect: "aspect-[4/5]",
+        alt: "Booth design concept 1",
+        src: boothDesign01,
+      },
+      {
+        kind: "image",
+        aspect: "aspect-[4/5]",
+        alt: "Booth design concept 2",
+        src: boothDesign02,
+      },
+      {
+        kind: "video",
+        aspect: "aspect-video",
+        alt: "Event design opacity animation",
+        src: opacityAnimation,
+      },
     ],
   },
 ];
