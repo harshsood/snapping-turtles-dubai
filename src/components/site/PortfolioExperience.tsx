@@ -1,4 +1,4 @@
-import { ArrowDownRight, ArrowUpRight, ImagePlus } from "lucide-react";
+import { ArrowUpRight, ImagePlus } from "lucide-react";
 import { useState, type KeyboardEvent } from "react";
 
 import eventArtboard1 from "@/assets/Artboard-1.png";
@@ -18,106 +18,76 @@ import boothDesign02 from "@/assets/BOOTH-DESIGNING-02.jpg";
 import blackSnake from "@/assets/Black-Snake -Perfume-in-Golden-Sand.png";
 import blackSnake01 from "@/assets/Black-Snake -Perfume-in-Golden-Sand-01.png";
 import blackSnake02Video from "@/assets/Black-Snake -Perfume-in-Golden-Sand-02.mp4";
+import blankSignature from "@/assets/Blank-Signature-by-Oud-Al-Salam.jpeg";
 import enchantedMiel from "@/assets/Enchanted-Miel-Obscura-Perfume-Terrarium.png";
 import foogAugustFinal from "@/assets/FoogAugustFinal.mp4";
 import honeybeesVideo from "@/assets/Honeybees_landing_on_perfume_bottle_20261015150624.mp4";
 import intenseAmber from "@/assets/Intense Amber.mp4";
 import mashaaer from "@/assets/Mashaaer.mp4";
 import musamam from "@/assets/MUSAMAM-Black-Intense-at-Sunset.png";
+import orienticaMonarch from "@/assets/Orientica-Royal-Collection-Monarch.jpeg";
 import opacityAnimation from "@/assets/Opacity-Animation-001.mp4";
+import sandalLegacy from "@/assets/Sandal-Legacy-in-Black-Silk.png";
 import videoOne from "@/assets/video1.mp4";
 import videoTwo from "@/assets/video2.mp4";
 
 import { MagneticLink, PageHero, SectionHeading } from "@/components/site/ui";
 
-const FEATURED_PRODUCTS = [
-  {
-    id: "rasasi",
-    name: "Rasasi Hawas",
-    detail: "01 / fresh confidence",
-    tone: "from-sky-500/20 via-cyan-950/20 to-background",
-  },
-  {
-    id: "mad",
-    name: "MAD Fruity Scent",
-    detail: "02 / playful femininity",
-    tone: "from-fuchsia-500/20 via-violet-950/20 to-background",
-  },
-  {
-    id: "fogg",
-    name: "Fogg Intense Oud",
-    detail: "03 / molten gold",
-    tone: "from-amber-500/20 via-orange-950/20 to-background",
-  },
-  {
-    id: "oud",
-    name: "Oud Al Salam",
-    detail: "04 / dark elegance",
-    tone: "from-rose-500/20 via-red-950/20 to-background",
-  },
-  {
-    id: "voux-zingy",
-    name: "Paris Corner · Voux Zingy",
-    detail: "05 / bright character",
-    tone: "from-lime-500/20 via-emerald-950/20 to-background",
-  },
-];
-
 const FEATURE_STORIES = [
   {
-    id: "rasasi",
+    id: "blank-signature",
     number: "01",
-    eyebrow: "Rasasi — digital fragrance experience",
-    title: "Hawas",
-    accent: "for him.",
+    eyebrow: "Oud Al Salam — signature fragrance story",
+    title: "Blank",
+    accent: "Signature.",
     description:
-      "Refreshing energy meets modern confidence. An editorial perfume experience built around vibrant notes, intricate detail and an immersive product close-up.",
-    notes: ["Apple", "Lemon", "Bergamot", "Cinnamon"],
-    imageLabel: "Rasasi Hawas lavender glass bottle",
-    imageHint: "Product film or bottle close-up",
-    tone: "from-sky-500/20 via-cyan-950/20 to-background",
+      "A refined visual story for Blank Signature by Oud Al Salam. Deep tones, considered composition and close-up detail put the bottle and its distinctive identity at the centre.",
+    notes: ["Oud Al Salam", "Signature identity", "Premium fragrance"],
+    image: blankSignature,
+    imageAlt: "Blank Signature by Oud Al Salam fragrance",
+    tone: "from-stone-500/20 via-neutral-950/30 to-background",
     reverse: false,
   },
   {
-    id: "mad",
+    id: "orientica-monarch",
     number: "02",
-    eyebrow: "MAD Parfumeur — e-commerce creative",
-    title: "Fruity",
-    accent: "scent.",
+    eyebrow: "Orientica Royal Collection — product campaign",
+    title: "Royal",
+    accent: "Monarch.",
     description:
-      "A soft lavender world of playful femininity. Minimalist product presentation, oversized editorial typography and an interactive bottle zoom inspired by the signature handwritten fragrance label.",
-    notes: ["B.103", "Perfume mist", "Playful", "Lavender"],
-    imageLabel: "MAD Fruity Scent B.103 perfume mist bottle",
-    imageHint: "Product image or e-commerce creative",
-    tone: "from-fuchsia-500/20 via-violet-950/20 to-background",
+      "A regal product presentation for Orientica Royal Collection Monarch, pairing confident styling and polished detail to create a distinctive luxury fragrance campaign.",
+    notes: ["Orientica", "Royal Collection", "Monarch"],
+    image: orienticaMonarch,
+    imageAlt: "Orientica Royal Collection Monarch fragrance",
+    tone: "from-amber-500/20 via-yellow-950/25 to-background",
     reverse: true,
   },
   {
-    id: "fogg",
+    id: "sandal-legacy",
     number: "03",
-    eyebrow: "Fogg — product storytelling",
-    title: "Fogg",
-    accent: "Intense Oud.",
+    eyebrow: "Mad Sadal Legacy — fragrance campaign",
+    title: "Mad Sadal",
+    accent: "Legacy.",
     description:
-      "A bold oud profile, translated into a visual language of molten gold, shadow and fragrant ingredients. Hover to reveal the product’s details.",
-    notes: ["Citrus", "Rose", "Nutmeg", "Saffron"],
-    imageLabel: "Fogg Intense Oud gold bottle",
-    imageHint: "Cinematic film or product still",
-    tone: "from-amber-500/25 via-orange-950/25 to-background",
+      "A poised campaign direction for Sandal Legacy in Black Silk. Dark, tactile styling and focused product framing give this fragrance a memorable visual presence.",
+    notes: ["Black Silk", "Sandal Legacy", "Product storytelling"],
+    image: sandalLegacy,
+    imageAlt: "Sandal Legacy in Black Silk fragrance",
+    tone: "from-neutral-500/20 via-zinc-950/30 to-background",
     reverse: false,
   },
   {
-    id: "oud",
+    id: "enchanted-miel",
     number: "04",
-    eyebrow: "Oud Al Salam — premium visual identity",
-    title: "Dark",
-    accent: "elegance.",
+    eyebrow: "Paris Corner — product world",
+    title: "Paris",
+    accent: "Corner.",
     description:
-      "Luxury is in the details. Dramatic lighting, intricate bottle craft and considered type create an elevated sensorial experience.",
-    notes: ["Extrait de parfum", "Premium materials", "Fine typography"],
-    imageLabel: "Oud Al Salam ornate fragrance bottle",
-    imageHint: "Brand film or signature product image",
-    tone: "from-rose-500/20 via-red-950/25 to-background",
+      "An atmospheric product world for Enchanted Miel Obscura. Botanical surroundings, warm honeyed colour and intricate details make the fragrance feel immersive and distinctive.",
+    notes: ["Botanical world", "Warm amber tones", "Immersive storytelling"],
+    image: enchantedMiel,
+    imageAlt: "Enchanted Miel Obscura perfume in a botanical terrarium",
+    tone: "from-emerald-500/20 via-amber-950/25 to-background",
     reverse: true,
   },
 ];
@@ -575,12 +545,16 @@ function FeatureStory({ story }: { story: (typeof FEATURE_STORIES)[number] }) {
         }`}
       >
         <div data-reveal className="reveal">
-          <MediaPlaceholder
-            label={story.imageLabel}
-            hint={story.imageHint}
-            tone={story.tone}
-            className="aspect-[4/5] min-h-0"
-          />
+          <div
+            className={`relative isolate flex aspect-[4/5] items-center justify-center overflow-hidden rounded-3xl border border-border bg-gradient-to-br p-3 sm:p-5 ${story.tone}`}
+          >
+            <img
+              src={story.image}
+              alt={story.imageAlt}
+              className="size-full object-contain"
+              loading="lazy"
+            />
+          </div>
         </div>
         <div data-reveal className="reveal py-4 lg:py-10">
           <p className="eyebrow">
@@ -594,7 +568,7 @@ function FeatureStory({ story }: { story: (typeof FEATURE_STORIES)[number] }) {
             {story.description}
           </p>
           <div className="mt-9 border-t border-border pt-6">
-            <p className="eyebrow">Fragrance details</p>
+            <p className="eyebrow">Creative direction</p>
             <div className="mt-4 flex flex-wrap gap-2">
               {story.notes.map((note) => (
                 <span
@@ -607,10 +581,10 @@ function FeatureStory({ story }: { story: (typeof FEATURE_STORIES)[number] }) {
             </div>
           </div>
           <a
-            href="#portfolio-gallery"
+            href="#portfolio-categories"
             className="link-underline mt-8 inline-flex items-center gap-3 font-mono text-[0.62rem] tracking-[0.2em] uppercase text-primary"
           >
-            Explore the collection
+            Explore our work
             <ArrowUpRight aria-hidden="true" className="size-4" />
           </a>
         </div>
@@ -627,8 +601,8 @@ export function PortfolioExperience() {
     <>
       <PageHero
         eyebrow="Snapping Turtles / Creative production 2026"
-        title="Fragrance,"
-        accent="reimagined."
+        title="Our"
+        accent="Portfolio."
         copy="AI product films, perfume branding, e-commerce visuals and launch experiences — made to bring a fragrance's character to life."
         className="pb-12"
       />
@@ -721,87 +695,9 @@ export function PortfolioExperience() {
         </div>
       </section>
 
-      <section className="px-4 pb-16 sm:px-8 sm:pb-24">
-        <div className="mx-auto max-w-7xl">
-          <div className="grid grid-cols-2 gap-3 sm:gap-5 md:grid-cols-3 lg:grid-cols-5">
-            {FEATURED_PRODUCTS.map((product, index) => (
-              <a
-                key={product.id}
-                href={`#${product.id}`}
-                className={`group block ${index === 4 ? "col-span-2 md:col-span-1" : ""}`}
-              >
-                <MediaPlaceholder
-                  label={product.name}
-                  hint={product.detail}
-                  tone={product.tone}
-                  className="aspect-[4/5] min-h-0 transition-transform duration-500 group-hover:-translate-y-1"
-                />
-                <span className="mt-3 block font-mono text-[0.55rem] tracking-[0.2em] uppercase text-muted-foreground">
-                  {String(index + 1).padStart(2, "0")} / Featured fragrance
-                </span>
-              </a>
-            ))}
-          </div>
-          <div className="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-border pt-5">
-            <span className="eyebrow inline-flex items-center gap-2">
-              <ArrowDownRight aria-hidden="true" className="size-4 text-primary" />
-              Scroll to explore
-            </span>
-            <a
-              href="#portfolio-gallery"
-              className="inline-flex items-center gap-3 font-mono text-[0.6rem] tracking-[0.2em] uppercase text-primary"
-            >
-              Explore selected work
-              <ArrowUpRight aria-hidden="true" className="size-4" />
-            </a>
-          </div>
-        </div>
-      </section>
-
       {FEATURE_STORIES.map((story) => (
         <FeatureStory key={story.id} story={story} />
       ))}
-
-      <section
-        id="portfolio-gallery"
-        className="scroll-mt-24 overflow-hidden px-4 py-20 sm:px-8 sm:py-28"
-      >
-        <div className="mx-auto max-w-7xl">
-          <SectionHeading
-            eyebrow="05 / Selected works — interactive gallery"
-            title="The scent"
-            accent="lineup."
-            copy="Five fragrances. Five distinct brand personalities. One creative perspective. Add your product imagery and films to bring each story to life."
-          />
-        </div>
-        <div className="no-scrollbar mx-auto mt-12 flex max-w-7xl snap-x snap-mandatory gap-4 overflow-x-auto pb-4 sm:gap-6">
-          {FEATURED_PRODUCTS.map((product, index) => (
-            <a
-              key={product.id}
-              id={product.id === "voux-zingy" ? product.id : undefined}
-              href={`#${product.id}`}
-              className="group min-w-[75%] snap-start sm:min-w-[44%] lg:min-w-[30%]"
-            >
-              <MediaPlaceholder
-                label={product.name}
-                hint="Product image or film to add"
-                tone={product.tone}
-                className="aspect-[4/5] min-h-0 transition-transform duration-500 group-hover:-translate-y-1"
-              />
-              <div className="mt-4 flex items-center justify-between gap-4">
-                <span className="font-mono text-[0.6rem] tracking-[0.2em] uppercase text-muted-foreground">
-                  {String(index + 1).padStart(2, "0")} / {product.detail}
-                </span>
-                <ArrowUpRight
-                  aria-hidden="true"
-                  className="size-4 shrink-0 text-primary transition-transform group-hover:-translate-y-1 group-hover:translate-x-1"
-                />
-              </div>
-            </a>
-          ))}
-        </div>
-        <p className="eyebrow mx-auto mt-7 max-w-7xl">Scroll sideways to explore the collection</p>
-      </section>
 
       <section
         id="expertise"
