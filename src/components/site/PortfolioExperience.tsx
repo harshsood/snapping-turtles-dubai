@@ -24,15 +24,15 @@ import booth2 from "@/assets/booth-2.jpeg";
 import booth3 from "@/assets/booth-3.jpeg";
 import boothDesign01 from "@/assets/BOOTHDESIGN01.jpg";
 import boothDesign02 from "@/assets/BOOTH-DESIGNING-02.jpg";
-import blankSignature from "@/assets/Blank-Signature-by-Oud-Al-Salam.jpeg";
 import foogAugustFinal from "@/assets/FoogAugustFinal.mp4";
+import foggIntensio from "@/assets/Fogg.jpeg";
+import foggIntensioPurple from "@/assets/Fogg-2.jpeg";
+import hawasBlack from "@/assets/hawas-perfume.jpeg";
 import honeybeesVideo from "@/assets/Honeybees_landing_on_perfume_bottle_20261015150624.mp4";
 import intenseAmber from "@/assets/Intense Amber.mp4";
-import mielGoldenHive from "@/assets/Miel-Obscura-Golden-Hive-in-the-Rain.png";
 import mashaaer from "@/assets/Mashaaer.mp4";
-import orienticaMonarch from "@/assets/Orientica-Royal-Collection-Monarch.jpeg";
 import opacityAnimation from "@/assets/Opacity-Animation-001.mp4";
-import sandalLegacy from "@/assets/Sandal-Legacy-in-Black-Silk.png";
+import rasasiJasmineWisp from "@/assets/Rasasi.jpeg";
 import videoOne from "@/assets/video1.mp4";
 import videoTwo from "@/assets/video2.mp4";
 
@@ -40,59 +40,59 @@ import { MagneticLink, SectionHeading } from "@/components/site/ui";
 
 const FEATURE_STORIES = [
   {
-    id: "blank-signature",
+    id: "hawas-black",
     number: "01",
-    eyebrow: "Oud Al Salam — signature fragrance story",
-    title: "Blank",
-    accent: "Signature.",
+    eyebrow: "Hawas for Him — Black product campaign",
+    title: "Hawas",
+    accent: "Black.",
     description:
-      "A refined visual story for Blank Signature by Oud Al Salam. Deep tones, considered composition and close-up detail put the bottle and its distinctive identity at the centre.",
-    notes: ["Oud Al Salam", "Signature identity", "Premium fragrance"],
-    image: blankSignature,
-    imageAlt: "Blank Signature by Oud Al Salam fragrance",
-    tone: "from-stone-500/20 via-neutral-950/30 to-background",
+      "A dramatic product story for Hawas for Him Black. Warm reflections, a turntable-inspired setting and dark glass bring the bottle's black-and-gold design into focus.",
+    notes: ["Hawas for Him", "Black", "Product storytelling"],
+    image: hawasBlack,
+    imageAlt: "Hawas for Him Black fragrance bottle",
+    tone: "from-amber-500/20 via-neutral-950/30 to-background",
     reverse: false,
   },
   {
-    id: "orientica-monarch",
+    id: "la-yuqawam-jasmine-wisp",
     number: "02",
-    eyebrow: "Orientica Royal Collection — product campaign",
-    title: "Royal",
-    accent: "Monarch.",
+    eyebrow: "Rasasi — La Yuqawam Jasmine Wisp campaign",
+    title: "La Yuqawam",
+    accent: "Jasmine Wisp.",
     description:
-      "A regal product presentation for Orientica Royal Collection Monarch, pairing confident styling and polished detail to create a distinctive luxury fragrance campaign.",
-    notes: ["Orientica", "Royal Collection", "Monarch"],
-    image: orienticaMonarch,
-    imageAlt: "Orientica Royal Collection Monarch fragrance",
-    tone: "from-amber-500/20 via-yellow-950/25 to-background",
+      "A polished product portrait for Rasasi La Yuqawam Jasmine Wisp. Rich crimson lighting and a delicate botanical detail frame the fragrance bottle with a distinctive, elegant presence.",
+    notes: ["Rasasi", "La Yuqawam", "Jasmine Wisp"],
+    image: rasasiJasmineWisp,
+    imageAlt: "Rasasi La Yuqawam Jasmine Wisp fragrance bottle",
+    tone: "from-rose-500/20 via-red-950/25 to-background",
     reverse: true,
   },
   {
-    id: "sandal-legacy",
+    id: "fogg-intensio",
     number: "03",
-    eyebrow: "Mad Sadal Legacy — fragrance campaign",
-    title: "Mad Sadal",
-    accent: "Legacy.",
+    eyebrow: "Fogg Scent — Intensio product campaign",
+    title: "Fogg Scent",
+    accent: "Intensio.",
     description:
-      "A poised campaign direction for Sandal Legacy in Black Silk. Dark, tactile styling and focused product framing give this fragrance a memorable visual presence.",
-    notes: ["Black Silk", "Sandal Legacy", "Product storytelling"],
-    image: sandalLegacy,
-    imageAlt: "Sandal Legacy in Black Silk fragrance",
-    tone: "from-neutral-500/20 via-zinc-950/30 to-background",
+      "A bold product presentation for Fogg Scent Intensio. A deep green backdrop, sculpted light and gold accents highlight the bottle's striking design.",
+    notes: ["Fogg Scent", "Intensio", "Product campaign"],
+    image: foggIntensio,
+    imageAlt: "Fogg Scent Intensio fragrance bottle",
+    tone: "from-emerald-500/20 via-green-950/30 to-background",
     reverse: false,
   },
   {
-    id: "enchanted-miel",
+    id: "fogg-intensio-purple",
     number: "04",
-    eyebrow: "Paris Corner — product world",
-    title: "Paris",
-    accent: "Corner.",
+    eyebrow: "Fogg Scent — Intensio product campaign",
+    title: "Fogg Scent",
+    accent: "Intensio.",
     description:
-      "An atmospheric product world for Enchanted Miel Obscura. Botanical surroundings, warm honeyed colour and intricate details make the fragrance feel immersive and distinctive.",
-    notes: ["Botanical world", "Warm amber tones", "Immersive storytelling"],
-    image: mielGoldenHive,
-    imageAlt: "Miel Obscura Golden Hive in the Rain",
-    tone: "from-emerald-500/20 via-amber-950/25 to-background",
+      "A cinematic product story for Fogg Scent Intensio. Violet lighting, rich fabric and sculpted wood create a dramatic frame for the fragrance's bold purple bottle.",
+    notes: ["Fogg Scent", "Intensio", "Product storytelling"],
+    image: foggIntensioPurple,
+    imageAlt: "Fogg Scent Intensio fragrance bottle in a violet campaign setting",
+    tone: "from-purple-500/20 via-violet-950/30 to-background",
     reverse: true,
   },
 ];
@@ -559,9 +559,18 @@ function handleCategoryTabKeyDown(
   document.getElementById(`portfolio-category-tab-${nextIndex}`)?.focus();
 }
 
-function FeatureStory({ story }: { story: (typeof FEATURE_STORIES)[number] }) {
+function FeatureStory({
+  story,
+  isLast,
+}: {
+  story: (typeof FEATURE_STORIES)[number];
+  isLast: boolean;
+}) {
   return (
-    <section id={story.id} className="scroll-mt-24 px-4 sm:px-8">
+    <section
+      id={story.id}
+      className={`scroll-mt-24 px-4 sm:px-8 ${isLast ? "pb-20 sm:pb-28" : ""}`}
+    >
       <div
         className={`mx-auto grid max-w-7xl items-center gap-8 lg:grid-cols-2 lg:gap-16 ${
           story.reverse ? "lg:[&>*:first-child]:order-2" : ""
@@ -738,8 +747,8 @@ export function PortfolioExperience() {
         </div>
       </section>
 
-      {FEATURE_STORIES.map((story) => (
-        <FeatureStory key={story.id} story={story} />
+      {FEATURE_STORIES.map((story, index) => (
+        <FeatureStory key={story.id} story={story} isLast={index === FEATURE_STORIES.length - 1} />
       ))}
 
       <section
