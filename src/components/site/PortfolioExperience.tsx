@@ -472,6 +472,7 @@ function CategoryMedia({
   tone,
   aspect,
   preserveAspect,
+  autoPlay,
 }: {
   kind: "image" | "video";
   src: string | undefined;
@@ -482,6 +483,7 @@ function CategoryMedia({
   tone: string;
   aspect?: string;
   preserveAspect?: boolean;
+  autoPlay?: boolean;
 }) {
   return (
     <div
@@ -504,6 +506,7 @@ function CategoryMedia({
             playsInline
             muted
             loop
+            autoPlay={autoPlay}
           />
         )
       ) : (
@@ -739,6 +742,7 @@ export function PortfolioExperience() {
                     tone={activeCategory.tone}
                     aspect={media.aspect}
                     preserveAspect={media.preserveAspect}
+                    autoPlay={activeCategoryIndex === 0}
                   />
                 </div>
               ))}
