@@ -13,6 +13,9 @@ import artboardThree from "@/assets/Artboard-three.png";
 import artboardFour from "@/assets/Artboard-four.png";
 import artboardFive from "@/assets/Artboard-five.png";
 import artboardSix from "@/assets/Artboard-six.png";
+import booth1 from "@/assets/booth-1.jpeg";
+import booth2 from "@/assets/booth-2.jpeg";
+import booth3 from "@/assets/booth-3.jpeg";
 import boothDesign01 from "@/assets/BOOTHDESIGN01.jpg";
 import boothDesign02 from "@/assets/BOOTH-DESIGNING-02.jpg";
 import blackSnake from "@/assets/Black-Snake -Perfume-in-Golden-Sand.png";
@@ -370,6 +373,24 @@ const PORTFOLIO_CATEGORIES: PortfolioCategory[] = [
         alt: "Event design opacity animation",
         src: opacityAnimation,
       },
+      {
+        kind: "image",
+        aspect: "aspect-[4/5]",
+        alt: "Exhibition booth design 1",
+        src: booth1,
+      },
+      {
+        kind: "image",
+        aspect: "aspect-[4/5]",
+        alt: "Exhibition booth design 2",
+        src: booth2,
+      },
+      {
+        kind: "image",
+        aspect: "aspect-[4/5]",
+        alt: "Exhibition booth design 3",
+        src: booth3,
+      },
     ],
   },
 ];
@@ -539,7 +560,7 @@ function handleCategoryTabKeyDown(
 
 function FeatureStory({ story }: { story: (typeof FEATURE_STORIES)[number] }) {
   return (
-    <section id={story.id} className="scroll-mt-24 px-4 py-12 sm:px-8 sm:py-20 lg:py-28">
+    <section id={story.id} className="scroll-mt-24 px-4 sm:px-8">
       <div
         className={`mx-auto grid max-w-7xl items-center gap-8 lg:grid-cols-2 lg:gap-16 ${
           story.reverse ? "lg:[&>*:first-child]:order-2" : ""
