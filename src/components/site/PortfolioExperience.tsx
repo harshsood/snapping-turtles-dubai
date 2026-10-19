@@ -1,6 +1,12 @@
 import { ArrowUpRight, ImagePlus } from "lucide-react";
 import { useState, type KeyboardEvent } from "react";
 
+import websiteArtboard11 from "@/Artboard-11.png";
+import websiteArtboard12 from "@/Artboard-12.png";
+import websiteArtboard13 from "@/Artboard-13.png";
+import websiteArtboard14 from "@/Artboard-14.png";
+import websiteArtboard16 from "@/Artboard-16.png";
+import websiteArtboard17 from "@/Artboard-17.png";
 import eventArtboard1 from "@/assets/Artboard-1.png";
 import eventArtboard2 from "@/assets/Artboard-2.png";
 import eventArtboard3 from "@/assets/Artboard-3.png";
@@ -18,17 +24,12 @@ import booth2 from "@/assets/booth-2.jpeg";
 import booth3 from "@/assets/booth-3.jpeg";
 import boothDesign01 from "@/assets/BOOTHDESIGN01.jpg";
 import boothDesign02 from "@/assets/BOOTH-DESIGNING-02.jpg";
-import blackSnake from "@/assets/Black-Snake -Perfume-in-Golden-Sand.png";
-import blackSnake01 from "@/assets/Black-Snake -Perfume-in-Golden-Sand-01.png";
-import blackSnake02Video from "@/assets/Black-Snake -Perfume-in-Golden-Sand-02.mp4";
 import blankSignature from "@/assets/Blank-Signature-by-Oud-Al-Salam.jpeg";
-import enchantedMiel from "@/assets/Enchanted-Miel-Obscura-Perfume-Terrarium.png";
 import foogAugustFinal from "@/assets/FoogAugustFinal.mp4";
 import honeybeesVideo from "@/assets/Honeybees_landing_on_perfume_bottle_20261015150624.mp4";
 import intenseAmber from "@/assets/Intense Amber.mp4";
 import mielGoldenHive from "@/assets/Miel-Obscura-Golden-Hive-in-the-Rain.png";
 import mashaaer from "@/assets/Mashaaer.mp4";
-import musamam from "@/assets/MUSAMAM-Black-Intense-at-Sunset.png";
 import orienticaMonarch from "@/assets/Orientica-Royal-Collection-Monarch.jpeg";
 import opacityAnimation from "@/assets/Opacity-Animation-001.mp4";
 import sandalLegacy from "@/assets/Sandal-Legacy-in-Black-Silk.png";
@@ -278,39 +279,39 @@ const PORTFOLIO_CATEGORIES: PortfolioCategory[] = [
     media: [
       {
         kind: "image",
-        aspect: "aspect-[4/5]",
-        alt: "Black Snake perfume in golden sand",
-        src: blackSnake,
-      },
-      {
-        kind: "image",
-        aspect: "aspect-[4/5]",
-        alt: "Black Snake perfume campaign image one",
-        src: blackSnake01,
-      },
-      {
-        kind: "image",
-        aspect: "aspect-[4/5]",
-        alt: "MUSAMAM Black Intense at sunset",
-        src: musamam,
-      },
-      {
-        kind: "image",
-        aspect: "aspect-[4/5]",
-        alt: "Enchanted Miel Obscura perfume terrarium",
-        src: enchantedMiel,
-      },
-      {
-        kind: "video",
         aspect: "aspect-video",
-        alt: "Black Snake perfume in golden sand video",
-        src: blackSnake02Video,
+        alt: "Website & e-commerce design, Artboard 11",
+        src: websiteArtboard11,
       },
       {
-        kind: "video",
+        kind: "image",
         aspect: "aspect-video",
-        alt: "Honeybees landing on a perfume bottle",
-        src: honeybeesVideo,
+        alt: "Website & e-commerce design, Artboard 12",
+        src: websiteArtboard12,
+      },
+      {
+        kind: "image",
+        aspect: "aspect-video",
+        alt: "Website & e-commerce design, Artboard 13",
+        src: websiteArtboard13,
+      },
+      {
+        kind: "image",
+        aspect: "aspect-video",
+        alt: "Website & e-commerce design, Artboard 14",
+        src: websiteArtboard14,
+      },
+      {
+        kind: "image",
+        aspect: "aspect-video",
+        alt: "Website & e-commerce design, Artboard 16",
+        src: websiteArtboard16,
+      },
+      {
+        kind: "image",
+        aspect: "aspect-video",
+        alt: "Website & e-commerce design, Artboard 17",
+        src: websiteArtboard17,
       },
     ],
   },
