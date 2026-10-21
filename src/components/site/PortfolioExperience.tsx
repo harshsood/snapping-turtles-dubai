@@ -28,7 +28,7 @@ import foogAugustFinal from "@/assets/FoogAugustFinal.mp4";
 import foggIntensio from "@/assets/Fogg.jpeg";
 import foggIntensioPurple from "@/assets/Fogg-2.jpeg";
 import hawasBlack from "@/assets/hawas-perfume.jpeg";
-import honeybeesVideo from "@/assets/Honeybees_landing_on_perfume_bottle_20261015150624.mp4";
+import portfolioHeroVideo from "@/assets/Perfume-Videos-1.mp4";
 import intenseAmber from "@/assets/Intense Amber.mp4";
 import mashaaer from "@/assets/Mashaaer.mp4";
 import opacityAnimation from "@/assets/Opacity-Animation-001.mp4";
@@ -181,7 +181,6 @@ const EXPERTISE = [
 type PortfolioMedia = {
   kind: "image" | "video";
   aspect?: string;
-  preserveAspect?: boolean;
   alt: string;
   src?: string;
   poster?: string;
@@ -203,35 +202,30 @@ const PORTFOLIO_CATEGORIES: PortfolioCategory[] = [
       {
         kind: "video",
         aspect: "aspect-video",
-        preserveAspect: true,
         alt: "Mashaaer product film",
         src: mashaaer,
       },
       {
         kind: "video",
         aspect: "aspect-video",
-        preserveAspect: true,
         alt: "Foog product film",
         src: foogAugustFinal,
       },
       {
         kind: "video",
         aspect: "aspect-video",
-        preserveAspect: true,
         alt: "Intense Amber product film",
         src: intenseAmber,
       },
       {
         kind: "video",
         aspect: "aspect-video",
-        preserveAspect: true,
         alt: "Product film video 1",
         src: videoOne,
       },
       {
         kind: "video",
         aspect: "aspect-video",
-        preserveAspect: true,
         alt: "Product film video 2",
         src: videoTwo,
       },
@@ -242,10 +236,26 @@ const PORTFOLIO_CATEGORIES: PortfolioCategory[] = [
     description: "Launch strategies, teaser concepts, creative campaigns and promotional assets.",
     tone: "from-fuchsia-500/20 via-violet-950/20 to-background",
     media: [
-      { kind: "video", aspect: "aspect-[9/16]", alt: "Brand launch teaser video" },
-      { kind: "image", aspect: "aspect-[4/3]", alt: "Brand launch campaign visual" },
-      { kind: "image", aspect: "aspect-[3/4]", alt: "Brand launch artwork" },
-      { kind: "video", aspect: "aspect-[16/9]", alt: "Brand launch film" },
+      {
+        kind: "video",
+        aspect: "aspect-[9/16]",
+        alt: "Brand launch teaser video",
+      },
+      {
+        kind: "image",
+        aspect: "aspect-[4/3]",
+        alt: "Brand launch campaign visual",
+      },
+      {
+        kind: "image",
+        aspect: "aspect-[3/4]",
+        alt: "Brand launch artwork",
+      },
+      {
+        kind: "video",
+        aspect: "aspect-[16/9]",
+        alt: "Brand launch film",
+      },
     ],
   },
   {
@@ -254,9 +264,21 @@ const PORTFOLIO_CATEGORIES: PortfolioCategory[] = [
     tone: "from-amber-500/20 via-orange-950/20 to-background",
     media: [
       { kind: "image", aspect: "aspect-square", alt: "International brand campaign image" },
-      { kind: "video", aspect: "aspect-[16/9]", alt: "International campaign film" },
-      { kind: "video", aspect: "aspect-[9/16]", alt: "Vertical international campaign video" },
-      { kind: "image", aspect: "aspect-[4/5]", alt: "International campaign creative" },
+      {
+        kind: "video",
+        aspect: "aspect-[16/9]",
+        alt: "International campaign film",
+      },
+      {
+        kind: "video",
+        aspect: "aspect-[9/16]",
+        alt: "Vertical international campaign video",
+      },
+      {
+        kind: "image",
+        aspect: "aspect-[4/5]",
+        alt: "International campaign creative",
+      },
     ],
   },
   {
@@ -264,8 +286,18 @@ const PORTFOLIO_CATEGORIES: PortfolioCategory[] = [
     description: "Logos, packaging, advertising creatives and visual systems.",
     tone: "from-rose-500/20 via-red-950/20 to-background",
     media: [
-      { kind: "image", aspect: "aspect-[3/4]", alt: "Artboard one", src: artboardOne },
-      { kind: "image", aspect: "aspect-[3/4]", alt: "Artboard two", src: artboardTwo },
+      {
+        kind: "image",
+        aspect: "aspect-[3/4]",
+        alt: "Artboard one",
+        src: artboardOne,
+      },
+      {
+        kind: "image",
+        aspect: "aspect-[3/4]",
+        alt: "Artboard two",
+        src: artboardTwo,
+      },
       { kind: "image", aspect: "aspect-[3/4]", alt: "Artboard three", src: artboardThree },
       { kind: "image", aspect: "aspect-[3/4]", alt: "Artboard four", src: artboardFour },
       { kind: "image", aspect: "aspect-[3/4]", alt: "Artboard five", src: artboardFive },
@@ -471,7 +503,6 @@ function CategoryMedia({
   hint,
   tone,
   aspect,
-  preserveAspect,
   autoPlay,
 }: {
   kind: "image" | "video";
@@ -482,26 +513,28 @@ function CategoryMedia({
   hint: string;
   tone: string;
   aspect?: string;
-  preserveAspect?: boolean;
   autoPlay?: boolean;
 }) {
   return (
     <div
-      className={`relative isolate overflow-hidden rounded-xl border border-border bg-gradient-to-br ${tone} ${
-        !src || preserveAspect ? aspect : ""
+      className={`relative isolate flex items-center justify-center overflow-hidden rounded-xl border border-border bg-gradient-to-br ${tone} ${
+        !src ? aspect : ""
       }`}
     >
       {src ? (
         kind === "image" ? (
-          <img src={src} alt={alt} className="block h-auto w-full object-contain" loading="lazy" />
+          <img
+            src={src}
+            alt={alt}
+            className="block h-auto max-h-[32rem] w-full object-contain"
+            loading="lazy"
+          />
         ) : (
           <video
             src={src}
             poster={poster}
             aria-label={alt}
-            className={
-              preserveAspect ? "size-full object-contain" : "block h-auto w-full object-contain"
-            }
+            className="block h-auto max-h-[32rem] w-full object-contain"
             controls
             playsInline
             muted
@@ -629,7 +662,7 @@ export function PortfolioExperience() {
     <>
       <section className="relative isolate flex min-h-[52svh] items-end overflow-hidden px-4 pb-8 pt-32 sm:px-8 sm:pb-10 lg:min-h-[58svh]">
         <video
-          src={honeybeesVideo}
+          src={portfolioHeroVideo}
           autoPlay
           muted
           loop
@@ -730,7 +763,7 @@ export function PortfolioExperience() {
               {activeCategory.media.map((media, index) => (
                 <div
                   key={`${activeCategory.title}-${media.kind}-${index}`}
-                  className="mb-4 break-inside-avoid"
+                  className="mb-4 inline-block w-full break-inside-avoid"
                 >
                   <CategoryMedia
                     kind={media.kind}
@@ -741,7 +774,6 @@ export function PortfolioExperience() {
                     hint={`${media.kind} asset · ${String(index + 1).padStart(2, "0")}`}
                     tone={activeCategory.tone}
                     aspect={media.aspect}
-                    preserveAspect={media.preserveAspect}
                     autoPlay={activeCategoryIndex === 0}
                   />
                 </div>
