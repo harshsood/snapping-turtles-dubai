@@ -732,7 +732,7 @@ export function PortfolioExperience() {
                   <span className="block font-mono text-[0.55rem] tracking-[0.18em] text-primary">
                     {String(index + 1).padStart(2, "0")} / 06
                   </span>
-                  <span className="mt-1 block whitespace-nowrap font-display text-sm sm:text-base lg:whitespace-normal">
+                  <span className="mt-1 block whitespace-normal break-words font-display text-sm leading-tight sm:text-base">
                     {category.title}
                   </span>
                 </button>
