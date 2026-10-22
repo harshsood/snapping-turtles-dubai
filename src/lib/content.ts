@@ -1,6 +1,6 @@
 /** All site copy lives here so pages stay presentational. */
 import foggImg from "@/assets/fogg-logo.jpeg";
-import alBasheerImg from "@/assets/al-basheer-logo.jpeg";
+import alMashaaerImg from "@/assets/al-mashaaer.jpeg";
 import cinepolisImg from "@/assets/cinepolis.jpeg";
 import radissonImg from "@/assets/radisson-logo.jpeg";
 import dettolImg from "@/assets/dettol.jpeg";
@@ -353,14 +353,14 @@ export const PROJECTS: Project[] = [
     image: foggImg,
   },
   {
-    slug: "al-basheer",
-    client: "Al Basheer",
+    slug: "al-mashaaer",
+    client: "Al Mashaaer",
     category: "Brand Marketing",
-    summary: "Selected brand and digital work for Al Basheer.",
+    summary: "Selected brand and digital work for Al Mashaaer.",
     result: "Integrated campaigns",
     year: "—",
     region: "—",
-    image: alBasheerImg,
+    image: alMashaaerImg,
   },
   {
     slug: "cinepolis",

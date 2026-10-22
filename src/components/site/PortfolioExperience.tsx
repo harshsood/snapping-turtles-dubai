@@ -46,7 +46,7 @@ const FEATURE_STORIES = [
     title: "Hawas",
     accent: "Black.",
     description:
-      "A dramatic product story for Hawas for Him Black. Warm reflections, a turntable-inspired setting and dark glass bring the bottle's black-and-gold design into focus.",
+      "A dramatic product story for Hawas for him Black. Warm reflections, a turntable-inspired setting and dark glass bring the bottle's black-and-gold design into focus.",
     notes: ["Hawas for Him", "Black", "Product storytelling"],
     image: hawasBlack,
     imageAlt: "Hawas for Him Black fragrance bottle",
