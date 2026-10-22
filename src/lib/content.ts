@@ -1,6 +1,6 @@
 /** All site copy lives here so pages stay presentational. */
 import foggImg from "@/assets/fogg-logo.jpeg";
-import alMashaaerImg from "@/assets/al-mashaaer.jpeg";
+import alMashaaerImg from "@/assets/al-mashaaer-final.jpeg";
 import cinepolisImg from "@/assets/cinepolis.jpeg";
 import radissonImg from "@/assets/radisson-logo.jpeg";
 import dettolImg from "@/assets/dettol.jpeg";
