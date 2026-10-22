@@ -195,7 +195,7 @@ type PortfolioCategory = {
 
 const PORTFOLIO_CATEGORIES: PortfolioCategory[] = [
   {
-    title: "AI product films",
+    title: "AI Product Films",
     description: "Realistic product animations, cinematic commercials and creative video concepts.",
     tone: "from-sky-500/20 via-cyan-950/20 to-background",
     media: [
@@ -232,7 +232,7 @@ const PORTFOLIO_CATEGORIES: PortfolioCategory[] = [
     ],
   },
   {
-    title: "Brand launch campaigns",
+    title: "Brand Launch Campaigns",
     description: "Launch strategies, teaser concepts, creative campaigns and promotional assets.",
     tone: "from-fuchsia-500/20 via-violet-950/20 to-background",
     media: [
@@ -259,7 +259,7 @@ const PORTFOLIO_CATEGORIES: PortfolioCategory[] = [
     ],
   },
   {
-    title: "International campaigns",
+    title: "International Campaigns",
     description: "Brand presentations and creative marketing for international audiences.",
     tone: "from-amber-500/20 via-orange-950/20 to-background",
     media: [
@@ -282,7 +282,7 @@ const PORTFOLIO_CATEGORIES: PortfolioCategory[] = [
     ],
   },
   {
-    title: "Brand identity & design",
+    title: "Brand Identity & Design",
     description: "Logos, packaging, advertising creatives and visual systems.",
     tone: "from-rose-500/20 via-red-950/20 to-background",
     media: [
@@ -305,7 +305,7 @@ const PORTFOLIO_CATEGORIES: PortfolioCategory[] = [
     ],
   },
   {
-    title: "Website & e-commerce",
+    title: "Website & E-Commerce",
     description: "Product listing visuals, digital storefronts, banners and product pages.",
     tone: "from-emerald-500/20 via-teal-950/20 to-background",
     media: [
@@ -348,7 +348,7 @@ const PORTFOLIO_CATEGORIES: PortfolioCategory[] = [
     ],
   },
   {
-    title: "Event & exhibition design",
+    title: "Event & Exhibition Design",
     description: "Booth concepts, 3D visualizations and premium brand displays.",
     tone: "from-violet-500/20 via-indigo-950/20 to-background",
     media: [
