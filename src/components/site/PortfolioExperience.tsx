@@ -907,7 +907,7 @@ export function PortfolioExperience() {
         </div>
       </section>
 
-      <section id="contact" className="scroll-mt-24 px-4 pb-20 pt-10 sm:px-8 sm:pb-28">
+      <section id="contact" className="scroll-mt-24 px-4 pb-4 pt-10 sm:px-8 sm:pb-6">
         <div className="glass-panel relative mx-auto max-w-7xl overflow-hidden rounded-3xl p-8 sm:p-14 lg:p-20">
           <div className="grid-lines pointer-events-none absolute inset-0 opacity-30" />
           <div className="pointer-events-none absolute -right-20 -top-24 size-80 rounded-full bg-primary/15 blur-3xl" />

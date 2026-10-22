@@ -429,6 +429,10 @@
   .service-visual { border-radius: calc(2.5rem - 2px) 0 0 calc(2.5rem - 2px); }
 }
 
+main:has(#contact) + footer {
+  margin-top: 1rem;
+}
+
 @media (max-width: 767px) {
   .service-card {
     width: calc(100vw - 2rem);
