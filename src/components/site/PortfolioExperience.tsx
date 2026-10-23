@@ -328,7 +328,7 @@ const PORTFOLIO_CATEGORIES: PortfolioCategory[] = [
     ],
   },
   {
-    title: "Event Production",
+    title: "Event Production (Reels, Photography & Videography)",
     description: "Event films, live production and behind-the-scenes content.",
     tone: "from-blue-500/20 via-indigo-950/20 to-background",
     media: [
@@ -350,9 +350,9 @@ const PORTFOLIO_CATEGORIES: PortfolioCategory[] = [
     ],
   },
   {
-    title: "Brand/ International Product Launch",
+    title: "Brand/Product International Launch",
     description:
-      "Brand and international product launch campaigns, from teaser concepts to promotional assets.",
+      "Brand and product international launch campaigns, from teaser concepts to promotional assets.",
     tone: "from-fuchsia-500/20 via-violet-950/20 to-background",
     media: [
       {
