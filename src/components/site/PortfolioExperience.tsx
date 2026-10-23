@@ -195,6 +195,23 @@ type PortfolioCategory = {
 
 const PORTFOLIO_CATEGORIES: PortfolioCategory[] = [
   {
+    title: "Pilot Projects",
+    description: "Selected pilot work and early-stage creative concepts.",
+    tone: "from-primary/20 via-neutral-950/20 to-background",
+    media: [
+      {
+        kind: "image",
+        aspect: "aspect-[4/3]",
+        alt: "Pilot project image",
+      },
+      {
+        kind: "video",
+        aspect: "aspect-video",
+        alt: "Pilot project film",
+      },
+    ],
+  },
+  {
     title: "AI Product Films",
     description: "Realistic product animations, cinematic commercials and creative video concepts.",
     tone: "from-sky-500/20 via-cyan-950/20 to-background",
@@ -232,8 +249,110 @@ const PORTFOLIO_CATEGORIES: PortfolioCategory[] = [
     ],
   },
   {
-    title: "Brand Launch Campaigns",
-    description: "Launch strategies, teaser concepts, creative campaigns and promotional assets.",
+    title: "Event & Exhibition Design",
+    description: "Booth concepts, 3D visualizations and premium brand displays.",
+    tone: "from-violet-500/20 via-indigo-950/20 to-background",
+    media: [
+      {
+        kind: "image",
+        aspect: "aspect-[4/5]",
+        alt: "Event design Artboard 1",
+        src: eventArtboard1,
+      },
+      {
+        kind: "image",
+        aspect: "aspect-[4/5]",
+        alt: "Event design Artboard 2",
+        src: eventArtboard2,
+      },
+      {
+        kind: "image",
+        aspect: "aspect-[4/5]",
+        alt: "Event design Artboard 3",
+        src: eventArtboard3,
+      },
+      {
+        kind: "image",
+        aspect: "aspect-[4/5]",
+        alt: "Event design Artboard 4",
+        src: eventArtboard4,
+      },
+      {
+        kind: "image",
+        aspect: "aspect-[4/5]",
+        alt: "Event design Artboard 5",
+        src: eventArtboard5,
+      },
+      {
+        kind: "image",
+        aspect: "aspect-[4/5]",
+        alt: "Event design Artboard 6",
+        src: eventArtboard6,
+      },
+      {
+        kind: "image",
+        aspect: "aspect-[4/5]",
+        alt: "Booth design concept 1",
+        src: boothDesign01,
+      },
+      {
+        kind: "image",
+        aspect: "aspect-[4/5]",
+        alt: "Booth design concept 2",
+        src: boothDesign02,
+      },
+      {
+        kind: "image",
+        aspect: "aspect-[4/5]",
+        alt: "Exhibition booth design 1",
+        src: booth1,
+      },
+      {
+        kind: "image",
+        aspect: "aspect-[4/5]",
+        alt: "Exhibition booth design 2",
+        src: booth2,
+      },
+      {
+        kind: "image",
+        aspect: "aspect-[4/5]",
+        alt: "Exhibition booth design 3",
+        src: booth3,
+      },
+      {
+        kind: "video",
+        aspect: "aspect-video",
+        alt: "Event and exhibition design animation",
+        src: opacityAnimation,
+      },
+    ],
+  },
+  {
+    title: "Event Production",
+    description: "Event films, live production and behind-the-scenes content.",
+    tone: "from-blue-500/20 via-indigo-950/20 to-background",
+    media: [
+      {
+        kind: "video",
+        aspect: "aspect-video",
+        alt: "Event production film",
+      },
+      {
+        kind: "image",
+        aspect: "aspect-[4/5]",
+        alt: "Live event production",
+      },
+      {
+        kind: "video",
+        aspect: "aspect-[9/16]",
+        alt: "Behind-the-scenes event production video",
+      },
+    ],
+  },
+  {
+    title: "Brand/ International Product Launch",
+    description:
+      "Brand and international product launch campaigns, from teaser concepts to promotional assets.",
     tone: "from-fuchsia-500/20 via-violet-950/20 to-background",
     media: [
       {
@@ -256,14 +375,11 @@ const PORTFOLIO_CATEGORIES: PortfolioCategory[] = [
         aspect: "aspect-[16/9]",
         alt: "Brand launch film",
       },
-    ],
-  },
-  {
-    title: "International Campaigns",
-    description: "Brand presentations and creative marketing for international audiences.",
-    tone: "from-amber-500/20 via-orange-950/20 to-background",
-    media: [
-      { kind: "image", aspect: "aspect-square", alt: "International brand campaign image" },
+      {
+        kind: "image",
+        aspect: "aspect-square",
+        alt: "International brand campaign image",
+      },
       {
         kind: "video",
         aspect: "aspect-[16/9]",
@@ -344,85 +460,6 @@ const PORTFOLIO_CATEGORIES: PortfolioCategory[] = [
         aspect: "aspect-video",
         alt: "Website & e-commerce design, Artboard 17",
         src: websiteArtboard17,
-      },
-    ],
-  },
-  {
-    title: "Event & Exhibition Design",
-    description: "Booth concepts, 3D visualizations and premium brand displays.",
-    tone: "from-violet-500/20 via-indigo-950/20 to-background",
-    media: [
-      {
-        kind: "image",
-        aspect: "aspect-[4/5]",
-        alt: "Event design Artboard 1",
-        src: eventArtboard1,
-      },
-      {
-        kind: "image",
-        aspect: "aspect-[4/5]",
-        alt: "Event design Artboard 2",
-        src: eventArtboard2,
-      },
-      {
-        kind: "image",
-        aspect: "aspect-[4/5]",
-        alt: "Event design Artboard 3",
-        src: eventArtboard3,
-      },
-      {
-        kind: "image",
-        aspect: "aspect-[4/5]",
-        alt: "Event design Artboard 4",
-        src: eventArtboard4,
-      },
-      {
-        kind: "image",
-        aspect: "aspect-[4/5]",
-        alt: "Event design Artboard 5",
-        src: eventArtboard5,
-      },
-      {
-        kind: "image",
-        aspect: "aspect-[4/5]",
-        alt: "Event design Artboard 6",
-        src: eventArtboard6,
-      },
-      {
-        kind: "image",
-        aspect: "aspect-[4/5]",
-        alt: "Booth design concept 1",
-        src: boothDesign01,
-      },
-      {
-        kind: "image",
-        aspect: "aspect-[4/5]",
-        alt: "Booth design concept 2",
-        src: boothDesign02,
-      },
-      {
-        kind: "video",
-        aspect: "aspect-video",
-        alt: "Event design opacity animation",
-        src: opacityAnimation,
-      },
-      {
-        kind: "image",
-        aspect: "aspect-[4/5]",
-        alt: "Exhibition booth design 1",
-        src: booth1,
-      },
-      {
-        kind: "image",
-        aspect: "aspect-[4/5]",
-        alt: "Exhibition booth design 2",
-        src: booth2,
-      },
-      {
-        kind: "image",
-        aspect: "aspect-[4/5]",
-        alt: "Exhibition booth design 3",
-        src: booth3,
       },
     ],
   },
@@ -706,7 +743,7 @@ export function PortfolioExperience() {
           <div
             role="tablist"
             aria-label="Portfolio categories"
-            className="no-scrollbar mt-0 grid w-full grid-flow-col auto-cols-[minmax(10.5rem,1fr)] snap-x gap-2 overflow-x-auto pb-3 lg:grid-flow-row lg:grid-cols-6 lg:auto-cols-auto lg:overflow-visible lg:pb-0"
+            className="no-scrollbar mt-0 grid w-full grid-flow-col auto-cols-[minmax(10.5rem,1fr)] snap-x gap-2 overflow-x-auto pb-3 lg:grid-flow-row lg:grid-cols-4 lg:auto-cols-auto lg:overflow-visible lg:pb-0 xl:grid-cols-7"
           >
             {PORTFOLIO_CATEGORIES.map((category, index) => {
               const isActive = activeCategoryIndex === index;
@@ -730,7 +767,8 @@ export function PortfolioExperience() {
                   }`}
                 >
                   <span className="block font-mono text-[0.55rem] tracking-[0.18em] text-primary">
-                    {String(index + 1).padStart(2, "0")} / 06
+                    {String(index + 1).padStart(2, "0")} /{" "}
+                    {String(PORTFOLIO_CATEGORIES.length).padStart(2, "0")}
                   </span>
                   <span className="mt-1 block whitespace-normal break-words font-display text-sm leading-tight sm:text-base">
                     {category.title}
