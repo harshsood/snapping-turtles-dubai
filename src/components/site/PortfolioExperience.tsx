@@ -1,12 +1,26 @@
 import { ArrowUpRight, ImagePlus } from "lucide-react";
 import { useState, type KeyboardEvent } from "react";
 
+import combine03 from "../../../combine-03.png";
+import combine04 from "../../../combine-04.jpeg";
+import ice02 from "../../../ice-02.jpeg";
+import set01 from "../../../set-01.png";
 import websiteArtboard11 from "@/Artboard-11.png";
 import websiteArtboard12 from "@/Artboard-12.png";
 import websiteArtboard13 from "@/Artboard-13.png";
 import websiteArtboard14 from "@/Artboard-14.png";
 import websiteArtboard16 from "@/Artboard-16.png";
 import websiteArtboard17 from "@/Artboard-17.png";
+import bottle001 from "@/assets/bottle-001.jpeg";
+import bottle002 from "@/assets/bottle-002.jpeg";
+import bottle003 from "@/assets/bottle--003.jpeg";
+import bottle004 from "@/assets/bottle-004.jpeg";
+import bottle005 from "@/assets/bottle-005.jpeg";
+import bottle007 from "@/assets/bottle-007.jpeg";
+import bottle008 from "@/assets/bottle-008.jpeg";
+import bottle009 from "@/assets/bottle-009.jpeg";
+import bottle010 from "@/assets/bottle-010.jpeg";
+import bottle011 from "@/assets/bottle-011.jpeg";
 import eventArtboard1 from "@/assets/Artboard-1.png";
 import eventArtboard2 from "@/assets/Artboard-2.png";
 import eventArtboard3 from "@/assets/Artboard-3.png";
@@ -33,6 +47,7 @@ import intenseAmber from "@/assets/Intense Amber.mp4";
 import mashaaer from "@/assets/Mashaaer.mp4";
 import opacityAnimation from "@/assets/Opacity-Animation-001.mp4";
 import rasasiJasmineWisp from "@/assets/Rasasi.jpeg";
+import set02 from "@/assets/set-02.png";
 import videoOne from "@/assets/video1.mp4";
 import videoTwo from "@/assets/video2.mp4";
 
@@ -328,7 +343,7 @@ const PORTFOLIO_CATEGORIES: PortfolioCategory[] = [
     ],
   },
   {
-    title: "Event Production (Reels, Photography & Videography)",
+    title: "Event Production (Reels, Photo & Videography)",
     description: "Event films, live production and behind-the-scenes content.",
     tone: "from-blue-500/20 via-indigo-950/20 to-background",
     media: [
@@ -425,6 +440,96 @@ const PORTFOLIO_CATEGORIES: PortfolioCategory[] = [
     description: "Product listing visuals, digital storefronts, banners and product pages.",
     tone: "from-emerald-500/20 via-teal-950/20 to-background",
     media: [
+      {
+        kind: "image",
+        aspect: "aspect-video",
+        alt: "Bottle product visual 001",
+        src: bottle001,
+      },
+      {
+        kind: "image",
+        aspect: "aspect-video",
+        alt: "Bottle product visual 002",
+        src: bottle002,
+      },
+      {
+        kind: "image",
+        aspect: "aspect-video",
+        alt: "Bottle product visual 003",
+        src: bottle003,
+      },
+      {
+        kind: "image",
+        aspect: "aspect-video",
+        alt: "Bottle product visual 004",
+        src: bottle004,
+      },
+      {
+        kind: "image",
+        aspect: "aspect-video",
+        alt: "Bottle product visual 005",
+        src: bottle005,
+      },
+      {
+        kind: "image",
+        aspect: "aspect-video",
+        alt: "Bottle product visual 007",
+        src: bottle007,
+      },
+      {
+        kind: "image",
+        aspect: "aspect-video",
+        alt: "Bottle product visual 008",
+        src: bottle008,
+      },
+      {
+        kind: "image",
+        aspect: "aspect-video",
+        alt: "Bottle product visual 009",
+        src: bottle009,
+      },
+      {
+        kind: "image",
+        aspect: "aspect-video",
+        alt: "Bottle product visual 010",
+        src: bottle010,
+      },
+      {
+        kind: "image",
+        aspect: "aspect-video",
+        alt: "Bottle product visual 011",
+        src: bottle011,
+      },
+      {
+        kind: "image",
+        aspect: "aspect-video",
+        alt: "Combined product visual 03",
+        src: combine03,
+      },
+      {
+        kind: "image",
+        aspect: "aspect-video",
+        alt: "Combined product visual 04",
+        src: combine04,
+      },
+      {
+        kind: "image",
+        aspect: "aspect-video",
+        alt: "Ice product visual 02",
+        src: ice02,
+      },
+      {
+        kind: "image",
+        aspect: "aspect-video",
+        alt: "Product set 01",
+        src: set01,
+      },
+      {
+        kind: "image",
+        aspect: "aspect-video",
+        alt: "Product set 02",
+        src: set02,
+      },
       {
         kind: "image",
         aspect: "aspect-video",
@@ -540,7 +645,6 @@ function CategoryMedia({
   hint,
   tone,
   aspect,
-  autoPlay,
 }: {
   kind: "image" | "video";
   src: string | undefined;
@@ -550,7 +654,6 @@ function CategoryMedia({
   hint: string;
   tone: string;
   aspect?: string;
-  autoPlay?: boolean;
 }) {
   return (
     <div
@@ -576,7 +679,7 @@ function CategoryMedia({
             playsInline
             muted
             loop
-            autoPlay={autoPlay}
+            autoPlay
           />
         )
       ) : (
@@ -812,7 +915,6 @@ export function PortfolioExperience() {
                     hint={`${media.kind} asset · ${String(index + 1).padStart(2, "0")}`}
                     tone={activeCategory.tone}
                     aspect={media.aspect}
-                    autoPlay={activeCategoryIndex === 0}
                   />
                 </div>
               ))}
