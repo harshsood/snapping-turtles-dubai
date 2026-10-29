@@ -5,6 +5,10 @@ import combine03 from "../../../combine-03.png";
 import combine04 from "../../../combine-04.jpeg";
 import ice02 from "../../../ice-02.jpeg";
 import set01 from "../../../set-01.png";
+import fingersTvc from "@/assets/FINGERS-USB-Talkathon-Wired-Headset-Crystal-clear-Sound.mp4";
+import fruitJuiceTvc from "@/assets/Fruit-Juice-Product-Commercial-Cinema-4d.mp4";
+import pantaloonsChristmasNew from "@/assets/Pantaloons-Christmas-new.mp4";
+import shopperstopAi from "@/assets/Shopperstop.mp4";
 import websiteArtboard11 from "@/Artboard-11.png";
 import websiteArtboard12 from "@/Artboard-12.png";
 import websiteArtboard13 from "@/Artboard-13.png";
@@ -50,6 +54,11 @@ import rasasiJasmineWisp from "@/assets/Rasasi.jpeg";
 import set02 from "@/assets/set-02.png";
 import videoOne from "@/assets/video1.mp4";
 import videoTwo from "@/assets/video2.mp4";
+import gShockAi from "@/assets/G-Shock-new.mp4";
+import marcJacobsAi from "@/assets/Marc-Jacobs.mp4";
+import pantaloonsChristmas1 from "@/assets/Pantaloons-Christmas-1.mp4";
+import pantaloonsChristmas2 from "@/assets/Pantaloons-Christmas-2.mp4";
+import pantaloonsChristmas3 from "@/assets/Pantaloons-Christmas-3.mp4";
 
 import { MagneticLink, SectionHeading } from "@/components/site/ui";
 
@@ -231,6 +240,30 @@ const PORTFOLIO_CATEGORIES: PortfolioCategory[] = [
           {
             kind: "video",
             aspect: "aspect-video",
+            alt: "Marc Jacobs production",
+            src: marcJacobsAi,
+          },
+          {
+            kind: "video",
+            aspect: "aspect-video",
+            alt: "Pantaloons Christmas production",
+            src: pantaloonsChristmasNew,
+          },
+          {
+            kind: "video",
+            aspect: "aspect-video",
+            alt: "Shoppers Stop production",
+            src: shopperstopAi,
+          },
+          {
+            kind: "video",
+            aspect: "aspect-video",
+            alt: "G-Shock production",
+            src: gShockAi,
+          },
+          {
+            kind: "video",
+            aspect: "aspect-video",
             alt: "Mashaaer product film",
             src: mashaaer,
           },
@@ -262,13 +295,45 @@ const PORTFOLIO_CATEGORIES: PortfolioCategory[] = [
       },
       {
         title: "CGI Productions",
-        description: "CGI production work will be added here.",
-        media: [],
+        description: "CGI-led campaigns and seasonal brand productions.",
+        media: [
+          {
+            kind: "video",
+            aspect: "aspect-video",
+            alt: "Pantaloons Christmas CGI production 3",
+            src: pantaloonsChristmas3,
+          },
+          {
+            kind: "video",
+            aspect: "aspect-video",
+            alt: "Pantaloons Christmas CGI production 2",
+            src: pantaloonsChristmas2,
+          },
+          {
+            kind: "video",
+            aspect: "aspect-video",
+            alt: "Pantaloons Christmas CGI production 1",
+            src: pantaloonsChristmas1,
+          },
+        ],
       },
       {
         title: "TVC Productions",
-        description: "Television commercial production work will be added here.",
-        media: [],
+        description: "Television commercials and product campaign films.",
+        media: [
+          {
+            kind: "video",
+            aspect: "aspect-video",
+            alt: "Fingers USB Talkathon wired headset commercial",
+            src: fingersTvc,
+          },
+          {
+            kind: "video",
+            aspect: "aspect-video",
+            alt: "Fruit juice product commercial",
+            src: fruitJuiceTvc,
+          },
+        ],
       },
     ],
   },
@@ -934,11 +999,11 @@ export function PortfolioExperience() {
                 </p>
               </div>
             ) : (
-              <div className="columns-1 gap-4 sm:columns-2 lg:columns-3">
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {displayedMedia.map((media, index) => (
                 <div
                   key={`${activeCategory.title}-${media.kind}-${index}`}
-                  className="mb-4 inline-block w-full break-inside-avoid"
+                    className="min-w-0"
                 >
                   <CategoryMedia
                     kind={media.kind}
