@@ -201,14 +201,77 @@ type PortfolioMedia = {
   poster?: string;
 };
 
+type PortfolioSubcategory = {
+  title: string;
+  description: string;
+  media: PortfolioMedia[];
+};
+
 type PortfolioCategory = {
   title: string;
   description: string;
   tone: string;
   media: PortfolioMedia[];
+  subcategories?: PortfolioSubcategory[];
 };
 
 const PORTFOLIO_CATEGORIES: PortfolioCategory[] = [
+  {
+    title: "AI / CGI / TVC Productions",
+    description: "AI-led product films, CGI visualizations and television commercial productions.",
+    tone: "from-sky-500/20 via-cyan-950/20 to-background",
+    media: [
+      // Populated through the AI Productions subcategory.
+    ],
+    subcategories: [
+      {
+        title: "AI Productions",
+        description: "Realistic product animations, cinematic commercials and creative video concepts.",
+        media: [
+          {
+            kind: "video",
+            aspect: "aspect-video",
+            alt: "Mashaaer product film",
+            src: mashaaer,
+          },
+          {
+            kind: "video",
+            aspect: "aspect-video",
+            alt: "Foog product film",
+            src: foogAugustFinal,
+          },
+          {
+            kind: "video",
+            aspect: "aspect-video",
+            alt: "Intense Amber product film",
+            src: intenseAmber,
+          },
+          {
+            kind: "video",
+            aspect: "aspect-video",
+            alt: "Product film video 1",
+            src: videoOne,
+          },
+          {
+            kind: "video",
+            aspect: "aspect-video",
+            alt: "Product film video 2",
+            src: videoTwo,
+          },
+        ],
+      },
+      {
+        title: "CGI Productions",
+        description: "CGI production work will be added here.",
+        media: [],
+      },
+      {
+        title: "TVC Productions",
+        description: "Television commercial production work will be added here.",
+        media: [],
+      },
+    ],
+  },
   {
     title: "Pilot Projects",
     description: "Selected pilot work and early-stage creative concepts.",
@@ -223,43 +286,6 @@ const PORTFOLIO_CATEGORIES: PortfolioCategory[] = [
         kind: "video",
         aspect: "aspect-video",
         alt: "Pilot project film",
-      },
-    ],
-  },
-  {
-    title: "AI Product Films",
-    description: "Realistic product animations, cinematic commercials and creative video concepts.",
-    tone: "from-sky-500/20 via-cyan-950/20 to-background",
-    media: [
-      {
-        kind: "video",
-        aspect: "aspect-video",
-        alt: "Mashaaer product film",
-        src: mashaaer,
-      },
-      {
-        kind: "video",
-        aspect: "aspect-video",
-        alt: "Foog product film",
-        src: foogAugustFinal,
-      },
-      {
-        kind: "video",
-        aspect: "aspect-video",
-        alt: "Intense Amber product film",
-        src: intenseAmber,
-      },
-      {
-        kind: "video",
-        aspect: "aspect-video",
-        alt: "Product film video 1",
-        src: videoOne,
-      },
-      {
-        kind: "video",
-        aspect: "aspect-video",
-        alt: "Product film video 2",
-        src: videoTwo,
       },
     ],
   },
@@ -364,54 +390,14 @@ const PORTFOLIO_CATEGORIES: PortfolioCategory[] = [
       },
     ],
   },
-  {
-    title: "Brand/Product International Launch",
-    description:
-      "Brand and product international launch campaigns, from teaser concepts to promotional assets.",
-    tone: "from-fuchsia-500/20 via-violet-950/20 to-background",
-    media: [
-      {
-        kind: "video",
-        aspect: "aspect-[9/16]",
-        alt: "Brand launch teaser video",
-      },
-      {
-        kind: "image",
-        aspect: "aspect-[4/3]",
-        alt: "Brand launch campaign visual",
-      },
-      {
-        kind: "image",
-        aspect: "aspect-[3/4]",
-        alt: "Brand launch artwork",
-      },
-      {
-        kind: "video",
-        aspect: "aspect-[16/9]",
-        alt: "Brand launch film",
-      },
-      {
-        kind: "image",
-        aspect: "aspect-square",
-        alt: "International brand campaign image",
-      },
-      {
-        kind: "video",
-        aspect: "aspect-[16/9]",
-        alt: "International campaign film",
-      },
-      {
-        kind: "video",
-        aspect: "aspect-[9/16]",
-        alt: "Vertical international campaign video",
-      },
-      {
-        kind: "image",
-        aspect: "aspect-[4/5]",
-        alt: "International campaign creative",
-      },
-    ],
-  },
+  // Brand/Product International Launch is temporarily commented out.
+  // {
+  //   title: "Brand/Product International Launch",
+  //   description:
+  //     "Brand and product international launch campaigns, from teaser concepts to promotional assets.",
+  //   tone: "from-fuchsia-500/20 via-violet-950/20 to-background",
+  //   media: [],
+  // },
   {
     title: "Brand Identity & Design",
     description: "Logos, packaging, advertising creatives and visual systems.",
@@ -796,7 +782,12 @@ function FeatureStory({
 
 export function PortfolioExperience() {
   const [activeCategoryIndex, setActiveCategoryIndex] = useState(0);
+  const [activeSubcategoryIndex, setActiveSubcategoryIndex] = useState(0);
   const activeCategory = PORTFOLIO_CATEGORIES[activeCategoryIndex]!;
+  const activeSubcategory =
+    activeCategory.subcategories?.[activeSubcategoryIndex] ?? undefined;
+  const displayedMedia = activeSubcategory?.media ?? activeCategory.media;
+  const displayedDescription = activeSubcategory?.description ?? activeCategory.description;
 
   return (
     <>
@@ -859,9 +850,15 @@ export function PortfolioExperience() {
                   aria-selected={isActive}
                   aria-controls="portfolio-category-panel"
                   tabIndex={isActive ? 0 : -1}
-                  onClick={() => setActiveCategoryIndex(index)}
+                  onClick={() => {
+                    setActiveCategoryIndex(index);
+                    setActiveSubcategoryIndex(0);
+                  }}
                   onKeyDown={(event) =>
-                    handleCategoryTabKeyDown(event, index, setActiveCategoryIndex)
+                    handleCategoryTabKeyDown(event, index, (nextIndex) => {
+                      setActiveCategoryIndex(nextIndex);
+                      setActiveSubcategoryIndex(0);
+                    })
                   }
                   className={`h-full min-w-0 snap-start rounded-full border px-3 py-3 text-left transition-colors sm:px-4 ${
                     isActive
@@ -888,20 +885,57 @@ export function PortfolioExperience() {
             tabIndex={0}
             className="glass-panel mt-5 rounded-3xl p-4 sm:mt-7 sm:p-6 lg:p-8"
           >
+            {activeCategory.subcategories && (
+              <div
+                role="tablist"
+                aria-label={`${activeCategory.title} subcategories`}
+                className="mb-6 flex flex-wrap gap-2 border-b border-border pb-4"
+              >
+                {activeCategory.subcategories.map((subcategory, index) => {
+                  const isActive = activeSubcategoryIndex === index;
+                  return (
+                    <button
+                      key={subcategory.title}
+                      type="button"
+                      role="tab"
+                      aria-selected={isActive}
+                      tabIndex={isActive ? 0 : -1}
+                      onClick={() => setActiveSubcategoryIndex(index)}
+                      className={`rounded-full border px-4 py-2 font-mono text-[0.62rem] tracking-[0.12em] uppercase transition-colors ${
+                        isActive
+                          ? "border-primary/50 bg-primary/10 text-foreground"
+                          : "border-border text-muted-foreground hover:border-primary/30 hover:text-foreground"
+                      }`}
+                    >
+                      {subcategory.title}
+                    </button>
+                  );
+                })}
+              </div>
+            )}
             <div className="mb-6 flex flex-col justify-between gap-3 border-b border-border pb-5 sm:flex-row sm:items-end">
               <div>
                 <p className="eyebrow">
                   Selected work / {String(activeCategoryIndex + 1).padStart(2, "0")}
                 </p>
-                <h3 className="mt-2 font-display text-2xl sm:text-3xl">{activeCategory.title}</h3>
+                <h3 className="mt-2 font-display text-2xl sm:text-3xl">
+                  {activeSubcategory?.title ?? activeCategory.title}
+                </h3>
               </div>
               <p className="max-w-xl text-sm leading-relaxed text-muted-foreground">
-                {activeCategory.description}
+                {displayedDescription}
               </p>
             </div>
 
-            <div className="columns-1 gap-4 sm:columns-2 lg:columns-3">
-              {activeCategory.media.map((media, index) => (
+            {displayedMedia.length === 0 ? (
+              <div className="flex min-h-48 items-center justify-center rounded-2xl border border-dashed border-border bg-white/[0.02] px-6 text-center">
+                <p className="max-w-md text-sm leading-relaxed text-muted-foreground">
+                  Content for this production category will be added soon.
+                </p>
+              </div>
+            ) : (
+              <div className="columns-1 gap-4 sm:columns-2 lg:columns-3">
+                {displayedMedia.map((media, index) => (
                 <div
                   key={`${activeCategory.title}-${media.kind}-${index}`}
                   className="mb-4 inline-block w-full break-inside-avoid"
@@ -911,14 +945,15 @@ export function PortfolioExperience() {
                     src={media.src}
                     poster={media.poster}
                     alt={media.alt}
-                    title={`${activeCategory.title} / ${media.kind}`}
+                    title={`${activeSubcategory?.title ?? activeCategory.title} / ${media.kind}`}
                     hint={`${media.kind} asset · ${String(index + 1).padStart(2, "0")}`}
                     tone={activeCategory.tone}
                     aspect={media.aspect}
                   />
                 </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </section>
