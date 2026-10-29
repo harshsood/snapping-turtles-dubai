@@ -234,32 +234,86 @@ const PORTFOLIO_CATEGORIES: PortfolioCategory[] = [
     ],
     subcategories: [
       {
-        title: "AI Productions",
-        description: "Realistic product animations, cinematic commercials and creative video concepts.",
+        title: "All Videos",
+        description: "All AI, CGI and television commercial production videos in one collection.",
         media: [
           {
             kind: "video",
             aspect: "aspect-video",
-            alt: "Marc Jacobs production",
+            alt: "Pantaloons Christmas CGI production 3",
+            src: pantaloonsChristmas3,
+          },
+          {
+            kind: "video",
+            aspect: "aspect-video",
+            alt: "Pantaloons Christmas CGI production 2",
+            src: pantaloonsChristmas2,
+          },
+          { kind: "video", aspect: "aspect-video", alt: "Mashaaer product film", src: mashaaer },
+          { kind: "video", aspect: "aspect-video", alt: "Foog product film", src: foogAugustFinal },
+          {
+            kind: "video",
+            aspect: "aspect-video",
+            alt: "Intense Amber product film",
+            src: intenseAmber,
+          },
+          { kind: "video", aspect: "aspect-video", alt: "Product film video 1", src: videoOne },
+          { kind: "video", aspect: "aspect-video", alt: "Product film video 2", src: videoTwo },
+          {
+            kind: "video",
+            aspect: "aspect-video",
+            alt: "Marc Jacobs CGI production",
             src: marcJacobsAi,
           },
           {
             kind: "video",
             aspect: "aspect-video",
-            alt: "Pantaloons Christmas production",
+            alt: "Pantaloons Christmas CGI production",
             src: pantaloonsChristmasNew,
           },
           {
             kind: "video",
             aspect: "aspect-video",
-            alt: "Shoppers Stop production",
+            alt: "Shoppers Stop CGI production",
             src: shopperstopAi,
+          },
+          { kind: "video", aspect: "aspect-video", alt: "G-Shock CGI production", src: gShockAi },
+          {
+            kind: "video",
+            aspect: "aspect-video",
+            alt: "Pantaloons Christmas CGI production 1",
+            src: pantaloonsChristmas1,
           },
           {
             kind: "video",
             aspect: "aspect-video",
-            alt: "G-Shock production",
-            src: gShockAi,
+            alt: "Fingers USB Talkathon wired headset commercial",
+            src: fingersTvc,
+          },
+          {
+            kind: "video",
+            aspect: "aspect-video",
+            alt: "Fruit juice product commercial",
+            src: fruitJuiceTvc,
+          },
+        ],
+      },
+      {
+        title: "AI Productions",
+        description:
+          "Realistic product animations, cinematic commercials and creative video concepts.",
+        media: [
+          {
+            kind: "video",
+            aspect: "aspect-video",
+            alt: "Pantaloons Christmas CGI production 3",
+            src: pantaloonsChristmas3,
+          },
+          {
+            kind: "video",
+            aspect: "aspect-video",
+            alt: "Pantaloons Christmas CGI production 2",
+            src: pantaloonsChristmas2,
           },
           {
             kind: "video",
@@ -300,14 +354,26 @@ const PORTFOLIO_CATEGORIES: PortfolioCategory[] = [
           {
             kind: "video",
             aspect: "aspect-video",
-            alt: "Pantaloons Christmas CGI production 3",
-            src: pantaloonsChristmas3,
+            alt: "Marc Jacobs CGI production",
+            src: marcJacobsAi,
           },
           {
             kind: "video",
             aspect: "aspect-video",
-            alt: "Pantaloons Christmas CGI production 2",
-            src: pantaloonsChristmas2,
+            alt: "Pantaloons Christmas CGI production",
+            src: pantaloonsChristmasNew,
+          },
+          {
+            kind: "video",
+            aspect: "aspect-video",
+            alt: "Shoppers Stop CGI production",
+            src: shopperstopAi,
+          },
+          {
+            kind: "video",
+            aspect: "aspect-video",
+            alt: "G-Shock CGI production",
+            src: gShockAi,
           },
           {
             kind: "video",
@@ -362,6 +428,42 @@ const PORTFOLIO_CATEGORIES: PortfolioCategory[] = [
       {
         kind: "image",
         aspect: "aspect-[4/5]",
+        alt: "Exhibition booth design 1",
+        src: booth1,
+      },
+      {
+        kind: "image",
+        aspect: "aspect-[4/5]",
+        alt: "Exhibition booth design 2",
+        src: booth2,
+      },
+      {
+        kind: "image",
+        aspect: "aspect-[4/5]",
+        alt: "Exhibition booth design 3",
+        src: booth3,
+      },
+      {
+        kind: "image",
+        aspect: "aspect-[4/5]",
+        alt: "Booth design concept 1",
+        src: boothDesign01,
+      },
+      {
+        kind: "image",
+        aspect: "aspect-[4/5]",
+        alt: "Booth design concept 2",
+        src: boothDesign02,
+      },
+      {
+        kind: "video",
+        aspect: "aspect-video",
+        alt: "Event and exhibition design animation",
+        src: opacityAnimation,
+      },
+      {
+        kind: "image",
+        aspect: "aspect-[4/5]",
         alt: "Event design Artboard 1",
         src: eventArtboard1,
       },
@@ -394,42 +496,6 @@ const PORTFOLIO_CATEGORIES: PortfolioCategory[] = [
         aspect: "aspect-[4/5]",
         alt: "Event design Artboard 6",
         src: eventArtboard6,
-      },
-      {
-        kind: "image",
-        aspect: "aspect-[4/5]",
-        alt: "Booth design concept 1",
-        src: boothDesign01,
-      },
-      {
-        kind: "image",
-        aspect: "aspect-[4/5]",
-        alt: "Booth design concept 2",
-        src: boothDesign02,
-      },
-      {
-        kind: "image",
-        aspect: "aspect-[4/5]",
-        alt: "Exhibition booth design 1",
-        src: booth1,
-      },
-      {
-        kind: "image",
-        aspect: "aspect-[4/5]",
-        alt: "Exhibition booth design 2",
-        src: booth2,
-      },
-      {
-        kind: "image",
-        aspect: "aspect-[4/5]",
-        alt: "Exhibition booth design 3",
-        src: booth3,
-      },
-      {
-        kind: "video",
-        aspect: "aspect-video",
-        alt: "Event and exhibition design animation",
-        src: opacityAnimation,
       },
     ],
   },
@@ -849,8 +915,7 @@ export function PortfolioExperience() {
   const [activeCategoryIndex, setActiveCategoryIndex] = useState(0);
   const [activeSubcategoryIndex, setActiveSubcategoryIndex] = useState(0);
   const activeCategory = PORTFOLIO_CATEGORIES[activeCategoryIndex]!;
-  const activeSubcategory =
-    activeCategory.subcategories?.[activeSubcategoryIndex] ?? undefined;
+  const activeSubcategory = activeCategory.subcategories?.[activeSubcategoryIndex] ?? undefined;
   const displayedMedia = activeSubcategory?.media ?? activeCategory.media;
   const displayedDescription = activeSubcategory?.description ?? activeCategory.description;
 
@@ -999,23 +1064,20 @@ export function PortfolioExperience() {
                 </p>
               </div>
             ) : (
-                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {displayedMedia.map((media, index) => (
-                <div
-                  key={`${activeCategory.title}-${media.kind}-${index}`}
-                    className="min-w-0"
-                >
-                  <CategoryMedia
-                    kind={media.kind}
-                    src={media.src}
-                    poster={media.poster}
-                    alt={media.alt}
-                    title={`${activeSubcategory?.title ?? activeCategory.title} / ${media.kind}`}
-                    hint={`${media.kind} asset · ${String(index + 1).padStart(2, "0")}`}
-                    tone={activeCategory.tone}
-                    aspect={media.aspect}
-                  />
-                </div>
+                  <div key={`${activeCategory.title}-${media.kind}-${index}`} className="min-w-0">
+                    <CategoryMedia
+                      kind={media.kind}
+                      src={media.src}
+                      poster={media.poster}
+                      alt={media.alt}
+                      title={`${activeSubcategory?.title ?? activeCategory.title} / ${media.kind}`}
+                      hint={`${media.kind} asset · ${String(index + 1).padStart(2, "0")}`}
+                      tone={activeCategory.tone}
+                      aspect={media.aspect}
+                    />
+                  </div>
                 ))}
               </div>
             )}
