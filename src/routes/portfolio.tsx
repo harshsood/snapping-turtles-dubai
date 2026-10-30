@@ -5,7 +5,7 @@ import { PortfolioExperience } from "@/components/site/PortfolioExperience";
 export const Route = createFileRoute("/portfolio")({
   head: () => ({
     meta: [
-      { title: "Fragrance Portfolio — Films, Branding & Launches" },
+      { title: "Portfolio — Snapping Turtles Creative Studio" },
       {
         name: "description",
         content:
