@@ -3,6 +3,15 @@ import { lazy, Suspense, useEffect, useRef, useState } from "react";
 
 import { Marquee } from "@/components/site/Marquee";
 import { SplitText } from "@/components/site/SplitText";
+import { PORTFOLIO_CATEGORIES } from "@/components/site/PortfolioExperience";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+  type CarouselApi,
+} from "@/components/ui/carousel";
 import {
   CTABand,
   MagneticLink,
@@ -42,37 +51,25 @@ const BottleExperience = lazy(() =>
   })),
 );
 
-const PORTFOLIO_VIDEO_SOURCES = import.meta.glob<string>("/src/assets/*.mp4", {
-  eager: true,
-  import: "default",
-  query: "?url",
-});
-const PORTFOLIO_REELS = [
-  {
-    title: "Growth systems",
-    category: "Campaign film",
-    poster: growthImg,
-    video: PORTFOLIO_VIDEO_SOURCES["/src/assets/FoogAugustFinal.mp4"],
-  },
-  {
-    title: "Brand films",
-    category: "Brand story",
-    poster: filmImg,
-    video: PORTFOLIO_VIDEO_SOURCES["/src/assets/video1.mp4"],
-  },
-  {
-    title: "Web experiences",
-    category: "Digital launch",
-    poster: webImg,
-    video: PORTFOLIO_VIDEO_SOURCES["/src/assets/video2.mp4"],
-  },
-  {
-    title: "Performance culture",
-    category: "Studio reel",
-    poster: cultureImg,
-    video: PORTFOLIO_VIDEO_SOURCES["/src/assets/Mashaaer.mp4"],
-  },
-];
+type PortfolioReel = {
+  title: string;
+  video: string;
+};
+
+const HOMEPAGE_REEL_CANDIDATES: PortfolioReel[] = Array.from(
+  new Map(
+    PORTFOLIO_CATEGORIES.flatMap((category) =>
+      (category.subcategories ?? [{ media: category.media }]).flatMap((group) =>
+        group.media
+          .filter((media) => media.kind === "video" && Boolean(media.src))
+          .map((media) => [
+            media.src!,
+            { title: media.alt, video: media.src! },
+          ] as [string, PortfolioReel]),
+      ),
+    ),
+  ).values(),
+);
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -188,6 +185,54 @@ function Home() {
   const serviceSliderRef = useRef<HTMLDivElement>(null);
   const [activeService, setActiveService] = useState(0);
   const [showBottleExperience, setShowBottleExperience] = useState(false);
+  const [visiblePortfolioReels, setVisiblePortfolioReels] = useState<PortfolioReel[]>([]);
+  const [portfolioCarouselApi, setPortfolioCarouselApi] = useState<CarouselApi>();
+
+  useEffect(() => {
+    let cancelled = false;
+    const probes = HOMEPAGE_REEL_CANDIDATES.map(
+      (reel) =>
+        new Promise<PortfolioReel | null>((resolve) => {
+          const video = document.createElement("video");
+          video.preload = "metadata";
+          video.muted = true;
+
+          const finish = (isReel: boolean) => {
+            video.removeAttribute("src");
+            video.load();
+            resolve(isReel ? reel : null);
+          };
+
+          video.onloadedmetadata = () =>
+            finish(video.videoHeight > 0 && video.videoWidth > 0 && video.videoHeight > video.videoWidth);
+          video.onerror = () => finish(false);
+          video.src = reel.video;
+        }),
+    );
+
+    void Promise.all(probes).then((results) => {
+      if (cancelled) return;
+      setVisiblePortfolioReels(results.filter((reel): reel is PortfolioReel => reel !== null));
+    });
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!portfolioCarouselApi || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
+
+    const timer = window.setInterval(() => {
+      if (portfolioCarouselApi.scrollSnapList().length > 1) {
+        portfolioCarouselApi.scrollNext();
+      }
+    }, 3200);
+
+    return () => window.clearInterval(timer);
+  }, [portfolioCarouselApi]);
 
   useEffect(() => {
     const desktopViewport = window.matchMedia("(min-width: 1025px)");
@@ -427,39 +472,42 @@ function Home() {
             </div>
           </div>
 
-          <div className="mt-12 grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4">
-            {PORTFOLIO_REELS.map((reel, index) => (
-              <article
-                key={reel.title}
-                data-reveal
-                className="reveal group relative isolate aspect-[9/16] overflow-hidden rounded-2xl border border-border bg-card"
-                style={{ transitionDelay: `${index * 0.08}s` }}
-              >
-                <div className="absolute inset-0 overflow-hidden">
-                  {reel.video ? (
-                    <video
-                      autoPlay
-                      loop
-                      muted
-                      controls
-                      playsInline
-                      poster={reel.poster}
-                      src={reel.video}
-                      className="size-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                  ) : (
-                    <img
-                      src={reel.poster}
-                      alt=""
-                      className="size-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                  )}
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-black/20" />
-                </div>
-
-              </article>
-            ))}
-          </div>
+          {visiblePortfolioReels.length > 0 && (
+            <Carousel
+              setApi={setPortfolioCarouselApi}
+              opts={{ align: "start", loop: true }}
+              className="mt-12"
+            >
+              <CarouselContent className="-ml-3 sm:-ml-5">
+                {visiblePortfolioReels.map((reel, index) => (
+                  <CarouselItem
+                    key={`${reel.video}-${index}`}
+                    className="basis-[78%] pl-3 sm:basis-[46%] sm:pl-5 md:basis-[34%] lg:basis-[25%]"
+                  >
+                    <article
+                      data-reveal
+                      className="reveal group relative isolate aspect-[9/16] overflow-hidden rounded-2xl border border-border bg-card"
+                      style={{ transitionDelay: `${(index % 4) * 0.08}s` }}
+                    >
+                      <video
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        preload="metadata"
+                        src={reel.video}
+                        aria-label={reel.title}
+                        className="size-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                      />
+                      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
+                    </article>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="left-0 top-[calc(50%-1.25rem)] -translate-x-1/2 border-border bg-background/90 text-foreground" />
+              <CarouselNext className="right-0 top-[calc(50%-1.25rem)] translate-x-1/2 border-border bg-background/90 text-foreground" />
+            </Carousel>
+          )}
         </div>
       </section>
 

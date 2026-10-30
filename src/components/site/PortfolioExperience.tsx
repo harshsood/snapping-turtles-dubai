@@ -224,7 +224,7 @@ type PortfolioCategory = {
   subcategories?: PortfolioSubcategory[];
 };
 
-const PORTFOLIO_CATEGORIES: PortfolioCategory[] = [
+export const PORTFOLIO_CATEGORIES: PortfolioCategory[] = [
   {
     title: "AI / CGI / TVC Productions",
     description: "AI-led product films, CGI visualizations and television commercial productions.",
