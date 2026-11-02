@@ -59,6 +59,14 @@ import marcJacobsAi from "@/assets/Marc-Jacobs.mp4";
 import pantaloonsChristmas1 from "@/assets/Pantaloons-Christmas-1.mp4";
 import pantaloonsChristmas2 from "@/assets/Pantaloons-Christmas-2.mp4";
 import pantaloonsChristmas3 from "@/assets/Pantaloons-Christmas-3.mp4";
+import ugc1 from "@/assets/UGC1.mp4";
+import ugc2 from "@/assets/UGC2.mp4";
+import ugc3 from "@/assets/UGC3.mp4";
+import ugc4 from "@/assets/UGC4.mp4";
+import ugc5 from "@/assets/UGC5.mp4";
+import ugc6 from "@/assets/UGC6.mp4";
+import ugc7 from "@/assets/UGC7.mp4";
+import ugc8 from "@/assets/UGC8.mp4";
 
 import { MagneticLink, SectionHeading } from "@/components/site/ui";
 
@@ -226,8 +234,8 @@ type PortfolioCategory = {
 
 export const PORTFOLIO_CATEGORIES: PortfolioCategory[] = [
   {
-    title: "AI / CGI / TVC Productions",
-    description: "AI-led product films, CGI visualizations and television commercial productions.",
+    title: "AI / CGI / TVC / UGC Productions",
+    description: "AI-led product films, CGI visualizations, television commercials and UGC productions.",
     tone: "from-sky-500/20 via-cyan-950/20 to-background",
     media: [
       // Populated through the AI Productions subcategory.
@@ -235,7 +243,7 @@ export const PORTFOLIO_CATEGORIES: PortfolioCategory[] = [
     subcategories: [
       {
         title: "All Videos",
-        description: "All AI, CGI and television commercial production videos in one collection.",
+        description: "All AI, CGI, television commercial and UGC production videos in one collection.",
         media: [
           {
             kind: "video",
@@ -296,6 +304,14 @@ export const PORTFOLIO_CATEGORIES: PortfolioCategory[] = [
             alt: "Fruit juice product commercial",
             src: fruitJuiceTvc,
           },
+          { kind: "video", aspect: "aspect-video", alt: "UGC production 1", src: ugc1 },
+          { kind: "video", aspect: "aspect-video", alt: "UGC production 2", src: ugc2 },
+          { kind: "video", aspect: "aspect-video", alt: "UGC production 3", src: ugc3 },
+          { kind: "video", aspect: "aspect-video", alt: "UGC production 4", src: ugc4 },
+          { kind: "video", aspect: "aspect-video", alt: "UGC production 5", src: ugc5 },
+          { kind: "video", aspect: "aspect-video", alt: "UGC production 6", src: ugc6 },
+          { kind: "video", aspect: "aspect-video", alt: "UGC production 7", src: ugc7 },
+          { kind: "video", aspect: "aspect-video", alt: "UGC production 8", src: ugc8 },
         ],
       },
       {
@@ -399,6 +415,20 @@ export const PORTFOLIO_CATEGORIES: PortfolioCategory[] = [
             alt: "Fruit juice product commercial",
             src: fruitJuiceTvc,
           },
+        ],
+      },
+      {
+        title: "UGC Productions",
+        description: "User-generated content videos and social-first product productions.",
+        media: [
+          { kind: "video", aspect: "aspect-video", alt: "UGC production 1", src: ugc1 },
+          { kind: "video", aspect: "aspect-video", alt: "UGC production 2", src: ugc2 },
+          { kind: "video", aspect: "aspect-video", alt: "UGC production 3", src: ugc3 },
+          { kind: "video", aspect: "aspect-video", alt: "UGC production 4", src: ugc4 },
+          { kind: "video", aspect: "aspect-video", alt: "UGC production 5", src: ugc5 },
+          { kind: "video", aspect: "aspect-video", alt: "UGC production 6", src: ugc6 },
+          { kind: "video", aspect: "aspect-video", alt: "UGC production 7", src: ugc7 },
+          { kind: "video", aspect: "aspect-video", alt: "UGC production 8", src: ugc8 },
         ],
       },
     ],
