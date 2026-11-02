@@ -1094,9 +1094,12 @@ export function PortfolioExperience() {
                 </p>
               </div>
             ) : (
-              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="columns-1 gap-4 sm:columns-2 lg:columns-3">
                 {displayedMedia.map((media, index) => (
-                  <div key={`${activeCategory.title}-${media.kind}-${index}`} className="min-w-0">
+                  <div
+                    key={`${activeCategory.title}-${media.kind}-${index}`}
+                    className="mb-4 min-w-0 break-inside-avoid"
+                  >
                     <CategoryMedia
                       kind={media.kind}
                       src={media.src}
