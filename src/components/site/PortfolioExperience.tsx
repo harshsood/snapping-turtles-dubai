@@ -67,6 +67,10 @@ import ugc5 from "@/assets/UGC5.mp4";
 import ugc6 from "@/assets/UGC6.mp4";
 import ugc7 from "@/assets/UGC7.mp4";
 import ugc8 from "@/assets/UGC8.mp4";
+import sunscreamAnherb from "@/assets/Sunscream-Anherb-Cc2-final.mp4";
+import scentialFinal from "@/assets/Scential-Final-1.mp4";
+import jimmyCocktail from "@/assets/Jimmy's-Cocktail-Spec-Ad-Cinematic-Product-Commercial.mp4";
+import bongchieFinal from "@/assets/Bongchie-Final-21-August.mp4";
 
 import { MagneticLink, SectionHeading } from "@/components/site/ui";
 
@@ -304,6 +308,30 @@ export const PORTFOLIO_CATEGORIES: PortfolioCategory[] = [
             alt: "Fruit juice product commercial",
             src: fruitJuiceTvc,
           },
+          {
+            kind: "video",
+            aspect: "aspect-video",
+            alt: "Sunscream Anherb TVC",
+            src: sunscreamAnherb,
+          },
+          {
+            kind: "video",
+            aspect: "aspect-video",
+            alt: "Scential brand film",
+            src: scentialFinal,
+          },
+          {
+            kind: "video",
+            aspect: "aspect-video",
+            alt: "Jimmy's Cocktail cinematic product commercial",
+            src: jimmyCocktail,
+          },
+          {
+            kind: "video",
+            aspect: "aspect-video",
+            alt: "Bongchie final brand film",
+            src: bongchieFinal,
+          },
           { kind: "video", aspect: "aspect-video", alt: "UGC production 1", src: ugc1 },
           { kind: "video", aspect: "aspect-video", alt: "UGC production 2", src: ugc2 },
           { kind: "video", aspect: "aspect-video", alt: "UGC production 3", src: ugc3 },
@@ -414,6 +442,30 @@ export const PORTFOLIO_CATEGORIES: PortfolioCategory[] = [
             aspect: "aspect-video",
             alt: "Fruit juice product commercial",
             src: fruitJuiceTvc,
+          },
+          {
+            kind: "video",
+            aspect: "aspect-video",
+            alt: "Sunscream Anherb TVC",
+            src: sunscreamAnherb,
+          },
+          {
+            kind: "video",
+            aspect: "aspect-video",
+            alt: "Scential brand film",
+            src: scentialFinal,
+          },
+          {
+            kind: "video",
+            aspect: "aspect-video",
+            alt: "Jimmy's Cocktail cinematic product commercial",
+            src: jimmyCocktail,
+          },
+          {
+            kind: "video",
+            aspect: "aspect-video",
+            alt: "Bongchie final brand film",
+            src: bongchieFinal,
           },
         ],
       },
